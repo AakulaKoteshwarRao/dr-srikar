@@ -280,7 +280,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   // ── How We Work ───────────────────────────────────────────────────────────
   const HWW_ICONS = ['message', 'search', 'file', 'check-circle']
   const howWeWork = a(s11.steps ?? s11.items).map((step: any, i: number) => ({
-    badge:       `Step ${String(i + 1).padStart(2, '0')}`,
+    badge:       `Step ${i + 1 < 10 ? '0' + (i + 1) : i + 1}`,
     iconType:    HWW_ICONS[i % HWW_ICONS.length],
     title:       s(step.title, ''),
     description: s(step.description, ''),

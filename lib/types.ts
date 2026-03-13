@@ -24,6 +24,8 @@ export interface ClinicConfig {
   faq: FaqItem[]
   blog: BlogPost[]
   ctaBand: CTABand
+  brand?: { primaryColor: string; secondaryColor: string }
+  locations?: any[]
 }
 
 export interface ClinicInfo {
@@ -49,6 +51,16 @@ export interface ClinicInfo {
     youtube?: string
   }
   insurers?: { bg: string; initials: string; name: string }[]
+  website?: string
+  specialty?: string
+  description?: string
+  image?: string
+  type?: string
+  locality?: string
+  geo?: { lat: string; lng: string }
+  priceRange?: string
+  areaServed?: string[]
+  aggregateRating?: { ratingValue: string; reviewCount: string }
 }
 
 export interface DoctorInfo {
@@ -71,6 +83,13 @@ export interface DoctorInfo {
   stats: DoctorStat[]
   details: DoctorDetail[]
   ctaLabel: string
+  gender?: string
+  specialty?: string
+  description?: string
+  image?: string
+  profileUrl?: string
+  priceRange?: string
+  registrationNumber?: string
 }
 
 export interface DoctorStat {
@@ -181,7 +200,7 @@ export interface ReviewSummary {
   googleUrl: string
 }
 
-export interface AreaItem {
+export interface NavItem {
   label: string
   href: string
 }
