@@ -14,6 +14,8 @@ import '../styles/doctor.css'
 export default function DoctorPage() {
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'doctor',
+    pageData: {},
+    video: undefined,
     meta: {
       path:        '/doctor',
       name:        `${schemaConfig.doctor.name} | ${schemaConfig.clinic.name}`,

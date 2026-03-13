@@ -14,6 +14,8 @@ import '../styles/blog.css'
 export default function BlogPage() {
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'home',
+    pageData: {},
+    video: undefined,
     meta: {
       path:        '/blog',
       name:        `Blog | ${schemaConfig.clinic.name}`,

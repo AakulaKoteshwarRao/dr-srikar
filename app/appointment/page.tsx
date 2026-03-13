@@ -15,6 +15,8 @@ import '../styles/appointment.css'
 export default function AppointmentPage() {
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'home',
+    pageData: {},
+    video: undefined,
     meta: {
       path:        '/appointment',
       name:        `Book Appointment | ${schemaConfig.clinic.name}`,

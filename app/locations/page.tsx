@@ -22,6 +22,8 @@ import '../styles/locations.css'
 export default function LocationsPage() {
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'home',
+    pageData: {},
+    video: undefined,
     meta: {
       path:        '/locations',
       name:        `Locations | ${schemaConfig.clinic.name}`,

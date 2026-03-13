@@ -16,6 +16,8 @@ import '../styles/services.css'
 export default function ServicesPage() {
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'home',
+    pageData: {},
+    video: undefined,
     meta: {
       path:        '/services',
       name:        `Services | ${schemaConfig.clinic.name}`,

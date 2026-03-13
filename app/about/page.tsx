@@ -20,6 +20,8 @@ import '../styles/about.css'
 export default function AboutPage() {
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'home',
+    pageData: {},
+    video: undefined,
     meta: {
       path:        '/about',
       name:        `About ${schemaConfig.clinic.name}`,

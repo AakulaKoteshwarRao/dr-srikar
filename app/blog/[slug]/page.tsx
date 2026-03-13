@@ -11,6 +11,8 @@ export default function BlogPostPage({ params }: { params?: { slug?: string } })
   const _path = `/blog/${params?.slug || ''}`
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'blog',
+    pageData: {},
+    video: undefined,
     pageData: { slug: params?.slug },
     meta: {
       path:        _path,

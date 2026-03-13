@@ -26,6 +26,8 @@ export default function HomePage() {
 
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'home',
+    pageData: {},
+    video: undefined,
     meta: {
       path:          '/',
       name:          `${schemaConfig.clinic.name} | ${schemaConfig.clinic.alternateName}`,
