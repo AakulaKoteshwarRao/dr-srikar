@@ -38,7 +38,7 @@ async function fetchFromSupabase(): Promise<ClinicConfig> {
     // Fetch config_json for this clinic slug via Supabase REST API
     // configs table has a FK to clients; we filter by clients.slug
     const res = await fetch(
-      `${SB_URL}/rest/v1/configs?select=data,clients!inner(slug)&clients.slug=eq.${encodeURIComponent(SLUG)}&limit=1`,
+      `${SB_URL}/rest/v1/configs?select=data&slug=eq.${encodeURIComponent(SLUG)}&limit=1`,
       {
         headers: {
           apikey:         SB_KEY,
