@@ -38,7 +38,7 @@ async function fetchFromSupabase(): Promise<ClinicConfig> {
     // Fetch config_json for this clinic slug via Supabase REST API
     // configs table has a FK to clients; we filter by clients.slug
     const res = await fetch(
-      `${SB_URL}/rest/v1/configs?select=config_json,clients!inner(slug)&clients.slug=eq.${encodeURIComponent(SLUG)}&limit=1`,
+      `${SB_URL}/rest/v1/configs?select=data,clients!inner(slug)&clients.slug=eq.${encodeURIComponent(SLUG)}&limit=1`,
       {
         headers: {
           apikey:         SB_KEY,
@@ -60,7 +60,7 @@ async function fetchFromSupabase(): Promise<ClinicConfig> {
       return defaultConfig as unknown as ClinicConfig
     }
 
-    const configJson = rows[0]?.config_json
+    const configJson = rows[0]?.data
     if (!configJson || typeof configJson !== 'object') {
       console.error(`[config] config_json empty for slug: ${SLUG}`)
       return defaultConfig as unknown as ClinicConfig
