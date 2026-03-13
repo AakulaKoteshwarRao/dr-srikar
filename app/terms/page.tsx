@@ -32,7 +32,7 @@ export default async function TermsPage() {
             { title: 'Limitation of Liability', content: 'The Clinic shall not be held liable for any direct, indirect, incidental, or consequential damages arising from your use of this website or reliance on any information provided herein.' },
             { title: 'Changes to Terms', content: 'The Clinic reserves the right to modify these terms at any time without prior notice. Continued use of the website following any changes constitutes acceptance of the updated terms.' },
             { title: 'Governing Law', content: 'These terms are governed by the laws of India. Any disputes arising from the use of this website shall be subject to the exclusive jurisdiction of the courts in the clinic's jurisdiction.' },
-            { title: 'Contact', content: 'For any questions about these terms, please contact us at our clinic or via WhatsApp at {clinic phone}.' },
+            { title: 'Contact', content: 'For any questions about these terms, please contact us at our clinic or via WhatsApp at the number listed on this page.' },
           ]}
         />
         <Footer clinic={cfg.clinic} />
