@@ -1,13 +1,12 @@
-'use client'
 import Header from '@/components/Header'
 import StickyBar from '@/components/StickyBar'
 import Footer from '@/components/Footer'
 import LegalPage from '@/components/legal/LegalPage'
-import { getConfig } from '@/lib/config'
+import { loadConfig } from '@/lib/config'
 import '../styles/legal.css'
 
-export default function DisclaimerPage() {
-  const cfg = getConfig()
+export default async function DisclaimerPage() {
+  const cfg = await loadConfig()
   return (
     <>
       <Header clinic={cfg.clinic} />

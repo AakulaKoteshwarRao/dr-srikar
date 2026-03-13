@@ -1,34 +1,33 @@
 import Header from '@/components/Header'
 import SchemaMarkup from '@/components/SchemaMarkup'
 import { generatePageSchemas } from '@/lib/schema/index.js'
-import { schemaConfig } from '@/lib/schema/master.config.js'
+import { buildSchemaConfig } from '@/lib/schema/master.config.js'
 import StickyBar from '@/components/StickyBar'
 import CTABand from '@/components/home/CTABand'
 import DoctorHero from '@/components/doctor/DoctorHero'
 import CredentialsGrid from '@/components/doctor/CredentialsGrid'
 import DoctorFAQ from '@/components/doctor/DoctorFAQ'
-import { getConfig } from '@/lib/config'
+import { loadConfig } from '@/lib/config'
 import Footer from '@/components/Footer'
 import '../styles/doctor.css'
 
-export default function DoctorPage() {
+export default async function DoctorPage() {
+  const cfg = await loadConfig()
+  const sc = buildSchemaConfig(cfg)
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'doctor',
-    pageData: {},
-    video: undefined,
     meta: {
       path:        '/doctor',
-      name:        `${schemaConfig.doctor.name} | ${schemaConfig.clinic.name}`,
-      description: schemaConfig.clinic.description,
-      image:       schemaConfig.clinic.image,
+      name:        `${sc.doctor.name} | ${sc.clinic.name}`,
+      description: sc.clinic.description,
+      image:       sc.clinic.image,
       breadcrumb:  [
-        { name: 'Home', url: schemaConfig.site.url, path: '/' },
-        { name: schemaConfig.doctor.name, url: schemaConfig.site.url + '/doctor', path: '/doctor' },
+        { name: 'Home', url: sc.site.url, path: '/' },
+        { name: sc.doctor.name, url: sc.site.url + '/doctor', path: '/doctor' },
       ],
     },
   })
 
-  const cfg = getConfig()
   return (
     <>
       <SchemaMarkup graphs={[pageSchemas]} />

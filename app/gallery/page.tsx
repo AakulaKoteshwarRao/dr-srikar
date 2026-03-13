@@ -4,11 +4,13 @@ import CTABand from '@/components/home/CTABand'
 import Footer from '@/components/Footer'
 import GalleryHero from '@/components/gallery/GalleryHero'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
-import { getConfig } from '@/lib/config'
+import { loadConfig } from '@/lib/config'
 import '../styles/gallery.css'
 
-export default function GalleryPage() {
-  const cfg = getConfig()
+export default async function GalleryPage() {
+  const cfg = await loadConfig()
+  const sc = buildSchemaConfig(cfg)
+  const cfg = await loadConfig()
   return (
     <>
       <Header clinic={cfg.clinic} />

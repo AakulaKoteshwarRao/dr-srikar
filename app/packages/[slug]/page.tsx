@@ -3,11 +3,13 @@ import StickyBar from '@/components/StickyBar'
 import CTABand from '@/components/home/CTABand'
 import Footer from '@/components/Footer'
 import PackageDetail from '@/components/package/PackageDetail'
-import { getConfig } from '@/lib/config'
+import { loadConfig } from '@/lib/config'
 import '../../styles/packages.css'
 
-export default function PackageDetailPage() {
-  const cfg = getConfig()
+export default async function PackageDetailPage() {
+  const cfg = await loadConfig()
+  const sc = buildSchemaConfig(cfg)
+  const cfg = await loadConfig()
   return (
     <>
       <Header clinic={cfg.clinic} />

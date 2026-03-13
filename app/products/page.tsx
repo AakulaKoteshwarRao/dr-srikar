@@ -7,18 +7,20 @@ import PricingTransparency from '@/components/products/PricingTransparency'
 import PackageTestimonials from '@/components/products/PackageTestimonials'
 import GuidanceSection from '@/components/products/GuidanceSection'
 import ProductsFAQ from '@/components/products/ProductsFAQ'
-import { getConfig } from '@/lib/config'
+import { loadConfig } from '@/lib/config'
 import Footer from '@/components/Footer'
 import '../styles/products.css'
 
-export default function ProductsPage() {
-  const cfg = getConfig()
+export default async function ProductsPage() {
+  const cfg = await loadConfig()
+  const sc = buildSchemaConfig(cfg)
+  const cfg = await loadConfig()
   return (
     <>
       <Header clinic={cfg.clinic} />
       <main style={{ paddingBottom: '64px' }}>
         <ProductsHero />
-        <PackagesGrid packages={cfg.productPackages as any} />
+        <PackagesGrid packages={cfg.productPackages} />
         <PricingTransparency />
         <PackageTestimonials />
         <GuidanceSection clinic={cfg.clinic} />

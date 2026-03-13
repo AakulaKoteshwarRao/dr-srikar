@@ -3,11 +3,13 @@ import StickyBar from '@/components/StickyBar'
 import CTABand from '@/components/home/CTABand'
 import Footer from '@/components/Footer'
 import LocationSpoke from '@/components/location/LocationSpoke'
-import { getConfig } from '@/lib/config'
+import { loadConfig } from '@/lib/config'
 import '../styles/location-spoke.css'
 
-export default function LocationSpokePage() {
-  const cfg = getConfig()
+export default async function LocationSpokePage() {
+  const cfg = await loadConfig()
+  const sc = buildSchemaConfig(cfg)
+  const cfg = await loadConfig()
   return (
     <>
       <Header clinic={cfg.clinic} />

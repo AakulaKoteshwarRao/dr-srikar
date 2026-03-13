@@ -1,7 +1,7 @@
 import Header from '@/components/Header'
 import SchemaMarkup from '@/components/SchemaMarkup'
 import { generatePageSchemas } from '@/lib/schema/index.js'
-import { schemaConfig } from '@/lib/schema/master.config.js'
+import { buildSchemaConfig } from '@/lib/schema/master.config.js'
 import StickyBar from '@/components/StickyBar'
 import CTABand from '@/components/home/CTABand'
 import LocationsHero from '@/components/locations/LocationsHero'
@@ -15,28 +15,27 @@ import DoctorAuthority from '@/components/locations/DoctorAuthority'
 import LocationReviews from '@/components/locations/LocationReviews'
 import LocationFAQ from '@/components/locations/LocationFAQ'
 import InternalLinks from '@/components/locations/InternalLinks'
-import { getConfig } from '@/lib/config'
+import { loadConfig } from '@/lib/config'
 import Footer from '@/components/Footer'
 import '../styles/locations.css'
 
-export default function LocationsPage() {
+export default async function LocationsPage() {
+  const cfg = await loadConfig()
+  const sc = buildSchemaConfig(cfg)
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'home',
-    pageData: {},
-    video: undefined,
     meta: {
       path:        '/locations',
-      name:        `Locations | ${schemaConfig.clinic.name}`,
-      description: schemaConfig.clinic.description,
-      image:       schemaConfig.clinic.image,
+      name:        `Locations | ${sc.clinic.name}`,
+      description: sc.clinic.description,
+      image:       sc.clinic.image,
       breadcrumb:  [
-        { name: 'Home', url: schemaConfig.site.url, path: '/' },
-        { name: 'Locations', url: schemaConfig.site.url + '/locations', path: '/locations' },
+        { name: 'Home', url: sc.site.url, path: '/' },
+        { name: 'Locations', url: sc.site.url + '/locations', path: '/locations' },
       ],
     },
   })
 
-  const cfg = getConfig()
   return (
     <>
       <SchemaMarkup graphs={[pageSchemas]} />

@@ -5,12 +5,14 @@ import PageDisabled from '@/components/PageDisabled'
 import TestimonialsHero from '@/components/testimonials/TestimonialsHero'
 import ReviewsGrid from '@/components/testimonials/ReviewsGrid'
 import TestimonialsFAQ from '@/components/testimonials/TestimonialsFAQ'
-import { getConfig } from '@/lib/config'
+import { loadConfig } from '@/lib/config'
 import Footer from '@/components/Footer'
 import '../styles/testimonials.css'
 
-export default function TestimonialsPage() {
-  const cfg = getConfig()
+export default async function TestimonialsPage() {
+  const cfg = await loadConfig()
+  const sc = buildSchemaConfig(cfg)
+  const cfg = await loadConfig()
   return (
     <>
       <Header clinic={cfg.clinic} />

@@ -1,7 +1,7 @@
 import Header from '@/components/Header'
 import SchemaMarkup from '@/components/SchemaMarkup'
 import { generatePageSchemas } from '@/lib/schema/index.js'
-import { schemaConfig } from '@/lib/schema/master.config.js'
+import { buildSchemaConfig } from '@/lib/schema/master.config.js'
 import StickyBar from '@/components/StickyBar'
 import CTABand from '@/components/home/CTABand'
 import AboutHero from '@/components/about/AboutHero'
@@ -13,28 +13,27 @@ import Affiliations from '@/components/about/Affiliations'
 import Insurance from '@/components/about/Insurance'
 import AboutFAQ from '@/components/about/AboutFAQ'
 import LocationStrip from '@/components/about/LocationStrip'
-import { getConfig } from '@/lib/config'
+import { loadConfig } from '@/lib/config'
 import Footer from '@/components/Footer'
 import '../styles/about.css'
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const cfg = await loadConfig()
+  const sc = buildSchemaConfig(cfg)
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'home',
-    pageData: {},
-    video: undefined,
     meta: {
       path:        '/about',
-      name:        `About ${schemaConfig.clinic.name}`,
-      description: schemaConfig.clinic.description,
-      image:       schemaConfig.clinic.image,
+      name:        `About ${sc.clinic.name}`,
+      description: sc.clinic.description,
+      image:       sc.clinic.image,
       breadcrumb:  [
-        { name: 'Home', url: schemaConfig.site.url, path: '/' },
-        { name: `About ${schemaConfig.clinic.name}`, url: schemaConfig.site.url + '/about', path: '/about' },
+        { name: 'Home', url: sc.site.url, path: '/' },
+        { name: `About ${sc.clinic.name}`, url: sc.site.url + '/about', path: '/about' },
       ],
     },
   })
 
-  const cfg = getConfig()
   return (
     <>
       <SchemaMarkup graphs={[pageSchemas]} />

@@ -1,34 +1,33 @@
 import Header from '@/components/Header'
 import SchemaMarkup from '@/components/SchemaMarkup'
 import { generatePageSchemas } from '@/lib/schema/index.js'
-import { schemaConfig } from '@/lib/schema/master.config.js'
+import { buildSchemaConfig } from '@/lib/schema/master.config.js'
 import StickyBar from '@/components/StickyBar'
 import CTABand from '@/components/home/CTABand'
 import Footer from '@/components/Footer'
 import BlogHero from '@/components/blog/BlogHero'
 import FeaturedPost from '@/components/blog/FeaturedPost'
 import BlogGrid from '@/components/blog/BlogGrid'
-import { getConfig } from '@/lib/config'
+import { loadConfig } from '@/lib/config'
 import '../styles/blog.css'
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const cfg = await loadConfig()
+  const sc = buildSchemaConfig(cfg)
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'home',
-    pageData: {},
-    video: undefined,
     meta: {
       path:        '/blog',
-      name:        `Blog | ${schemaConfig.clinic.name}`,
-      description: schemaConfig.clinic.description,
-      image:       schemaConfig.clinic.image,
+      name:        `Blog | ${sc.clinic.name}`,
+      description: sc.clinic.description,
+      image:       sc.clinic.image,
       breadcrumb:  [
-        { name: 'Home', url: schemaConfig.site.url, path: '/' },
-        { name: 'Blog', url: schemaConfig.site.url + '/blog', path: '/blog' },
+        { name: 'Home', url: sc.site.url, path: '/' },
+        { name: 'Blog', url: sc.site.url + '/blog', path: '/blog' },
       ],
     },
   })
 
-  const cfg = getConfig()
   return (
     <>
       <SchemaMarkup graphs={[pageSchemas]} />

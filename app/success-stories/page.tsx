@@ -4,12 +4,14 @@ import CTABand from '@/components/home/CTABand'
 import StoriesHero from '@/components/success-stories/StoriesHero'
 import VideoGrid from '@/components/success-stories/VideoGrid'
 import StoriesFAQ from '@/components/success-stories/StoriesFAQ'
-import { getConfig } from '@/lib/config'
+import { loadConfig } from '@/lib/config'
 import Footer from '@/components/Footer'
 import '../styles/success-stories.css'
 
-export default function SuccessStoriesPage() {
-  const cfg = getConfig()
+export default async function SuccessStoriesPage() {
+  const cfg = await loadConfig()
+  const sc = buildSchemaConfig(cfg)
+  const cfg = await loadConfig()
   const { videoCount, conditionCount, rating, stories } = cfg.successStories
   return (
     <>

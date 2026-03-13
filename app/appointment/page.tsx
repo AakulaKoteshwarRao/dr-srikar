@@ -1,35 +1,34 @@
 import Header from '@/components/Header'
 import SchemaMarkup from '@/components/SchemaMarkup'
 import { generatePageSchemas } from '@/lib/schema/index.js'
-import { schemaConfig } from '@/lib/schema/master.config.js'
+import { buildSchemaConfig } from '@/lib/schema/master.config.js'
 import StickyBar from '@/components/StickyBar'
 import CTABand from '@/components/home/CTABand'
 import AppointmentHero from '@/components/appointment/AppointmentHero'
 import AppointmentForm from '@/components/appointment/AppointmentForm'
 import ClinicStrip from '@/components/appointment/ClinicStrip'
 import WhatToExpect from '@/components/appointment/WhatToExpect'
-import { getConfig } from '@/lib/config'
+import { loadConfig } from '@/lib/config'
 import Footer from '@/components/Footer'
 import '../styles/appointment.css'
 
-export default function AppointmentPage() {
+export default async function AppointmentPage() {
+  const cfg = await loadConfig()
+  const sc = buildSchemaConfig(cfg)
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'home',
-    pageData: {},
-    video: undefined,
     meta: {
       path:        '/appointment',
-      name:        `Book Appointment | ${schemaConfig.clinic.name}`,
-      description: schemaConfig.clinic.description,
-      image:       schemaConfig.clinic.image,
+      name:        `Book Appointment | ${sc.clinic.name}`,
+      description: sc.clinic.description,
+      image:       sc.clinic.image,
       breadcrumb:  [
-        { name: 'Home', url: schemaConfig.site.url, path: '/' },
-        { name: 'Book Appointment', url: schemaConfig.site.url + '/appointment', path: '/appointment' },
+        { name: 'Home', url: sc.site.url, path: '/' },
+        { name: 'Book Appointment', url: sc.site.url + '/appointment', path: '/appointment' },
       ],
     },
   })
 
-  const cfg = getConfig()
   return (
     <>
       <SchemaMarkup graphs={[pageSchemas]} />
