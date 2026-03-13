@@ -8,8 +8,6 @@ import '../styles/location-spoke.css'
 
 export default async function LocationSpokePage() {
   const cfg = await loadConfig()
-  const sc = buildSchemaConfig(cfg)
-  const cfg = await loadConfig()
   return (
     <>
       <Header clinic={cfg.clinic} />

@@ -8,8 +8,6 @@ import '../../styles/packages.css'
 
 export default async function PackageDetailPage() {
   const cfg = await loadConfig()
-  const sc = buildSchemaConfig(cfg)
-  const cfg = await loadConfig()
   return (
     <>
       <Header clinic={cfg.clinic} />

@@ -13,8 +13,6 @@ import '../styles/products.css'
 
 export default async function ProductsPage() {
   const cfg = await loadConfig()
-  const sc = buildSchemaConfig(cfg)
-  const cfg = await loadConfig()
   return (
     <>
       <Header clinic={cfg.clinic} />

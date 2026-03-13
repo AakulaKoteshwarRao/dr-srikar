@@ -9,8 +9,6 @@ import '../styles/gallery.css'
 
 export default async function GalleryPage() {
   const cfg = await loadConfig()
-  const sc = buildSchemaConfig(cfg)
-  const cfg = await loadConfig()
   return (
     <>
       <Header clinic={cfg.clinic} />

@@ -10,8 +10,6 @@ import '../styles/success-stories.css'
 
 export default async function SuccessStoriesPage() {
   const cfg = await loadConfig()
-  const sc = buildSchemaConfig(cfg)
-  const cfg = await loadConfig()
   const { videoCount, conditionCount, rating, stories } = cfg.successStories
   return (
     <>
