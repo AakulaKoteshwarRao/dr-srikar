@@ -12,8 +12,6 @@ export default function LocationSpokePage({ params }: { params?: { slug?: string
   const _path = `/locations/${params?.slug || ''}`
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'location',
-    pageData: {},
-    video: undefined,
     pageData: { slug: params?.slug },
     meta: {
       path:        _path,

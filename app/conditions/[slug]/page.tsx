@@ -13,8 +13,6 @@ export default function ConditionDetailPage({ params }: { params?: { slug?: stri
   const _path = `/conditions/${params?.slug || ''}`
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'condition',
-    pageData: {},
-    video: undefined,
     pageData: { slug: params?.slug },
     meta: {
       path:        _path,

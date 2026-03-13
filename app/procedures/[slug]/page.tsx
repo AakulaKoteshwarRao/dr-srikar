@@ -13,8 +13,6 @@ export default function ProcedureDetailPage({ params }: { params?: { slug?: stri
   const _path = `/procedures/${params?.slug || ''}`
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'procedure',
-    pageData: {},
-    video: undefined,
     pageData: { slug: params?.slug },
     meta: {
       path:        _path,
