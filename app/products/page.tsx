@@ -18,7 +18,7 @@ export default function ProductsPage() {
       <Header clinic={cfg.clinic} />
       <main style={{ paddingBottom: '64px' }}>
         <ProductsHero />
-        <PackagesGrid packages={cfg.productPackages} />
+        <PackagesGrid packages={cfg.productPackages as any} />
         <PricingTransparency />
         <PackageTestimonials />
         <GuidanceSection clinic={cfg.clinic} />
