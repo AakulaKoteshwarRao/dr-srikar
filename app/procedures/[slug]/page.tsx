@@ -14,6 +14,7 @@ export default function ProcedureDetailPage({ params }: { params?: { slug?: stri
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'procedure',
     pageData: { slug: params?.slug },
+    video: undefined,
     meta: {
       path:        _path,
       name:        `Procedure: ${params?.slug?.replace(/-/g,' ')?.replace(/\b\w/g,c=>c.toUpperCase()) || 'Procedure'} | ${schemaConfig.clinic.name}`,

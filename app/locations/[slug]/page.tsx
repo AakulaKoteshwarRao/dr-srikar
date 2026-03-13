@@ -13,6 +13,7 @@ export default function LocationSpokePage({ params }: { params?: { slug?: string
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'location',
     pageData: { slug: params?.slug },
+    video: undefined,
     meta: {
       path:        _path,
       name:        `${schemaConfig.clinic.specialty} in ${params?.slug?.replace(/-/g,' ')?.replace(/\b\w/g,c=>c.toUpperCase()) || 'Location'} | ${schemaConfig.clinic.name}`,

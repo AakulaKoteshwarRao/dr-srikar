@@ -14,6 +14,7 @@ export default function ConditionDetailPage({ params }: { params?: { slug?: stri
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'condition',
     pageData: { slug: params?.slug },
+    video: undefined,
     meta: {
       path:        _path,
       name:        `Condition: ${params?.slug?.replace(/-/g,' ')?.replace(/\b\w/g,c=>c.toUpperCase()) || 'Condition'} | ${schemaConfig.clinic.name}`,

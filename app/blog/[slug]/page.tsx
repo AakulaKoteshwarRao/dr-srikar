@@ -12,6 +12,7 @@ export default function BlogPostPage({ params }: { params?: { slug?: string } })
   const pageSchemas = generatePageSchemas(schemaConfig, {
     pageType: 'blog',
     pageData: { slug: params?.slug },
+    video: undefined,
     meta: {
       path:        _path,
       name:        `${params?.slug?.replace(/-/g,' ')?.replace(/\b\w/g,c=>c.toUpperCase()) || 'Blog Post'} | ${schemaConfig.clinic.name}`,
