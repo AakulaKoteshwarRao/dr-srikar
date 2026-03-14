@@ -415,12 +415,18 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   // ── Local Areas ───────────────────────────────────────────────────────────
   // s17.areas[]
   const areaList = a(s17.areas)
-  const localAreas = areaList.map((ar: any) => ({
-    name:     s(ar.area ?? ar.name, ''),
-    slug:     s(ar.slug, slugify(s(ar.area ?? ar.name, ''))),
-    distance: s(ar.distance, ''),
-    duration: s(ar.duration, ''),
-  }))
+  const localAreas = areaList.map((ar: any) => {
+    const name = s(ar.area ?? ar.name, '')
+    const slug = s(ar.slug, slugify(name))
+    return {
+      name,
+      slug,
+      distance: s(ar.distance, ''),
+      duration: s(ar.duration, ''),
+      label:    name,
+      href:     `/location/${slug}`,
+    }
+  })
 
   // ── FAQ ───────────────────────────────────────────────────────────────────
   // s14.faqs[] — ConfigEditor saves q/a, fallback to question/answer

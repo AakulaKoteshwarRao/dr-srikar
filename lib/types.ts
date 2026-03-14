@@ -291,6 +291,8 @@ export interface AreaItem {
   slug: string
   distance: string
   duration: string
+  label: string
+  href: string
 }
 
 export interface TeamMember {
