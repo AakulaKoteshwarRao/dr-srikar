@@ -233,21 +233,23 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   // s07.conditions[]
   const conditionList = a(s07.conditions)
   const conditions = conditionList.map((c: any, i: number) => {
-    const slug = s(c.slug, slugify(s(c.title, `condition-${i}`)))
+    const label = s(c.name ?? c.title, `condition-${i}`)
+    const slug = s(c.slug, slugify(label))
     return {
       href:        `/conditions/${slug}`,
       gradClass:   g(i),
       iconType:    ['activity', 'shield', 'pulse', 'droplet'][i % 4],
-      label:       s(c.title, ''),
-      title:       s(c.title, ''),
+      label,
+      title:       label,
       description: s(c.descriptionShort ?? c.description, ''),
     }
   })
 
   const servicesConditions = conditionList.map((c: any, i: number) => {
-    const slug = s(c.slug, slugify(s(c.title, `condition-${i}`)))
+    const label = s(c.name ?? c.title, `condition-${i}`)
+    const slug = s(c.slug, slugify(label))
     return {
-      title:       s(c.title, ''),
+      title:       label,
       description: s(c.descriptionLong ?? c.description, ''),
       slug,
       gradient:    gs(i),
@@ -259,21 +261,23 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   const PROC_ICONS = ['briefcase', 'zap', 'search', 'shield', 'tool', 'activity']
   const procedureList = a(s08.procedures)
   const procedures = procedureList.map((p: any, i: number) => {
-    const slug = s(p.slug, slugify(s(p.title, `procedure-${i}`)))
+    const label = s(p.name ?? p.title, `procedure-${i}`)
+    const slug = s(p.slug, slugify(label))
     return {
       href:        `/procedures/${slug}`,
       gradClass:   g(i),
       iconType:    PROC_ICONS[i % PROC_ICONS.length],
-      label:       s(p.title, ''),
-      title:       s(p.title, ''),
+      label,
+      title:       label,
       description: s(p.descriptionShort ?? p.description, ''),
     }
   })
 
   const servicesProcedures = procedureList.map((p: any, i: number) => {
-    const slug = s(p.slug, slugify(s(p.title, `procedure-${i}`)))
+    const label = s(p.name ?? p.title, `procedure-${i}`)
+    const slug = s(p.slug, slugify(label))
     return {
-      title:       s(p.title, ''),
+      title:       label,
       description: s(p.descriptionLong ?? p.description, ''),
       slug,
       gradient:    gs(i),
@@ -285,12 +289,13 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   const PKG_ICONS = ['box', 'tool', 'briefcase', 'zap', 'activity']
   const packageList = a(s10.packages)
   const packages = packageList.map((p: any, i: number) => {
-    const slug = s(p.slug, slugify(s(p.title, `package-${i}`)))
+    const label = s(p.name ?? p.title, `package-${i}`)
+    const slug = s(p.slug, slugify(label))
     return {
       href:        `/packages/${slug}`,
       gradClass:   g(i),
       iconType:    PKG_ICONS[i % PKG_ICONS.length],
-      title:       s(p.title, ''),
+      title:       label,
       description: s(p.description, ''),
       price:       s(p.price, ''),
       tags:        a(p.tags ?? p.features),
@@ -329,7 +334,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   const clinicalCards = a(s12.cards)
   const clinicalInfo = CLI_FIXED.map((fixed, i) => ({
     ...fixed,
-    description: s(clinicalCards[i]?.description, ''),
+    description: s(clinicalCards[i]?.text ?? clinicalCards[i]?.description, ''),
     note:        s(clinicalCards[i]?.note, ''),
   }))
 
@@ -410,7 +415,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   }))
 
   // ── FAQ ───────────────────────────────────────────────────────────────────
-  // s14.faqs[]
+  // s14.faqs[] — ConfigEditor saves q/a, fallback to question/answer
   const faq = a(s14.faqs).map((f: any) => ({
     question: s(f.q ?? f.question, ''),
     answer:   s(f.a ?? f.answer,   ''),
