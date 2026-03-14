@@ -45,7 +45,7 @@
     height: 72px; display: flex; align-items: center; justify-content: space-between;
   }
   .logo { display: flex; align-items: center; text-decoration: none; }
-  .logo img { height: 44px; width: auto; }
+  .logo img { height: 56px; width: auto; max-width: 200px; object-fit: contain; }
   .nav { display: flex; align-items: center; gap: 0.25rem; }
   .nav a {
     text-decoration: none; color: #4B5563; font-size: 0.88rem; font-weight: 500;
@@ -349,7 +349,7 @@
   }
   @media (max-width: 768px) {
     .header-inner { height: 60px; padding: 0 1rem; }
-    .logo img { height: 36px; }
+    .logo img { height: 44px; }
     .nav { display: none; }
     .about-hero { padding: 2rem 1rem; }
     .about-hero h1 { font-size: 1.85rem; }

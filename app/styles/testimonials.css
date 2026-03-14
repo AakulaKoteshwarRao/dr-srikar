@@ -15,7 +15,7 @@
   .header { background: #FFFFFF; position: sticky; top: 0; z-index: 300; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
   .header-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; height: 72px; display: flex; align-items: center; justify-content: space-between; }
   .logo { display: flex; align-items: center; text-decoration: none; }
-  .logo img { height: 44px; width: auto; }
+  .logo img { height: 56px; width: auto; max-width: 200px; object-fit: contain; }
   .nav { display: flex; align-items: center; gap: 0.25rem; }
   .nav a { text-decoration: none; color: #4B5563; font-size: 0.88rem; font-weight: 500; padding: 0.5rem 0.85rem; border-radius: 8px; transition: color 200ms, background 200ms; }
   .nav a:hover { color: var(--secondary-dark); background: var(--secondary-light); }
@@ -166,7 +166,7 @@
   }
   @media (max-width: 768px) {
     .header-inner { height: 60px; padding: 0 1rem; }
-    .logo img { height: 36px; }
+    .logo img { height: 44px; }
     .nav { display: none; }
     .testi-hero { padding: 2rem 1rem; }
     .testi-hero h1 { font-size: 1.85rem; }
