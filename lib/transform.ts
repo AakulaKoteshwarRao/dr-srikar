@@ -177,8 +177,8 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
     awards:       a(s03.awards),
     memberships:  a(s03.memberships),
     faqs:         a(s14.faqs).map((f: any) => ({
-      question: s(f.question, ''),
-      answer:   s(f.answer,   ''),
+      question: s(f.q ?? f.question, ''),
+      answer:   s(f.a ?? f.answer,   ''),
     })),
   }
 
@@ -226,7 +226,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
     iconColor:   WHY_COLORS[i % 4] as 'teal' | 'blue' | 'deep' | 'green',
     iconType:    WHY_ICONS[i % 4],
     title:       s(w.title, ''),
-    description: s(w.description, ''),
+    description: s(w.text ?? w.description, ''),
   }))
 
   // ── Conditions ────────────────────────────────────────────────────────────
@@ -316,7 +316,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
     badge:       `Step ${i + 1 < 10 ? '0' + (i + 1) : i + 1}`,
     iconType:    HWW_ICONS[i % HWW_ICONS.length],
     title:       s(step.title, ''),
-    description: s(step.description, ''),
+    description: s(step.text ?? step.description, ''),
   }))
 
   // ── Clinical Info ─────────────────────────────────────────────────────────
@@ -403,8 +403,8 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   // s17.areas[]
   const areaList = a(s17.areas)
   const localAreas = areaList.map((ar: any) => ({
-    name:     s(ar.name, ''),
-    slug:     s(ar.slug, slugify(s(ar.name, ''))),
+    name:     s(ar.area ?? ar.name, ''),
+    slug:     s(ar.slug, slugify(s(ar.area ?? ar.name, ''))),
     distance: s(ar.distance, ''),
     duration: s(ar.duration, ''),
   }))
@@ -412,8 +412,8 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   // ── FAQ ───────────────────────────────────────────────────────────────────
   // s14.faqs[]
   const faq = a(s14.faqs).map((f: any) => ({
-    question: s(f.question, ''),
-    answer:   s(f.answer,   ''),
+    question: s(f.q ?? f.question, ''),
+    answer:   s(f.a ?? f.answer,   ''),
   }))
 
   // ── Blog ──────────────────────────────────────────────────────────────────
