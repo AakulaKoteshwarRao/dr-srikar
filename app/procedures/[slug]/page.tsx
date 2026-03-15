@@ -15,10 +15,10 @@ interface PageParams { params: { slug: string } }
 export async function generateStaticParams() {
   const slug = process.env.NEXT_PUBLIC_CLINIC_SLUG
   if (!slug) return []
-  const supabase = createClient()
+  const supabase = await createClient()
   const { data: website } = await supabase.from('websites').select('config_id').eq('slug', slug).single()
   if (!website?.config_id) return []
-  const { data: configRow } = await supabase.from('configs').select('config_data').eq('id', website.config_id).single()
+  const { data: configRow } = await supabase.from('configs').select('data').eq('id', website.config_id).single()
   const procedures: any[] = configRow?.config_data?.s08?.procedures ?? []
   return procedures.map((p: any) => ({ slug: p.slug }))
 }
@@ -27,14 +27,14 @@ export default async function ProcedureDetailPage({ params }: PageParams) {
   const clinicSlug = process.env.NEXT_PUBLIC_CLINIC_SLUG
   if (!clinicSlug) notFound()
 
-  const supabase = createClient()
+  const supabase = await createClient()
   const { data: website } = await supabase.from('websites').select('config_id, photos').eq('slug', clinicSlug).single()
   if (!website?.config_id) notFound()
 
-  const { data: configRow } = await supabase.from('configs').select('config_data').eq('id', website.config_id).single()
+  const { data: configRow } = await supabase.from('configs').select('data').eq('id', website.config_id).single()
   if (!configRow?.config_data) notFound()
 
-  const config = configRow.config_data
+  const config = configRow.data
   const procedures: any[] = config?.s08?.procedures ?? []
   const procedure = procedures.find((p: any) => p.slug === params.slug)
   if (!procedure) notFound()
@@ -110,10 +110,10 @@ export default async function ProcedureDetailPage({ params }: PageParams) {
 export async function generateMetadata({ params }: PageParams) {
   const clinicSlug = process.env.NEXT_PUBLIC_CLINIC_SLUG
   if (!clinicSlug) return {}
-  const supabase = createClient()
+  const supabase = await createClient()
   const { data: website } = await supabase.from('websites').select('config_id').eq('slug', clinicSlug).single()
   if (!website?.config_id) return {}
-  const { data: configRow } = await supabase.from('configs').select('config_data').eq('id', website.config_id).single()
+  const { data: configRow } = await supabase.from('configs').select('data').eq('id', website.config_id).single()
   const config = configRow?.config_data
   const procedures: any[] = config?.s08?.procedures ?? []
   const procedure = procedures.find((p: any) => p.slug === params.slug)
