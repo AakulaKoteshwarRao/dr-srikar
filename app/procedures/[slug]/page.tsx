@@ -12,12 +12,12 @@ import CTABand from '@/components/home/CTABand'
 interface PageParams { params: { slug: string } }
 
 async function getRawConfig() {
-  const slug = process.env.NEXT_PUBLIC_CLINIC_SLUG
+  const configId = process.env.NEXT_PUBLIC_CONFIG_ID
   const sbUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const sbKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  if (!slug || !sbUrl || !sbKey) return null
+  if (!configId || !sbUrl || !sbKey) return null
   const res = await fetch(
-    `${sbUrl}/rest/v1/configs?select=data&slug=eq.${encodeURIComponent(slug)}&limit=1`,
+    `${sbUrl}/rest/v1/configs?select=data&id=eq.${encodeURIComponent(configId)}&limit=1`,
     { headers: { apikey: sbKey, Authorization: `Bearer ${sbKey}` }, cache: 'no-cache' }
   )
   const rows = await res.json()
