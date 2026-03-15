@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
-import '@/app/styles/packages.css'
 export const dynamic = 'force-dynamic'
+import '@/app/styles/packages.css'
 import { loadConfig } from '@/lib/config'
 import { mapPackage } from '@/lib/transform'
 import PackageDetail from '@/components/package/PackageDetail'
@@ -26,7 +26,8 @@ async function getRawConfig() {
 
 export default async function PackageDetailPage({ params }: PageParams) {
   const [config, rawConfig] = await Promise.all([loadConfig(), getRawConfig()])
-  const pkg = (config.packages ?? []).find((pk: any) => pk.slug === params.slug)
+  const rawPackages: any[] = rawConfig?.s10?.packages ?? []
+  const pkg = rawPackages.find((pk: any) => pk.slug === params.slug)
   if (!pkg) notFound()
   const photoUrl = (config.photos as any)?.[`package_${params.slug}`] ?? null
   const mapped = mapPackage(pkg, rawConfig, photoUrl)
