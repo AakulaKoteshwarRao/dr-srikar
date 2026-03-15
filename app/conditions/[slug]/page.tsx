@@ -10,11 +10,25 @@ import CTABand from '@/components/home/CTABand'
 
 interface PageParams { params: { slug: string } }
 
+async function getRawConfig() {
+  const slug = process.env.NEXT_PUBLIC_CLINIC_SLUG
+  const sbUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const sbKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  if (!slug || !sbUrl || !sbKey) return null
+  const res = await fetch(
+    `${sbUrl}/rest/v1/configs?select=data&slug=eq.${encodeURIComponent(slug)}&limit=1`,
+    { headers: { apikey: sbKey, Authorization: `Bearer ${sbKey}` }, cache: 'no-cache' }
+  )
+  const rows = await res.json()
+  return rows?.[0]?.data ?? null
+}
+
 export default async function ConditionDetailPage({ params }: PageParams) {
-  const config = await loadConfig()
+  const [config, rawConfig] = await Promise.all([loadConfig(), getRawConfig()])
   const condition = (config.conditions ?? []).find((c: any) => c.slug === params.slug)
   if (!condition) notFound()
-  const mapped = mapCondition(condition, config, params.slug)
+  const photoUrl = (config.photos as any)?.[`condition_${params.slug}`] ?? null
+  const mapped = mapCondition(condition, rawConfig, photoUrl)
   return (
     <>
       <Header />
