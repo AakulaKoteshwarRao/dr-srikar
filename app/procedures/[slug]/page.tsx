@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
 import ProcedureDetail from '@/components/procedure/ProcedureDetail'
 import Header from '@/components/Header'
