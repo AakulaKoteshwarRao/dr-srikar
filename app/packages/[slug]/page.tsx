@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import '@/app/styles/packages.css'
 export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
 import { mapPackage } from '@/lib/transform'
