@@ -551,6 +551,12 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
 // ── Helpers ──────────────────────────────────────────────────
 
 /** Pull clinic context fields shared by all three page types */
+
+function stripCite(val: any): string {
+  if (typeof val !== "string") return ""
+  return val.replace(/<cite[^>]*>(.*?)<\/cite>/gs, "$1").trim()
+}
+
 function clinicContext(rawConfig: any) {
   const s02 = rawConfig?.s02 ?? {}
   const s03 = rawConfig?.s03 ?? {}
