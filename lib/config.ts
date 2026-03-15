@@ -21,6 +21,7 @@ import { transformConfig }   from './transform'
 import defaultConfig         from '../data/default.json'
 
 const SLUG      = process.env.NEXT_PUBLIC_CLINIC_SLUG
+const CONFIG_ID = process.env.NEXT_PUBLIC_CONFIG_ID
 const SB_URL    = process.env.NEXT_PUBLIC_SUPABASE_URL
 const SB_KEY    = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID
@@ -31,16 +32,15 @@ let _config: ClinicConfig | null = null
 let _fetchPromise: Promise<ClinicConfig> | null = null
 
 async function fetchFromSupabase(): Promise<ClinicConfig> {
-  if (!SLUG || !SB_URL || !SB_KEY) {
-    console.log('[config] No CLINIC_SLUG — using default.json')
+  if (!CONFIG_ID || !SB_URL || !SB_KEY) {
+    console.log('[config] No CONFIG_ID — using default.json')
     return defaultConfig as unknown as ClinicConfig
   }
 
   try {
-    // Fetch config_json for this clinic slug via Supabase REST API
-    // configs table has a FK to clients; we filter by clients.slug
+    // Fetch config JSONB by config ID
     const res = await fetch(
-      `${SB_URL}/rest/v1/configs?select=data&slug=eq.${encodeURIComponent(SLUG)}&limit=1`,
+      `${SB_URL}/rest/v1/configs?select=data&id=eq.${encodeURIComponent(CONFIG_ID)}&limit=1`,
       {
         headers: {
           apikey:         SB_KEY,
@@ -58,17 +58,17 @@ async function fetchFromSupabase(): Promise<ClinicConfig> {
 
     const rows = await res.json()
     if (!rows?.length) {
-      console.error(`[config] No config found for slug: ${SLUG}`)
+      console.error(`[config] No config found for id: ${CONFIG_ID}`)
       return defaultConfig as unknown as ClinicConfig
     }
 
     const configJson = rows[0]?.data
     if (!configJson || typeof configJson !== 'object') {
-      console.error(`[config] config_json empty for slug: ${SLUG}`)
+      console.error(`[config] config_json empty for id: ${CONFIG_ID}`)
       return defaultConfig as unknown as ClinicConfig
     }
 
-    console.log(`[config] Loaded Supabase config for: ${SLUG}`)
+    console.log(`[config] Loaded Supabase config for id: ${CONFIG_ID}`)
     const transformed = transformConfig(configJson)
 
     // Inject photo URLs from Supabase Storage
