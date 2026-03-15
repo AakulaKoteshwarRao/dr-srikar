@@ -770,7 +770,7 @@ export function mapCondition(
     heroImage: (photoUrl ?? str(c.heroImage)) || null,
 
     // Quick facts
-    icd10Code: str(c.icd10Code),
+    icd10Code: str(c.icd10Code ?? c.icd10),
     prevalence: str(c.prevalence),
     progressionType: str(c.progressionType),
     diagnosisMethod: str(c.diagnosisMethod),
@@ -784,12 +784,11 @@ export function mapCondition(
       advanced: arr<string>(c.symptoms?.advanced),
     },
     treatments: arr(c.treatments).slice(0, 3),
-    howWeHandle: arr(c.howWeHandle).slice(0, 4),
-    recoveryPhases: arr(c.recoveryPhases).slice(0, 3),
-    outcomes: arr(c.outcomes).slice(0, 4),
+    howWeHandle: arr(c.howWeHandle).slice(0, 4).map((h: any) => ({ step: str(h.step), title: str(h.title ?? h.step), description: str(h.description) })),
     ifNotTreated: str(c.ifNotTreated),
     whenToSeeDoctor: str(c.whenToSeeDoctor),
     relatedProcedureSlugs,
+    recoveryPhases: arr(c.recoveryPhases ?? c.recovery).slice(0, 3).map((r: any) => ({ phase: str(r.phase), title: str(r.title ?? r.phase), description: str(r.description) })),
     faqs: arr(c.faqs).slice(0, 5),
 
     ...clinicContext(config),
