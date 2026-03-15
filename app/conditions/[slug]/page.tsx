@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
-import '@/app/styles/conditions.css'
 export const dynamic = 'force-dynamic'
+import '@/app/styles/conditions.css'
 import { loadConfig } from '@/lib/config'
 import { mapCondition } from '@/lib/transform'
 import ConditionDetail from '@/components/condition/ConditionDetail'
@@ -26,7 +26,8 @@ async function getRawConfig() {
 
 export default async function ConditionDetailPage({ params }: PageParams) {
   const [config, rawConfig] = await Promise.all([loadConfig(), getRawConfig()])
-  const condition = (config.conditions ?? []).find((c: any) => c.slug === params.slug)
+  const rawConditions: any[] = rawConfig?.s07?.conditions ?? []
+  const condition = rawConditions.find((c: any) => c.slug === params.slug)
   if (!condition) notFound()
   const photoUrl = (config.photos as any)?.[`condition_${params.slug}`] ?? null
   const mapped = mapCondition(condition, rawConfig, photoUrl)
