@@ -392,3 +392,46 @@
   }
 
 
+
+/* ── Class aliases for ConditionDetail component ── */
+.test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+.test-card { background: #FFFFFF; border: 1.5px solid #E5E7EB; border-radius: 16px; padding: 1.5rem; text-align: center; transition: all 200ms; }
+.test-card:hover { border-color: var(--primary); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.test-icon { width: 48px; height: 48px; border-radius: 14px; margin: 0 auto 0.75rem; display: flex; align-items: center; justify-content: center; }
+.test-icon svg { width: 22px; height: 22px; color: #FFFFFF; }
+.test-card h3 { font-size: 0.88rem; font-weight: 800; color: #111111; margin-bottom: 0.2rem; }
+.test-card p { font-size: 0.82rem; color: #374151; line-height: 1.55; }
+
+.symptom-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+.symptom-card { background: #FFFFFF; border: 1.5px solid #E5E7EB; border-radius: 16px; padding: 1.5rem; transition: all 200ms; }
+.symptom-card:hover { border-color: var(--primary); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.symp-icon { width: 40px; height: 40px; border-radius: 12px; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: center; }
+.symp-icon svg { width: 20px; height: 20px; }
+.symptom-card h3 { font-size: 0.92rem; font-weight: 800; color: #111111; margin-bottom: 0.5rem; }
+.symptom-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.symptom-card li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #374151; }
+
+.treat-tabs { display: flex; gap: 0.4rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.treat-tab { font-size: 0.85rem; font-weight: 600; color: #4B5563; background: #FFFFFF; border: 1.5px solid #D1D5DB; padding: 0.6rem 1.25rem; border-radius: 10px; cursor: pointer; transition: all 200ms; }
+.treat-tab:hover { border-color: var(--primary); color: #111111; }
+.treat-tab.active { background: var(--secondary-deep); color: #FFFFFF; border-color: var(--secondary-deep); }
+.treat-panel { background: #FFFFFF; border: 1.5px solid #E5E7EB; border-radius: 16px; overflow: hidden; }
+.treat-panel-header { padding: 1.25rem 1.5rem; }
+.treat-panel-header h3 { font-size: 1rem; font-weight: 800; color: #FFFFFF; margin: 0; }
+.treat-panel-body p { font-size: 0.92rem; color: #374151; line-height: 1.7; }
+.treat-warn { background: #FEF2F2; border: 1px solid #FECACA; border-radius: 10px; padding: 1rem; display: flex; gap: 0.75rem; align-items: flex-start; margin-top: 1rem; }
+.treat-warn svg { width: 18px; height: 18px; color: #EF4444; flex-shrink: 0; margin-top: 2px; }
+.treat-warn ul { margin: 0; padding-left: 1rem; }
+.treat-warn li { font-size: 0.85rem; color: #7F1D1D; line-height: 1.6; }
+
+.sf-title { font-size: 1.05rem; font-weight: 800; color: #111111; margin-bottom: 0.45rem; }
+.sf-desc { font-size: 0.85rem; color: #374151; line-height: 1.6; }
+
+@media (max-width: 1024px) {
+  .test-grid { grid-template-columns: 1fr 1fr; }
+  .symptom-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .test-grid { grid-template-columns: 1fr; }
+  .symptom-grid { grid-template-columns: 1fr; }
+}
