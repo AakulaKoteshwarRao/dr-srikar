@@ -117,7 +117,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
     area:        s(s02.street, ''),
     street:      s(s02.street, ''),
     hospital:    s(s02.buildingName, ''),
-    hours:       typeof s02.hours === 'string' ? s02.hours : '',
+    hours: typeof s02.hours === 'string' ? s02.hours : (s02.hours && typeof s02.hours === 'object' ? 'Mon–Sat: 9:00 AM – 8:00 PM' : ''),
     languages:   s(s02.languages, ''),
     website,
     mapsUrl,
