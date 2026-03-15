@@ -764,7 +764,7 @@ export function mapCondition(
     shortDescription: str(c.shortDescription),
     pills: arr<string>(c.pills).slice(0, 3),
     heroStats: arr(c.heroStats).slice(0, 3),
-    heroImage: photoUrl ?? str(c.heroImage) || null,
+    heroImage: (photoUrl ?? str(c.heroImage)) || null,
 
     // Quick facts
     icd10Code: str(c.icd10Code),
@@ -831,7 +831,7 @@ export function mapProcedure(
     description: str(p.description),
     shortDescription: str(p.shortDescription),
     pills: arr<string>(p.pills).slice(0, 3),
-    heroImage: photoUrl ?? str(p.heroImage) || null,
+    heroImage: (photoUrl ?? str(p.heroImage)) || null,
 
     // Quick facts
     anaesthesia: str(p.anaesthesia),
@@ -886,7 +886,7 @@ export function mapPackage(
     description: str(pk.description),
     shortDescription: str(pk.shortDescription),
     price: str(pk.price),
-    heroImage: photoUrl ?? str(pk.heroImage) || null,
+    heroImage: (photoUrl ?? str(pk.heroImage)) || null,
 
     whatsIncluded: arr(pk.whatsIncluded).slice(0, 4),
     howItWorks: arr(pk.howItWorks).slice(0, 4),
