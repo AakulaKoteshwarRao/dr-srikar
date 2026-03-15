@@ -763,33 +763,33 @@ export function mapCondition(
     // Hero
     name: str(c.name),
     slug: str(c.slug),
-    description: str(c.description),
-    shortDescription: str(c.shortDescription),
+    description: stripCite(c.description),
+    shortDescription: stripCite(c.shortDescription),
     pills: arr<string>(c.pills).slice(0, 3),
     heroStats: arr(c.heroStats).slice(0, 3),
     heroImage: (photoUrl ?? str(c.heroImage)) || null,
 
     // Quick facts
     icd10Code: str(c.icd10Code ?? c.icd10),
-    prevalence: str(c.prevalence),
+    prevalence: stripCite(c.prevalence),
     progressionType: str(c.progressionType),
     diagnosisMethod: str(c.diagnosisMethod),
 
     // Sections
-    types: arr(c.types).slice(0, 3),
+    types: arr(c.types).slice(0, 3).map((t: any) => ({ name: str(t.name), description: stripCite(t.description) })),
     causes: arr<string>(c.causes),
     symptoms: {
       early: arr<string>(c.symptoms?.early),
       moderate: arr<string>(c.symptoms?.moderate),
       advanced: arr<string>(c.symptoms?.advanced),
     },
-    treatments: arr(c.treatments).slice(0, 3),
+    treatments: arr(c.treatments).slice(0, 3).map((t: any) => ({ name: str(t.name), description: stripCite(t.description), risks: arr(t.risks) })),
     howWeHandle: arr(c.howWeHandle).slice(0, 4).map((h: any) => ({ step: str(h.step), title: str(h.title ?? h.step), description: str(h.description) })),
-    ifNotTreated: str(c.ifNotTreated),
-    whenToSeeDoctor: str(c.whenToSeeDoctor),
+    ifNotTreated: stripCite(c.ifNotTreated),
+    whenToSeeDoctor: stripCite(c.whenToSeeDoctor),
     relatedProcedureSlugs,
-    recoveryPhases: arr(c.recoveryPhases ?? c.recovery).slice(0, 3).map((r: any) => ({ phase: str(r.phase), title: str(r.title ?? r.phase), description: str(r.description) })),
-    faqs: arr(c.faqs).slice(0, 5),
+    recoveryPhases: arr(c.recoveryPhases ?? c.recovery).slice(0, 3).map((r: any) => ({ phase: str(r.phase), title: str(r.title ?? r.phase), description: stripCite(r.description) })),
+    faqs: arr(c.faqs).slice(0, 5).map((f: any) => ({ question: str(f.question), answer: stripCite(f.answer) })),
 
     ...clinicContext(config),
   }
@@ -903,4 +903,10 @@ export function mapPackage(
 
     ...clinicContext(config),
   }
+}
+
+// Strip <cite ...>...</cite> tags from AI-generated content
+function stripCite(val: any): string {
+  if (typeof val !== 'string') return ''
+  return val.replace(/<cite[^>]*>(.*?)<\/cite>/gs, '$1').trim()
 }
