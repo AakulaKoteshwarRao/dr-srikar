@@ -859,13 +859,13 @@ export function mapPackage(
   const whoIsItFor = Array.isArray(pk.whoIsItFor)
     ? a<string>(pk.whoIsItFor)
     : typeof pk.whoIsItFor === 'string' && pk.whoIsItFor
-    ? pk.whoIsItFor.split(/[,\n]/).map((l: string) => l.trim()).filter(Boolean)
+    ? pk.whoIsItFor.split(/\n/).map((l: string) => l.trim()).filter(Boolean)
     : []
 
   // pricingRows: [{label, value}]
   const pricingRows = a(pk.pricingBreakdown).map((row: any) => ({
     label: s(row.item ?? row.label),
-    value: s(row.price ?? row.value),
+    value: s(row.amount ?? row.price ?? row.value),
   }))
 
   // pricingTotal
