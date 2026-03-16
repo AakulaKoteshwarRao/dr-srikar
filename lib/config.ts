@@ -47,7 +47,7 @@ async function fetchFromSupabase(): Promise<ClinicConfig> {
           Authorization:  `Bearer ${SB_KEY}`,
           'Content-Type': 'application/json',
         },
-        cache: 'force-cache', // fresh on every build
+        cache: 'no-store',
       }
     )
 
