@@ -161,9 +161,9 @@
   margin-bottom: 0.25rem;
 }
 .dur-val {
-  font-size: 1rem;
-  font-weight: 800;
-  color: #111111;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0D3B5E;
   margin-bottom: 0.2rem;
 }
 .dur-card p { font-size: 0.78rem; color: #374151; line-height: 1.5; }
