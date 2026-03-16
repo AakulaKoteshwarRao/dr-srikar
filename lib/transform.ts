@@ -652,9 +652,9 @@ export function mapCondition(
   return {
     name:        s(c.name),
     icd10Code:       s(c.icd10 ?? c.icd10Code),
-    prevalence:      s(c.prevalence),
-    progressionType: s(c.progressionType),
-    diagnosisMethod: s(c.diagnosisMethod),
+    prevalence:      stripCite(c.prevalence),
+    progressionType: stripCite(c.progressionType),
+    diagnosisMethod: stripCite(c.diagnosisMethod),
     slug:        s(c.slug),
     description: stripCite(c.description ?? c.descriptionLong ?? c.shortDescription),
     heroImage:   photoUrl ?? s(c.heroImage) ?? null,
