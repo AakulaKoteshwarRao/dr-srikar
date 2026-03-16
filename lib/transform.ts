@@ -619,7 +619,12 @@ export function mapCondition(
     name:        s(t.name),
     description: stripCite(t.shortDescription ?? t.description),
     invasiveness: s(t.invasiveness ?? t.type),
-    invasivenessStyle: t.invasivenessStyle ?? undefined,
+    invasivenessStyle: (() => {
+      const inv = s(t.invasiveness ?? t.type).toUpperCase()
+      if (inv.includes('SURGICAL')) return { background: '#FEF2F2', color: '#DC2626' }
+      if (inv.includes('MODERATE')) return { background: '#FEF3C7', color: '#D68910' }
+      return { background: '#F0FDFA', color: '#3CB8AF' }
+    })(),
     items: a<string>(t.items ?? t.bullets ?? t.details),
   }))
 
