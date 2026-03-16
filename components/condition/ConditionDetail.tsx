@@ -45,6 +45,10 @@ export interface ConditionDetailProps {
   pills?: string[]
   heroStats?: { label: string; value: string }[]
   heroImage?: string | null
+  icd10Code?: string
+  prevalence?: string
+  progressionType?: string
+  diagnosisMethod?: string
   types?: { name: string; description: string }[]
   causes?: string[]
   symptoms?: { early?: string[]; moderate?: string[]; advanced?: string[] }
@@ -78,6 +82,10 @@ export default function ConditionDetail({
   pills = [],
   heroStats = [],
   heroImage,
+  icd10Code,
+  prevalence,
+  progressionType,
+  diagnosisMethod,
   types = [],
   causes = [],
   symptoms,
@@ -159,7 +167,26 @@ export default function ConditionDetail({
         </div>
       </section>
 
-      {/* S2 — Types */}
+      {/* S2 — Quick Facts */}
+      {(icd10Code || prevalence || progressionType || diagnosisMethod) && (
+        <div className="sec-white">
+          <div className="sec-pad" style={{ maxWidth: '560px', margin: '0 auto' }}>
+            <div className="sec-header" style={{ textAlign: 'center' }}>
+              <div className="sec-label"><span>Quick Facts</span></div>
+              <h2 className="sec-title">At a glance.</h2>
+            </div>
+            <div className="qf-card">
+              <div className="qf-head">Clinical Overview</div>
+              {icd10Code && <div className="qf-row"><span className="qf-label">ICD-10 Code</span><span className="qf-val">{icd10Code}</span></div>}
+              {prevalence && <div className="qf-row"><span className="qf-label">Prevalence</span><span className="qf-val">{prevalence}</span></div>}
+              {progressionType && <div className="qf-row"><span className="qf-label">Progression Type</span><span className="qf-val">{progressionType}</span></div>}
+              {diagnosisMethod && <div className="qf-row"><span className="qf-label">Diagnosis Method</span><span className="qf-val">{diagnosisMethod}</span></div>}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* S3 — Types (was S2) */}
       {types.length > 0 && (
         <div className="sec-grey">
           <div className="sec-pad">

@@ -106,7 +106,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   const website  = s(s01.url, '')
 
   const clinic: ClinicInfo = {
-    name:        s(s02.name, 'Clinic'),
+    name:        s(s02.brandName ?? s02.name, 'Clinic'),
     tagline:     s(s02.alternateName, ''),
     type:        s(s00.entityType, ''),
     phone,
@@ -617,7 +617,7 @@ export function mapCondition(
   // treatments: map to new shape {name, description, invasiveness, invasivenessStyle, items}
   const treatments = a(c.treatments).slice(0, 4).map((t: any) => ({
     name:        s(t.name),
-    description: s(t.shortDescription ?? t.description),
+    description: stripCite(t.shortDescription ?? t.description),
     invasiveness: s(t.invasiveness ?? t.type),
     invasivenessStyle: t.invasivenessStyle ?? undefined,
     items: a<string>(t.items ?? t.bullets ?? t.details),
@@ -651,6 +651,10 @@ export function mapCondition(
 
   return {
     name:        s(c.name),
+    icd10Code:       s(c.icd10 ?? c.icd10Code),
+    prevalence:      s(c.prevalence),
+    progressionType: s(c.progressionType),
+    diagnosisMethod: s(c.diagnosisMethod),
     slug:        s(c.slug),
     description: stripCite(c.description ?? c.descriptionLong ?? c.shortDescription),
     heroImage:   photoUrl ?? s(c.heroImage) ?? null,
@@ -673,7 +677,7 @@ export function mapCondition(
     recoveryPhases,
     outcomes: a(c.outcomes).slice(0, 4).map((o: any) => ({
       title:       s(o.title),
-      description: s(o.description),
+      description: stripCite(o.description),
     })),
     ifNotTreated:    stripCite(c.ifNotTreated) || undefined,
     whenToSeeDoctor,
@@ -803,7 +807,7 @@ export function mapProcedure(
     recoveryPhases,
     outcomes: a(p.outcomes).slice(0, 4).map((o: any) => ({
       title:       s(o.title),
-      description: s(o.description),
+      description: stripCite(o.description),
     })),
     myths,
     ifDelayed,

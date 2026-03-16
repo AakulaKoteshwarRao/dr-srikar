@@ -7,7 +7,6 @@ import ConditionDetail from '@/components/condition/ConditionDetail'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import StickyBar from '@/components/StickyBar'
-import CTABand from '@/components/home/CTABand'
 
 interface PageParams { params: { slug: string } }
 
@@ -36,7 +35,6 @@ export default async function ConditionDetailPage({ params }: PageParams) {
       <Header clinic={config.clinic} />
       <StickyBar clinic={config.clinic} />
       <ConditionDetail {...mapped} />
-      <CTABand cta={config.ctaBand} />
       <Footer clinic={config.clinic} config={config} />
     </>
   )
