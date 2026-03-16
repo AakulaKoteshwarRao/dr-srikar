@@ -748,8 +748,8 @@ export function mapProcedure(
 
   // timelines (Duration cards): {label, value, description}
   const timelines = a(p.durationMilestones ?? p.timelines).slice(0, 6).map((tl: any) => ({
-    label:       s(tl.label),
-    value:       stripCite(tl.duration ?? tl.value),
+    label:       s(tl.milestone ?? tl.label),
+    value:       stripCite(tl.timeframe ?? tl.duration ?? tl.value),
     description: stripCite(tl.description),
   }))
 
@@ -788,7 +788,7 @@ export function mapProcedure(
   return {
     name:        s(p.name),
     slug:        s(p.slug),
-    description: stripCite(p.description ?? p.descriptionLong),
+    description: stripCite(p.shortDescription ?? p.shortdescription ?? p.description ?? p.descriptionLong),
     heroImage:   photoUrl ?? s(p.heroImage) ?? null,
     pills:       a<string>(p.pills).slice(0, 3),
     heroStats:   a(p.heroStats).slice(0, 3).map((st: any) => ({
