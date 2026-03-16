@@ -683,7 +683,7 @@ export function mapCondition(
     whenToSeeDoctor,
     relatedProcedures,
     faqs: a(c.faqs).slice(0, 5).map((f: any) => ({
-      question: s(f.question ?? f.q),
+      question: stripCite(f.question ?? f.q),
       answer:   stripCite(f.answer ?? f.a),
     })),
     ...clinicContext(rawConfig),
@@ -715,74 +715,74 @@ export function mapProcedure(
 
   // quickFacts: build from individual fields
   const quickFacts = [
-    p.anaesthesia   && { label: 'Anaesthesia',      value: s(p.anaesthesia) },
-    p.duration      && { label: 'Procedure Duration',value: s(p.duration) },
-    p.hospitalStay  && { label: 'Hospital Stay',     value: s(p.hospitalStay) },
-    p.recoveryTime  && { label: 'Return to Work',    value: s(p.recoveryTime) },
-    p.fullRecovery  && { label: 'Full Recovery',     value: s(p.fullRecovery) },
-    p.successRate   && { label: 'Success Rate',      value: s(p.successRate) },
+    p.anaesthesia   && { label: 'Anaesthesia',      value: stripCite(p.anaesthesia) },
+    p.duration      && { label: 'Procedure Duration',value: stripCite(p.duration) },
+    p.hospitalStay  && { label: 'Hospital Stay',     value: stripCite(p.hospitalStay) },
+    p.recoveryTime  && { label: 'Return to Work',    value: stripCite(p.recoveryTime) },
+    p.fullRecovery  && { label: 'Full Recovery',     value: stripCite(p.fullRecovery) },
+    p.successRate   && { label: 'Success Rate',      value: stripCite(p.successRate) },
   ].filter(Boolean) as { label: string; value: string }[]
 
   // candidacy: could be string[] or string
   const candidacy = Array.isArray(p.candidacy)
-    ? a<string>(p.candidacy)
+    ? a<string>(p.candidacy).map(stripCite)
     : typeof p.whoNeedsIt === 'string' && p.whoNeedsIt
-    ? [p.whoNeedsIt]
+    ? [stripCite(p.whoNeedsIt)]
     : []
 
   // successRateItems / risksItems / sideEffectsItems
   const successRateItems = Array.isArray(p.successRateItems)
-    ? a<string>(p.successRateItems)
+    ? a<string>(p.successRateItems).map(stripCite)
     : typeof p.successRate === 'string' && p.successRate
-    ? [p.successRate]
+    ? [stripCite(p.successRate)]
     : []
 
-  const risksItems     = a<string>(p.risks ?? p.risksItems)
-  const sideEffectsItems = a<string>(p.sideEffects ?? p.sideEffectsItems)
+  const risksItems     = a<string>(p.risks ?? p.risksItems).map(stripCite)
+  const sideEffectsItems = a<string>(p.sideEffects ?? p.sideEffectsItems).map(stripCite)
 
   // steps (How It Works numbered stepper): {title, description}
   const steps = a(p.howItWorks ?? p.steps).slice(0, 5).map((st: any) => ({
     title:       s(st.title ?? st.step),
-    description: s(st.description),
+    description: stripCite(st.description),
   }))
 
   // timelines (Duration cards): {label, value, description}
   const timelines = a(p.durationMilestones ?? p.timelines).slice(0, 6).map((tl: any) => ({
     label:       s(tl.label),
-    value:       s(tl.duration ?? tl.value),
-    description: s(tl.description),
+    value:       stripCite(tl.duration ?? tl.value),
+    description: stripCite(tl.description),
   }))
 
   // howWeHandle: {title, description}
   const howWeHandle = a(p.howWeHandle).slice(0, 4).map((h: any) => ({
     title:       s(h.title ?? h.step),
-    description: s(h.description),
+    description: stripCite(h.description),
   }))
 
   // recoveryPhases: {label, title, description, timeline[], warnings[]}
   const recoveryPhases = a(p.recoveryPhases ?? p.recovery).slice(0, 3).map((r: any) => ({
     label:       s(r.label ?? r.phase),
     title:       s(r.title ?? r.phase),
-    description: s(r.description),
+    description: stripCite(r.description),
     timeline: a(r.timeline).map((row: any) => ({
       badge: s(row.badge ?? row.label),
-      text:  s(row.text),
+      text:  stripCite(row.text),
     })),
-    warnings: a<string>(r.warnings),
+    warnings: a<string>(r.warnings).map(stripCite),
   }))
 
   // myths: {myth, fact} — old shape was misconceptions: {myth, reality}
   const myths = a(p.misconceptions ?? p.myths).slice(0, 5).map((m: any) => ({
-    myth: s(m.myth),
-    fact: s(m.fact ?? m.reality),
+    myth: stripCite(m.myth),
+    fact: stripCite(m.fact ?? m.reality),
   }))
 
   // ifDelayed
   const ifd = p.ifNotTreated ?? p.ifDelayed
   const ifDelayed = ifd
     ? typeof ifd === 'string'
-      ? { items: ifd.split('\n').map((l: string) => l.trim()).filter(Boolean) }
-      : { title: s(ifd.title), intro: s(ifd.intro), items: a<string>(ifd.items) }
+      ? { items: ifd.split('\n').map((l: string) => stripCite(l.trim())).filter(Boolean) }
+      : { title: s(ifd.title), intro: stripCite(ifd.intro), items: a<string>(ifd.items).map(stripCite) }
     : undefined
 
   return {
@@ -813,8 +813,8 @@ export function mapProcedure(
     ifDelayed,
     relatedConditions,
     faqs: a(p.faqs).slice(0, 5).map((f: any) => ({
-      question: s(f.question ?? f.q),
-      answer:   s(f.answer ?? f.a),
+      question: stripCite(f.question ?? f.q),
+      answer:   stripCite(f.answer ?? f.a),
     })),
     ...clinicContext(rawConfig),
   }
@@ -910,8 +910,8 @@ export function mapPackage(
     testimonials,
     relatedProcedures,
     faqs: a(pk.faqs).slice(0, 5).map((f: any) => ({
-      question: s(f.question ?? f.q),
-      answer:   s(f.answer ?? f.a),
+      question: stripCite(f.question ?? f.q),
+      answer:   stripCite(f.answer ?? f.a),
     })),
     ...clinicContext(rawConfig),
   }

@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 export const dynamic = 'force-dynamic'
+import '@/styles/conditions.css'
 import '@/styles/packages.css'
 import { loadConfig } from '@/lib/config'
 import { mapPackage } from '@/lib/transform'
@@ -7,7 +8,6 @@ import PackageDetail from '@/components/package/PackageDetail'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import StickyBar from '@/components/StickyBar'
-import CTABand from '@/components/home/CTABand'
 
 interface PageParams { params: { slug: string } }
 
@@ -36,7 +36,6 @@ export default async function PackageDetailPage({ params }: PageParams) {
       <Header clinic={config.clinic} />
       <StickyBar clinic={config.clinic} />
       <PackageDetail {...mapped} />
-      <CTABand cta={config.ctaBand} />
       <Footer clinic={config.clinic} config={config} />
     </>
   )
