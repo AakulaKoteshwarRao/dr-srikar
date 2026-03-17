@@ -123,6 +123,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
     mapsUrl,
     mapUrl:      mapsUrl,
     mapEmbedUrl: s(s02.mapEmbedUrl, ''),
+    medicalSpecialty: s(s02.medicalSpecialty, ''),
     social: {
       google:    s(s02.socialGoogle, ''),
       facebook:  s(s02.socialFacebook, ''),
