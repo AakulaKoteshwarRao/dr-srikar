@@ -537,14 +537,24 @@
 
   @media (max-width: 1024px) {
     .spoke-services { grid-template-columns: 1fr 1fr; }
-    .qf-strip { grid-template-columns: 1fr 1fr; }
+    .qf-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 768px) {
     .spoke-hero { padding: 1.5rem 1rem 2.5rem; }
     .spoke-hero h1 { font-size: 1.65rem; }
     .spoke-services { grid-template-columns: 1fr; }
-    .qf-strip { grid-template-columns: 1fr 1fr; }
+    .qf-grid { grid-template-columns: 1fr 1fr; }
     .doc-mini { flex-direction: column; text-align: center; }
+    .doc-mini-photo { margin: 0 auto 1rem; }
+    .reasons-list { gap: 0.75rem; }
+    .nearby-pills { gap: 0.5rem; }
+    .int-links { gap: 0.5rem; }
+    .int-link { font-size: 0.78rem; padding: 0.4rem 0.75rem; }
+  }
+  @media (max-width: 480px) {
+    .qf-grid { grid-template-columns: 1fr 1fr; }
+    .spoke-services { grid-template-columns: 1fr; }
+    .nearby-pills { grid-template-columns: 1fr 1fr; }
   }
 
 

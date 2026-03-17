@@ -33,7 +33,7 @@ export default function LocationSpoke(props?: any) {
     grad: serviceGrads[i % serviceGrads.length],
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
     title: s.title,
-    desc: s.description || s.title,
+    desc: s.descriptionShort || s.description || `Expert diagnosis and treatment of ${s.title.toLowerCase()} with advanced techniques.`,
     href: `/conditions/${s.slug}`,
   }))
 
