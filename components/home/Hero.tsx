@@ -1,3 +1,4 @@
+'use client'
 import type { HeroSection, ClinicInfo } from '@/lib/types'
 
 const StarIcon = () => (
@@ -44,7 +45,7 @@ export default function Hero({ hero, clinic }: { hero: HeroSection; clinic: Clin
             <span key={i} className="hero-tag">{tag}</span>
           ))}
         </div>
-        <a href={hero.ctaHref} className="hero-cta">
+        <a href={hero.ctaHref} className="hero-cta" onClick={e => { e.preventDefault(); typeof window !== "undefined" && window.dispatchEvent(new CustomEvent("openAppointmentModal")) }}>
           {hero.ctaLabel} <ArrowIcon />
         </a>
         <div className="hero-stats">

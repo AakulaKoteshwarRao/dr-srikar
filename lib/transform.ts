@@ -205,7 +205,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
       patientCount ? `${patientCount} Patients Treated` : '',
     ].filter(Boolean) : [],
     ctaLabel:    'Book an Appointment',
-    ctaHref:     '/appointment',
+    ctaHref:     '#',
     stats: [
       { number: yearsExp,       label: 'Years Experience' },
       { number: patientCount,   label: 'Happy Patients'   },
