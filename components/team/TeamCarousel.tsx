@@ -50,7 +50,7 @@ export default function TeamCarousel({ members }: { members: TeamMember[] }) {
                     ))}
                   </div>
                   <div className="team-card-meta">
-                    <div className="team-meta-item">{clockIcon}<span>{m.experience} experience</span></div>
+                    <div className="team-meta-item">{clockIcon}<span>{m.experience} years experience</span></div>
                     <div className="team-meta-item">{calIcon}<span>{m.schedule}</span></div>
                   </div>
                   <a href="/appointment" className="team-card-cta" onClick={e => { e.preventDefault(); typeof window !== "undefined" && window.dispatchEvent(new CustomEvent("openAppointmentModal")) }}>
