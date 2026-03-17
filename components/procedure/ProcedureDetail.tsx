@@ -141,7 +141,7 @@ export default function ProcedureDetail({
               ))}
             </div>
           )}
-          <a href={appointmentUrl} className="cond-hero-cta">
+          <a href={appointmentUrl} className="cond-hero-cta" onClick={e => { e.preventDefault(); typeof window !== "undefined" && window.dispatchEvent(new CustomEvent("openAppointmentModal")) }}>
             Book a Consultation
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
               <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
@@ -554,7 +554,7 @@ export default function ProcedureDetail({
             <p>Get a personalised assessment from an experienced specialist. Understand your options, ask your questions, and decide with confidence.</p>
           </div>
           <div className="cta-band-actions">
-            <a href={appointmentUrl} className="cta-primary">
+            <a href={appointmentUrl} className="cta-primary" onClick={e => { e.preventDefault(); typeof window !== "undefined" && window.dispatchEvent(new CustomEvent("openAppointmentModal")) }}>
               Book Appointment{' '}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>

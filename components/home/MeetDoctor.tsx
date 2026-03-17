@@ -99,7 +99,7 @@ export default function MeetDoctor({ doctor, clinic }: { doctor: DoctorInfo; cli
               ))}
             </div>
 
-            <a href="/appointment" className="doc-cta-btn">
+            <a href="/appointment" className="doc-cta-btn" onClick={e => { e.preventDefault(); typeof window !== "undefined" && window.dispatchEvent(new CustomEvent("openAppointmentModal")) }}>
               {doctor.ctaLabel} <ArrowIcon />
             </a>
           </div>

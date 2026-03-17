@@ -119,7 +119,7 @@ export default async function BlogPostPage({ params }: { params?: { slug?: strin
               <p>Book a consultation and get a clear diagnosis and treatment plan.</p>
             </div>
             <div className="cta-band-actions">
-              <a href="/appointment" className="cta-primary">
+              <a href="/appointment" className="cta-primary" onClick={e => { e.preventDefault(); typeof window !== "undefined" && window.dispatchEvent(new CustomEvent("openAppointmentModal")) }}>
                 Book Appointment{' '}
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>

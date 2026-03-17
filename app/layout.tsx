@@ -4,6 +4,7 @@ import SchemaMarkup from '@/components/SchemaMarkup'
 import { generateCoreSchemas } from '@/lib/schema/index.js'
 import { buildSchemaConfig } from '@/lib/schema/master.config.js'
 import { loadConfig } from '@/lib/config'
+import AppointmentModal from '@/components/appointment/AppointmentModal'
 
 // Derive dark/deep/light shades from brand hex colors
 function darken(hex: string, amount = 0.15): string {
@@ -60,7 +61,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet" media="print" onLoad="this.media='all'" />
         <SchemaMarkup graphs={[coreSchemas]} />
       </head>
-      <body style={cssVars}>{children}</body>
+      <body style={cssVars}>{children}<AppointmentModal clinic={cfg.clinic} /></body>
     </html>
   )
 }

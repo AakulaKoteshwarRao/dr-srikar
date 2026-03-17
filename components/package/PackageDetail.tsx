@@ -130,7 +130,7 @@ export default function PackageDetail({
               {priceUnit && <span className="pkg-price-note">{priceUnit}</span>}
             </div>
           )}
-          <a href={appointmentUrl} className="pkg-enquire">
+          <a href={appointmentUrl} className="pkg-enquire" onClick={e => { e.preventDefault(); typeof window !== "undefined" && window.dispatchEvent(new CustomEvent("openAppointmentModal")) }}>
             Enquire Now{' '}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
               <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
@@ -396,7 +396,7 @@ export default function PackageDetail({
             <p>Get a personalised cost estimate. No commitment required — just a conversation to help you understand your options.</p>
           </div>
           <div className="cta-band-actions">
-            <a href={appointmentUrl} className="cta-primary">
+            <a href={appointmentUrl} className="cta-primary" onClick={e => { e.preventDefault(); typeof window !== "undefined" && window.dispatchEvent(new CustomEvent("openAppointmentModal")) }}>
               Book Appointment{' '}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>

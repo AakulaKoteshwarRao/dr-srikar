@@ -1,17 +1,12 @@
 'use client'
 import { useState } from 'react'
-import defaultData from '../../data/default.json'
 import type { ClinicInfo } from '@/lib/types'
 
-const d = defaultData
-
-// Reasons pulled from conditions + procedures in default.json -- specialty agnostic
+// Generic appointment types — works for all specialties
 const reasons = [
-  ...(d.conditions || []).slice(0, 4).map((c: any) => c.title || c.label),
-  ...(d.procedures || []).slice(0, 3).map((p: any) => p.title || p.label),
+  'Consultation',
+  'Follow-up',
   'Second Opinion',
-  'Follow-up Visit',
-  'Other',
 ]
 
 const times = ['9:00 AM - 11:00 AM', '11:00 AM - 1:00 PM', '2:00 PM - 4:00 PM', '4:00 PM - 5:00 PM']
