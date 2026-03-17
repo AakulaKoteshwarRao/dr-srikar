@@ -9,8 +9,8 @@ const QUICK_LINKS_BY_ENTITY: Record<string, { label: string; href: string }[]> =
   'Physician': [
     { label: 'About', href: '/about' },
     { label: 'Doctor', href: '/doctor' },
-    { label: 'Conditions', href: '/conditions' },
-    { label: 'Procedures', href: '/procedures' },
+    { label: 'Conditions', href: '/services#conditions' },
+    { label: 'Procedures', href: '/services#procedures' },
     { label: 'Reviews', href: '/reviews' },
     { label: 'Blog', href: '/blog' },
     { label: 'Book Appointment', href: '/appointment' },
