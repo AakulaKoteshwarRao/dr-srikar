@@ -3,8 +3,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/specialist-near-:area*',
-        destination: '/:area*',
+        source: '/specialist-near-:area',
+        destination: '/:area',
       },
     ]
   },
