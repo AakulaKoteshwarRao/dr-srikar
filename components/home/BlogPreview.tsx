@@ -28,7 +28,7 @@ export default function BlogPreview({ posts }: { posts: BlogPost[] }) {
           </a>
         </div>
         <div className="blog-carousel-wrap">
-          <button className="carousel-btn blog-prev" style={{ left: -16, top: '50%', transform: 'translateY(-50%)' }} onClick={() => scroll(-1)}>
+          <button className="carousel-btn blog-prev" aria-label="Previous" style={{ left: -16, top: '50%', transform: 'translateY(-50%)' }} onClick={() => scroll(-1)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <polyline points="15 18 9 12 15 6"/>
             </svg>
@@ -50,7 +50,7 @@ export default function BlogPreview({ posts }: { posts: BlogPost[] }) {
               </a>
             ))}
           </div>
-          <button className="carousel-btn blog-next" style={{ right: -16, top: '50%', transform: 'translateY(-50%)' }} onClick={() => scroll(1)}>
+          <button className="carousel-btn blog-next" aria-label="Next" style={{ right: -16, top: '50%', transform: 'translateY(-50%)' }} onClick={() => scroll(1)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <polyline points="9 18 15 12 9 6"/>
             </svg>

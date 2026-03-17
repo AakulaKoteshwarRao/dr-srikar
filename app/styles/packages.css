@@ -203,7 +203,7 @@
     margin-bottom: 1.25rem;
   }
   .sf-badge {
-    font-size: 0.72rem; font-weight: 800; letter-spacing: 1.5px;
+    font-size: 0.75rem; font-weight: 900; letter-spacing: 1.5px;
     text-transform: uppercase;
   }
   .sf-1 .sf-badge { color: var(--primary); }
@@ -403,12 +403,12 @@
     flex-wrap: nowrap;
   }
   .pkg-price-val {
-    font-size: 1.5rem; font-weight: 800; color: #111111;
+    font-size: 1.5rem; font-weight: 800; color: #1B6FA8;
     background: linear-gradient(135deg, var(--secondary-deep), var(--secondary));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     white-space: nowrap;
   }
-  .pkg-price-note { font-size: 0.85rem; color: #9CA3AF; font-weight: 600; white-space: nowrap; }
+  .pkg-price-note { font-size: 0.85rem; color: #6B7280; font-weight: 600; white-space: nowrap; }
   .pkg-enquire {
     display: inline-flex; align-items: center; gap: 0.5rem;
     background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #FFFFFF;

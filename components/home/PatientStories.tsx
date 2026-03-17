@@ -34,7 +34,7 @@ export default function PatientStories({ stories }: { stories: StoryItem[] }) {
           </div>
         </div>
         <div className="stories-carousel-wrap">
-          <button className="carousel-btn carousel-prev" onClick={() => scroll(-1)}>
+          <button className="carousel-btn carousel-prev" aria-label="Previous" onClick={() => scroll(-1)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <polyline points="15 18 9 12 15 6"/>
             </svg>
@@ -53,7 +53,7 @@ export default function PatientStories({ stories }: { stories: StoryItem[] }) {
               </div>
             ))}
           </div>
-          <button className="carousel-btn carousel-next" onClick={() => scroll(1)}>
+          <button className="carousel-btn carousel-next" aria-label="Next" onClick={() => scroll(1)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <polyline points="9 18 15 12 9 6"/>
             </svg>

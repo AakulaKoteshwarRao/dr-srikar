@@ -703,7 +703,7 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FFFFFF; color:
   gap: 2.5rem;
   padding-bottom: 2.5rem;
 }
-.footer h4 {
+.footer h3, .footer h4 {
   font-size: 0.78rem;
   font-weight: 700;
   color: #FFFFFF;
@@ -711,8 +711,8 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FFFFFF; color:
   letter-spacing: 1.5px;
   margin-bottom: 1.2rem;
 }
-.footer-links { display: flex; flex-direction: column; gap: 0.55rem; }
-.footer-links a { text-decoration: none; color: #A3ADB8; font-size: 0.85rem; transition: color 200ms; }
+.footer-links { display: flex; flex-direction: column; gap: 0.35rem; }
+.footer-links a { text-decoration: none; color: #A3ADB8; font-size: 0.85rem; transition: color 200ms; padding: 0.25rem 0; display: block; min-height: 44px; display: flex; align-items: center; }
 .footer-links a:hover { color: var(--primary); }
 .footer-contact { display: flex; flex-direction: column; gap: 0.7rem; }
 .contact-item { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.85rem; color: #A3ADB8; }

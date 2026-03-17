@@ -75,7 +75,7 @@ export default function Footer({ clinic, config }: { clinic: ClinicInfo; config?
 
         {/* Quick Links */}
         <div>
-          <h4>Quick Links</h4>
+          <h3>Quick Links</h3>
           <div className="footer-links">
             {quickLinks.map((l, i) => <a key={i} href={l.href}>{l.label}</a>)}
           </div>
@@ -83,7 +83,7 @@ export default function Footer({ clinic, config }: { clinic: ClinicInfo; config?
 
         {/* Services */}
         <div>
-          <h4>Services</h4>
+          <h3>Services</h3>
           <div className="footer-links">
             {serviceLinks.map((l, i) => <a key={i} href={(l as any).href}>{(l as any).label}</a>)}
           </div>
@@ -91,7 +91,7 @@ export default function Footer({ clinic, config }: { clinic: ClinicInfo; config?
 
         {/* Contact */}
         <div>
-          <h4>Contact</h4>
+          <h3>Contact</h3>
           <div className="footer-contact">
             <div className="contact-item">{pinIcon}<span>{clinic.address}</span></div>
             <div className="contact-item">{phoneIcon}<a href={`tel:${clinic.phone}`}>{clinic.phone}</a></div>
@@ -125,7 +125,7 @@ export default function Footer({ clinic, config }: { clinic: ClinicInfo; config?
 
         {/* Map */}
         <div className="footer-map">
-          <h4>Directions</h4>
+          <h3>Directions</h3>
           <a href={clinic.mapsUrl || clinic.mapUrl} target="_blank" rel="noopener" title="Get Directions">
             <div className="map-visual">
               <div className="map-pin">
