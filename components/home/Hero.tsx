@@ -61,7 +61,7 @@ export default function Hero({ hero, clinic }: { hero: HeroSection; clinic: Clin
         <div className="doctor-photo-wrapper">
           {clinic.heroImage ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={clinic.heroImage} alt={clinic.name} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '16px' }} loading="eager" />
+            <img src={clinic.heroImage} alt={clinic.name} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '16px' }} loading="eager" fetchPriority="high" />
           ) : (
             <div className="doctor-photo-placeholder">
               <PersonIcon />
