@@ -1,3 +1,4 @@
+'use client'
 import { loadConfig } from '@/lib/config'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'

@@ -1,3 +1,4 @@
+'use client'
 import Header from '@/components/Header'
 import SchemaMarkup from '@/components/SchemaMarkup'
 import { generatePageSchemas } from '@/lib/schema/index.js'

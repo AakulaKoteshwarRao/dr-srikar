@@ -1,3 +1,4 @@
+'use client'
 import type { ClinicInfo } from '@/lib/types'
 
 export default function GuidanceSection({ clinic }: { clinic: ClinicInfo }) {
