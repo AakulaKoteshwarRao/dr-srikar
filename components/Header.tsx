@@ -15,8 +15,8 @@ const ALL_LINKS: Record<string, { href: string; label: string }> = {
   blog:         { href: '/blog',        label: 'Blog' },
   contact:      { href: '/contact',     label: 'Contact' },
   reviews:      { href: '/reviews',     label: 'Reviews' },
-  conditions:   { href: '/conditions',  label: 'Conditions' },
-  procedures:   { href: '/procedures',  label: 'Procedures' },
+  conditions:   { href: '/services#conditions',  label: 'Conditions' },
+  procedures:   { href: '/services#procedures',  label: 'Procedures' },
 }
 
 const MENU_BY_ENTITY: Record<string, string[]> = {
