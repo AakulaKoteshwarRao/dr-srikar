@@ -19,7 +19,7 @@ export default function FeaturedPost({ post }: Props) {
       <a href={href} className="featured-card" style={{ display: 'grid' }}>
         <div className="featured-thumb" style={{ background: 'linear-gradient(145deg, var(--secondary), var(--primary))' }}>
           {post?.featured_image ? (
-            <img src={post.featured_image} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src={post.featured_image} alt={title} width={800} height={450} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
           ) : (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>

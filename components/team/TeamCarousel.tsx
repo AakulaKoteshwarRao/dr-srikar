@@ -35,7 +35,7 @@ export default function TeamCarousel({ members }: { members: TeamMember[] }) {
                 <div className="team-card-photo" style={{ background: m.gradient, position: 'relative', overflow: 'hidden' }}>
                   {m.photo ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={m.photo} alt={m.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={m.photo} alt={m.name} width={400} height={400} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
                   ) : (
                     <>{personIcon}<span>Photo</span></>
                   )}

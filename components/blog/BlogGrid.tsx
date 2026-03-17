@@ -57,7 +57,7 @@ export default function BlogGrid({ posts, conditions = [] }: Props) {
             <a key={i} href={post.href} className="blog-card">
               <div className="blog-thumb" style={{ background: post.image ? 'transparent' : post.grad }}>
                 {post.image
-                  ? <img src={post.image} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  ? <img src={post.image} alt={post.title} width={400} height={250} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
                   : articleIcon}
               </div>
               <div className="blog-body">

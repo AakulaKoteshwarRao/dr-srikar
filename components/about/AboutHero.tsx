@@ -15,7 +15,7 @@ export default function AboutHero({ clinic }: { clinic: ClinicInfo }) {
         <div className="about-hero-image">
           {clinic.aboutImage ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={clinic.aboutImage} alt={`About ${clinic.name}`} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '16px' }} />
+            <img src={clinic.aboutImage} alt={`About ${clinic.name}`} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '16px' }} loading="lazy" />
           ) : (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
