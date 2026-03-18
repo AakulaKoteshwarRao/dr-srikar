@@ -80,7 +80,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   const s01 = raw?.s01 ?? {}   // Site
   const s02 = raw?.s02 ?? {}   // Entity/Clinic info
   const s03 = raw?.s03 ?? {}   // Doctor
-  // s04 = Hero (auto-generated)
+  const s04 = raw?.s04 ?? {}   // Hero (overrides)
   const s05 = raw?.s05 ?? {}   // Trust Strip
   const s06 = raw?.s06 ?? {}   // Why Choose
   const s07 = raw?.s07 ?? {}   // Conditions
