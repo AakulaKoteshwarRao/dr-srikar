@@ -197,9 +197,9 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
 
   const hero: HeroSection = {
     label:       `${clinic.name} · ${clinic.city}`,
-    heading:     `Advanced ${specialty} Care in`,
+    heading:     (s04.headingOverride as string) || `Advanced ${specialty} Care in`,
     headingEm:   clinic.city,
-    subtext:     `${doctorName} provides expert diagnosis and treatment using the latest technology and a patient-first approach.`,
+    subtext:     (s04.subtextOverride as string) || `${doctorName} provides expert diagnosis and treatment using the latest technology and a patient-first approach.`,
     tags:        a(s03.degrees).length ? [
       a(s03.degrees)[0],
       yearsExp ? `${yearsExp} Years Experience` : '',
