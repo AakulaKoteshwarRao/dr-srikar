@@ -29,7 +29,7 @@ const MENU_BY_ENTITY: Record<string, string[]> = {
   'Group Practice':     ['home', 'locations', 'services', 'about', 'blog', 'reviews', 'contact'],
 }
 
-const DEFAULT_MENU = ['home', 'about', 'doctor', 'services', 'blog', 'contact']
+const DEFAULT_MENU = ['home', 'about', 'team', 'services', 'products', 'locations', 'gallery', 'stories', 'blog', 'reviews', 'contact']
 
 export default function Header({ clinic }: { clinic: ClinicInfo }) {
   const pathname = usePathname()
