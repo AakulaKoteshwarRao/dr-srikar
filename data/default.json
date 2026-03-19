@@ -1021,5 +1021,10 @@
       "isPrimary": true
     }
   ],
-  "entityType": "Multi-Doctor Clinic"
+  "entityType": "Multi-Doctor Clinic",
+  "s00": {
+    "entityType": "Multi-Doctor Clinic",
+    "primaryColor": "#0d7a5f",
+    "secondaryColor": "#1a4ea0"
+  }
 }
