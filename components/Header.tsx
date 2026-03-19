@@ -18,12 +18,14 @@ const ALL_LINKS: Record<string, { href: string; label: string }> = {
   reviews:      { href: '/reviews',     label: 'Reviews' },
   conditions:   { href: '/services#conditions',  label: 'Conditions' },
   procedures:   { href: '/services#procedures',  label: 'Procedures' },
+  gallery:      { href: '/gallery',       label: 'Gallery' },
+  stories:      { href: '/success-stories', label: 'Success Stories' },
 }
 
 const MENU_BY_ENTITY: Record<string, string[]> = {
   'Physician':          ['home', 'about', 'doctor', 'conditions', 'procedures', 'reviews', 'contact'],
   'Solo Clinic':        ['home', 'about', 'doctor', 'services', 'products', 'blog', 'reviews', 'contact'],
-  'Multi-Doctor Clinic':['home', 'about', 'team', 'services', 'products', 'blog', 'reviews', 'contact'],
+  'Multi-Doctor Clinic':['home', 'about', 'team', 'services', 'products', 'locations', 'gallery', 'stories', 'blog', 'reviews', 'contact'],
   'Group Practice':     ['home', 'locations', 'services', 'about', 'blog', 'reviews', 'contact'],
 }
 
