@@ -538,12 +538,17 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FFFFFF; color:
 .areas-section { max-width: 1280px; margin: 0 auto; padding: 5rem 2rem; }
 .areas-grid-8 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
 .area-tag {
-  font-size: var(--text-base); font-weight: 600; color: var(--text-dark);
+  display: flex; flex-direction: column; gap: 0.35rem;
+  font-size: var(--text-sm); font-weight: 600; color: var(--text-dark);
   background: var(--neutral-100); border: 1px solid var(--neutral-300);
-  padding: 0.55rem 1.1rem; border-radius: 10px;
+  padding: 0.75rem 1rem; border-radius: 10px;
   text-decoration: none; transition: all 200ms;
 }
-.area-tag:hover { background: #FFF3E0; border-color: var(--primary); color: var(--secondary-deep); }
+.area-tag:hover { background: var(--primary-light); border-color: var(--primary); color: var(--secondary-deep); }
+.area-name { font-size: var(--text-sm); font-weight: 700; color: var(--text-primary); }
+.area-meta { display: flex; gap: 0.75rem; font-size: var(--text-xs); color: var(--text-muted); font-weight: 500; }
+.area-meta span { display: flex; align-items: center; gap: 0.2rem; }
+
 .areas-sub { margin-top: 1.5rem; font-size: var(--text-base); color: var(--text-body); line-height: 1.7; max-width: 720px; }
 
 /* -- SECTION 14: FAQ -- */
