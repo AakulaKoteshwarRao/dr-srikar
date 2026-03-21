@@ -25,9 +25,9 @@
           }
         ],
         "icd10": "G43.9",
-        "prevalence": "Migraine affects approximately 15% of adults globally.",
-        "progressionType": "Episodic migraines can progress to chronic migraine without proper management.",
-        "diagnosisMethod": "Diagnosis is primarily clinical. MRI or CT scans may rule out secondary causes.",
+        "prevalence": "1 in 7 adults",
+        "progressionType": "Can become chronic",
+        "diagnosisMethod": "Clinical diagnosis",
         "types": [
           {
             "name": "Migraine without Aura",
@@ -259,9 +259,9 @@
           }
         ],
         "icd10": "G40.9",
-        "prevalence": "Epilepsy affects approximately 50 million people worldwide.",
-        "progressionType": "With proper treatment epilepsy often stabilises.",
-        "diagnosisMethod": "EEG is the primary diagnostic tool. MRI identifies structural causes.",
+        "prevalence": "50M worldwide",
+        "progressionType": "Stabilises with treatment",
+        "diagnosisMethod": "EEG + MRI",
         "types": [
           {
             "name": "Focal Seizures",
@@ -493,9 +493,9 @@
           }
         ],
         "icd10": "I64",
-        "prevalence": "Stroke is the second leading cause of death worldwide.",
-        "progressionType": "Stroke is an acute event. Recovery depends on speed of treatment and rehabilitation.",
-        "diagnosisMethod": "CT scan or MRI brain for immediate diagnosis.",
+        "prevalence": "1.8M/year in India",
+        "progressionType": "Acute emergency",
+        "diagnosisMethod": "CT / MRI brain",
         "types": [
           {
             "name": "Ischaemic Stroke",
@@ -728,9 +728,9 @@
           }
         ],
         "icd10": "G20",
-        "prevalence": "Parkinson's affects over 10 million people worldwide.",
-        "progressionType": "Progressive \u2014 rate varies widely between individuals.",
-        "diagnosisMethod": "Primarily clinical diagnosis. MRI rules out other causes.",
+        "prevalence": "10M+ globally",
+        "progressionType": "Slowly progressive",
+        "diagnosisMethod": "Clinical exam",
         "types": [
           {
             "name": "Idiopathic Parkinson's",

@@ -61,8 +61,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet" />
         <SchemaMarkup graphs={[coreSchemas]} />
       </head>
-      <body style={cssVars}>
-      <div style={{ paddingBottom: "64px" }}>{children}</div>
+      <body style={{ ...cssVars, paddingBottom: "64px" }}>
+      {children}
       <script dangerouslySetInnerHTML={{ __html: `window.__CLINIC__ = ${JSON.stringify({ whatsapp: cfg.clinic.whatsapp, name: cfg.clinic.name })}` }} />
       <AppointmentModal />
     </body>
