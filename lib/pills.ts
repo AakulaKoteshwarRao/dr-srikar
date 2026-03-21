@@ -1,3 +1,4 @@
+'use client'
 // Shared pill and stat colour palettes
 
 export const PILL_STYLES = [

@@ -89,6 +89,10 @@ export const ICON_MAP: Record<string, any> = {
   'envelope':     Envelope,
   'globe':        Globe,
   'map':          MapTrifold,
+  'activity':     Heartbeat,
+  'box':          Briefcase,
+  'tool':         Stethoscope,
+  'check-circle': CheckCircle,
 }
 
 export type IconWeight = 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone'
