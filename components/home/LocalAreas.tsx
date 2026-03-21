@@ -11,8 +11,8 @@ export default function LocalAreas({ areas, clinic }: { areas: AreaItem[]; clini
       </div>
       <div className="areas-grid-8">
         {areas.map((area, i) => (
-          <a key={i} href={area.href} className="area-tag">
-            <span className="area-name">{area.label}</span>
+          <a key={i} href={area.href} className="area-tag" style={{ background: PILL_STYLES[i % PILL_STYLES.length].background, borderColor: PILL_STYLES[i % PILL_STYLES.length].color }}>
+            <span className="area-name" style={{ color: PILL_STYLES[i % PILL_STYLES.length].color }}>{area.label}</span>
             {(area.distance || area.duration) && (
               <span className="area-meta">
                 {area.distance && <span><Icon name="location" size={11} />{area.distance}</span>}
