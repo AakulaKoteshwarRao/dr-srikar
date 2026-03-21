@@ -11,6 +11,7 @@ import CardGrid from '@/components/home/CardGrid'
 import PackagesGrid from '@/components/home/PackagesGrid'
 import HowWeWork from '@/components/home/HowWeWork'
 import MeetDoctor from '@/components/home/MeetDoctor'
+import TeamCarousel from '@/components/team/TeamCarousel'
 import ClinicalInfo from '@/components/home/ClinicalInfo'
 import PatientStories from '@/components/home/PatientStories'
 import PricingAccordion from '@/components/home/PricingAccordion'
@@ -66,6 +67,7 @@ export default async function HomePage() {
         <PackagesGrid packages={cfg.packages} />
         <HowWeWork steps={cfg.howWeWork} />
         <MeetDoctor doctor={cfg.doctor} clinic={cfg.clinic} />
+        <TeamCarousel members={cfg.team} />
         <ClinicalInfo cards={cfg.clinicalInfo} />
         <PatientStories stories={cfg.patientStories} />
         <PricingAccordion items={cfg.pricing} />
