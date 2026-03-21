@@ -967,11 +967,11 @@
             "value": "20+"
           }
         ],
-        "anaesthesia": "None required",
+        "anaesthesia": "None",
         "duration": "30-60 minutes",
-        "hospitalStay": "Outpatient \u2014 no admission required",
-        "recoveryTime": "Immediate \u2014 return to normal activities same day",
-        "successRate": "85% diagnostic yield for epilepsy",
+        "hospitalStay": "Outpatient",
+        "recoveryTime": "Same day",
+        "successRate": "85% accuracy",
         "relatedConditions": [
           "epilepsy",
           "migraine"
@@ -1162,11 +1162,11 @@
             "value": "15+"
           }
         ],
-        "anaesthesia": "None required",
+        "anaesthesia": "None",
         "duration": "45-90 minutes",
-        "hospitalStay": "Outpatient \u2014 no admission",
-        "recoveryTime": "Immediate \u2014 return to work same day",
-        "successRate": "90% diagnostic accuracy for peripheral nerve disorders",
+        "hospitalStay": "Outpatient",
+        "recoveryTime": "Same day",
+        "successRate": "90% accuracy",
         "relatedConditions": [
           "parkinsons-disease",
           "stroke"
@@ -1352,12 +1352,12 @@
             "value": "12"
           }
         ],
-        "anaesthesia": "None \u2014 topical cream optional",
-        "duration": "20-30 minutes per session",
-        "hospitalStay": "Outpatient \u2014 no admission",
-        "recoveryTime": "Immediate \u2014 return to activities same day",
-        "fullRecovery": "Full effect after 2nd or 3rd treatment cycle",
-        "successRate": "50% reduction in migraine days in 70% of patients",
+        "anaesthesia": "None",
+        "duration": "20-30 minutes",
+        "hospitalStay": "Outpatient",
+        "recoveryTime": "Same day",
+        "fullRecovery": "2-3 cycles",
+        "successRate": "70% respond",
         "relatedConditions": [
           "migraine"
         ],
@@ -1564,11 +1564,11 @@
           }
         ],
         "anaesthesia": "None",
-        "duration": "Ongoing \u2014 typically 3-6 months",
-        "hospitalStay": "Inpatient, day rehab, or outpatient depending on severity",
+        "duration": "3-6 months",
+        "hospitalStay": "Outpatient/Inpatient",
         "recoveryTime": "Highly individual",
-        "fullRecovery": "Most recovery in first 3-6 months; improvement continues for 1-2 years",
-        "successRate": "60-70% regain independent walking with rehabilitation",
+        "fullRecovery": "6-12 months",
+        "successRate": "60-70% walk again",
         "relatedConditions": [
           "stroke"
         ],

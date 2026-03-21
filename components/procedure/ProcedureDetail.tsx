@@ -186,7 +186,7 @@ export default function ProcedureDetail({
           <div className="sec-pad">
             <div className="sec-header" style={{ textAlign: 'center' }}>
               <div className="sec-label" style={{ justifyContent: 'center' }}><span>Transparency</span></div>
-              <h2 className="sec-title">What you should know before surgery.</h2>
+              <h2 className="sec-title">What you should know before this procedure.</h2>
               <p className="sec-sub" style={{ margin: '0 auto' }}>We believe in honest, upfront disclosure so you can make an informed decision.</p>
             </div>
             <div className="transparency-cards">
@@ -234,7 +234,7 @@ export default function ProcedureDetail({
             <div className="sec-header" style={{ textAlign: 'center' }}>
               <div className="sec-label" style={{ justifyContent: 'center' }}><span>Procedure</span></div>
               <h2 className="sec-title">How {name.toLowerCase()} works.</h2>
-              <p className="sec-sub" style={{ margin: '0 auto' }}>A step-by-step look at what happens during the surgery.</p>
+              <p className="sec-sub" style={{ margin: '0 auto' }}>A step-by-step look at what happens during this procedure.</p>
             </div>
             <div className="proc-steps">
               {steps.map((step, i) => (

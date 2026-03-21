@@ -31,7 +31,7 @@ export default async function ProcedureDetailPage({ params }: PageParams) {
   const procedure = rawProcedures.find((p: any) => p.slug === params.slug)
   if (!procedure) notFound()
   const photoUrl = (config.photos as any)?.[`procedure_${params.slug}`] ?? null
-  const mapped = mapProcedure(procedure, rawConfig, photoUrl)
+  const mapped = mapProcedure(procedure, fallback, photoUrl)
   return (
     <>
       <Header clinic={config.clinic} />

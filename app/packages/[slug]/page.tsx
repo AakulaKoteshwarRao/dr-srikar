@@ -31,7 +31,7 @@ export default async function PackageDetailPage({ params }: PageParams) {
   const pkg = rawPackages.find((pk: any) => pk.slug === params.slug)
   if (!pkg) notFound()
   const photoUrl = (config.photos as any)?.[`package_${params.slug}`] ?? null
-  const mapped = mapPackage(pkg, rawConfig, photoUrl)
+  const mapped = mapPackage(pkg, fallback, photoUrl)
   return (
     <>
       <Header clinic={config.clinic} />
