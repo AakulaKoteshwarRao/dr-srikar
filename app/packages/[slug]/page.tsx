@@ -24,7 +24,9 @@ async function getRawConfig() {
 
 export default async function PackageDetailPage({ params }: PageParams) {
   const [config, rawConfig] = await Promise.all([loadConfig(), getRawConfig()])
-  const fallback = rawConfig ?? (await import('@/data/raw.json')).default
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const rawJson = require('@/data/raw.json')
+  const fallback = rawConfig ?? rawJson
   const rawPackages: any[] = fallback?.s10?.packages ?? []
   const pkg = rawPackages.find((pk: any) => pk.slug === params.slug)
   if (!pkg) notFound()

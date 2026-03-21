@@ -24,7 +24,9 @@ async function getRawConfig() {
 
 export default async function ProcedureDetailPage({ params }: PageParams) {
   const [config, rawConfig] = await Promise.all([loadConfig(), getRawConfig()])
-  const fallback = rawConfig ?? (await import('@/data/raw.json')).default
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const rawJson = require('@/data/raw.json')
+  const fallback = rawConfig ?? rawJson
   const rawProcedures: any[] = fallback?.s08?.procedures ?? []
   const procedure = rawProcedures.find((p: any) => p.slug === params.slug)
   if (!procedure) notFound()
