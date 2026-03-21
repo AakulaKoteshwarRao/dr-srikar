@@ -1,3 +1,5 @@
+import { Icon } from '@/lib/icons'
+
 const facilities = [
   { grad: 'linear-gradient(145deg,var(--secondary),var(--primary))', title: 'Advanced Diagnostics', desc: 'High-resolution digital imaging for fast, accurate diagnostics.' },
   { grad: 'linear-gradient(145deg,var(--secondary-deep),var(--secondary))', title: 'Procedure Room', desc: 'Fully equipped minor procedure room for outpatient treatments.' },
@@ -17,11 +19,9 @@ export default function Infrastructure() {
         {facilities.map((f, i) => (
           <div key={i} className="infra-card">
             <div className="infra-card-visual" style={{ background: f.grad }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-              </svg>
+              <Icon name="pulse" size={32} color="rgba(255,255,255,0.6)" />
             </div>
-            <div className="infra-card-body" style={{ padding: "1.25rem" }}>
+            <div className="infra-card-body" style={{ padding: '1.25rem' }}>
               <h3>{f.title}</h3>
               <p>{f.desc}</p>
             </div>

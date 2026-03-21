@@ -1,13 +1,8 @@
 'use client'
 import { BlogPost } from '@/lib/blogs'
+import { Icon } from '@/lib/icons'
 
-const arrowIcon = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-
-interface Props {
-  post: BlogPost | null
-}
-
-export default function FeaturedPost({ post }: Props) {
+export default function FeaturedPost({ post }: { post: BlogPost | null }) {
   const title   = post?.title   || 'What to Expect at Your First Consultation'
   const excerpt = post?.excerpt  || 'A practical guide covering what to bring, what to expect during your consultation, and how to prepare for your first visit with our specialist.'
   const href    = post?.slug ? `/blog/${post.slug}` : '/blog'
@@ -21,9 +16,7 @@ export default function FeaturedPost({ post }: Props) {
           {post?.featured_image ? (
             <img src={post.featured_image} alt={title} width={800} height={450} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
           ) : (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
-            </svg>
+            <Icon name="file" size={48} color="rgba(255,255,255,0.4)" />
           )}
         </div>
         <div className="featured-body">
@@ -32,7 +25,7 @@ export default function FeaturedPost({ post }: Props) {
           <p className="featured-excerpt">{excerpt}</p>
           <div className="featured-footer">
             <span className="featured-date">{date}</span>
-            <span className="featured-read">Read Article {arrowIcon}</span>
+            <span className="featured-read">Read Article <Icon name="arrow-right" size={16} /></span>
           </div>
         </div>
       </a>

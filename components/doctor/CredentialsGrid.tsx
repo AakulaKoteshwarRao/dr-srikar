@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import type { DoctorInfo, ClinicInfo } from '@/lib/types'
+import { Icon } from '@/lib/icons'
 
 const credSections = (doctor: DoctorInfo, clinic: ClinicInfo) => [
   { num: '01', grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', title: 'Qualifications', sub: 'Degrees & Institutions', items: doctor.education.map(e => ({ title: e.degree, sub: e.institution })) },
@@ -11,14 +12,13 @@ const credSections = (doctor: DoctorInfo, clinic: ClinicInfo) => [
   { num: '06', grad: 'linear-gradient(135deg,var(--secondary-deep),var(--secondary-dark))', title: 'Publications', sub: 'Research & Presentations', items: doctor.publications.map(p => ({ title: p.title, sub: p.journal })) },
   { num: '07', grad: 'linear-gradient(135deg,var(--secondary-dark),var(--secondary-deep))', title: 'Achievements', sub: 'Awards & Recognition', items: doctor.awards.map(a => ({ title: a.title, sub: a.year })) },
   { num: '08', grad: 'linear-gradient(135deg,var(--secondary),var(--secondary-dark))', title: 'Professional Memberships', sub: 'Associations & Bodies', items: doctor.memberships.map(m => ({ title: m, sub: '' })) },
-  { num: '09', grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', title: 'Medical Registration', sub: 'Verified Registration', items: [{ title: `Registration No. ${doctor.nmcNumber}`, sub: 'National Medical Commission &middot; Verified & Active' }, { title: `${(doctor as any).registrationState || 'State'} Medical Council Registration`, sub: (doctor as any).registrationState ? `${(doctor as any).registrationState} Medical Council` : 'State Medical Council' }] },
-  { num: '10', grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', title: 'Consultation Details', sub: 'Languages, Location & Hours', items: [{ title: 'Languages', sub: doctor.languages.join(' &middot; ') }, { title: 'Location', sub: clinic.address }, { title: 'Hours', sub: clinic.hours }, { title: 'Second Opinion', sub: 'Available -- bring all previous reports.' }, { title: 'Online Consultation', sub: 'Available via WhatsApp or phone.' }] },
+  { num: '09', grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', title: 'Medical Registration', sub: 'Verified Registration', items: [{ title: `Registration No. ${doctor.nmcNumber}`, sub: 'National Medical Commission · Verified & Active' }, { title: `${(doctor as any).registrationState || 'State'} Medical Council Registration`, sub: (doctor as any).registrationState ? `${(doctor as any).registrationState} Medical Council` : 'State Medical Council' }] },
+  { num: '10', grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', title: 'Consultation Details', sub: 'Languages, Location & Hours', items: [{ title: 'Languages', sub: doctor.languages.join(' · ') }, { title: 'Location', sub: clinic.address }, { title: 'Hours', sub: clinic.hours }, { title: 'Second Opinion', sub: 'Available -- bring all previous reports.' }, { title: 'Online Consultation', sub: 'Available via WhatsApp or phone.' }] },
 ]
 
 export default function CredentialsGrid({ doctor, clinic }: { doctor: DoctorInfo; clinic: ClinicInfo }) {
   const [open, setOpen] = useState<number | null>(null)
   const sections = credSections(doctor, clinic)
-
   return (
     <section className="cred-section">
       <div className="sec-header">
@@ -33,11 +33,11 @@ export default function CredentialsGrid({ doctor, clinic }: { doctor: DoctorInfo
               <div className="cred-num" style={{ background: s.grad }}>{s.num}</div>
               <div className="cred-header-text"><h3>{s.title}</h3><span>{s.sub}</span></div>
               <div className="cred-chevron" style={{ transform: open === i ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+                <Icon name="chevron-down" size={20} />
               </div>
             </div>
             {open === i && (
-              <div className="cred-body" style={{ padding: "0 1.5rem 1.5rem" }}>
+              <div className="cred-body" style={{ padding: '0 1.5rem 1.5rem' }}>
                 <ul className="cred-list">
                   {s.items.map((item, j) => (
                     <li key={j}>

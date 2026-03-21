@@ -1,10 +1,6 @@
 'use client'
 import { useState } from 'react'
-
-const pinIcon = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-const arrowIcon = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-const checkIcon = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-const clockIcon = <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+import { Icon } from '@/lib/icons'
 
 const serviceGrads = [
   'linear-gradient(135deg,var(--primary),var(--primary-dark))',
@@ -27,23 +23,19 @@ export default function LocationSpoke(props?: any) {
   const specialty     = clinic.medicalSpecialty || doctor.specialty || 'Specialist'
   const areaName      = area.name || ''
 
-  // Services from props
   const conditionsList = props?.conditions || []
   const services = conditionsList.slice(0, 3).map((s: any, i: number) => ({
     grad: serviceGrads[i % serviceGrads.length],
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
     title: s.title,
     desc: s.descriptionShort || s.description || `Expert diagnosis and treatment of ${s.title.toLowerCase()} with advanced techniques.`,
     href: `/conditions/${s.slug}`,
   }))
 
-  // Nearby areas from props
   const allAreas = props?.areas || []
   const nearbyAreas = allAreas.filter((a: any) => a.slug !== area.slug).slice(0, 5).map((a: any) => ({
     label: a.name, href: `/specialist-near-${a.slug}`
   }))
 
-  // Internal links
   const intLinks = [
     { label: '← All Areas', href: '/locations' },
     { label: 'Doctor Profile', href: '/doctor' },
@@ -55,18 +47,18 @@ export default function LocationSpoke(props?: any) {
   ]
 
   const qfCards = [
-    { grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', icon: pinIcon, label: 'Location', val: clinic.hospital || clinicAddress },
-    { grad: 'linear-gradient(135deg,var(--secondary),var(--secondary-dark))', icon: clockIcon, label: 'Travel Time', val: area.duration || '10-15 min' },
-    { grad: 'linear-gradient(135deg,var(--secondary-dark),var(--secondary-deep))', icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>, label: 'Distance', val: area.distance || '3-5 km' },
-    { grad: 'linear-gradient(135deg,var(--primary-dark),var(--secondary-deep))', icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>, label: 'Parking', val: 'Available' },
+    { grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', icon: 'location', label: 'Location', val: clinic.hospital || clinicAddress },
+    { grad: 'linear-gradient(135deg,var(--secondary),var(--secondary-dark))', icon: 'clock', label: 'Travel Time', val: area.duration || '10-15 min' },
+    { grad: 'linear-gradient(135deg,var(--secondary-dark),var(--secondary-deep))', icon: 'map', label: 'Distance', val: area.distance || '3-5 km' },
+    { grad: 'linear-gradient(135deg,var(--primary-dark),var(--secondary-deep))', icon: 'buildings', label: 'Parking', val: 'Available' },
   ]
 
   const reasons = [
-    { grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', icon: pinIcon, text: `Located at ${clinicAddress} — easily accessible from ${areaName}` },
-    { grad: 'linear-gradient(135deg,var(--secondary),var(--secondary-dark))', icon: clockIcon, text: `Clinic hours ${clinicHours} — convenient for patients in the area` },
-    { grad: 'linear-gradient(135deg,var(--secondary-dark),var(--secondary-deep))', icon: checkIcon, text: `${doctorName} has extensive experience in ${specialty} and complex case management` },
-    { grad: 'linear-gradient(135deg,var(--primary-dark),var(--secondary-deep))', icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>, text: 'Modern diagnostic equipment — all under one roof' },
-    { grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>, text: `Hundreds of successful outcomes for patients from ${areaName} and surrounding neighbourhoods` },
+    { grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', icon: 'location', text: `Located at ${clinicAddress} — easily accessible from ${areaName}` },
+    { grad: 'linear-gradient(135deg,var(--secondary),var(--secondary-dark))', icon: 'clock', text: `Clinic hours ${clinicHours} — convenient for patients in the area` },
+    { grad: 'linear-gradient(135deg,var(--secondary-dark),var(--secondary-deep))', icon: 'check', text: `${doctorName} has extensive experience in ${specialty} and complex case management` },
+    { grad: 'linear-gradient(135deg,var(--primary-dark),var(--secondary-deep))', icon: 'shield', text: 'Modern diagnostic equipment — all under one roof' },
+    { grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', icon: 'user', text: `Hundreds of successful outcomes for patients from ${areaName} and surrounding neighbourhoods` },
   ]
 
   const faqs = [
@@ -79,27 +71,27 @@ export default function LocationSpoke(props?: any) {
 
   return (
     <>
-      {/* Breadcrumb */}
       <nav className="breadcrumb">
         <a href="/">Home</a>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <Icon name="chevron-right" size={12} />
         <a href="/locations">All Areas</a>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <Icon name="chevron-right" size={12} />
         <span>{areaName}</span>
       </nav>
 
-      {/* S1 Spoke Hero */}
       <section className="spoke-hero">
         <div className="sec-label"><span>Location</span></div>
         <h1>{specialty} Near <em>{areaName}</em></h1>
         <p className="spoke-hero-desc">Looking for a trusted {specialty.toLowerCase()} near {areaName}? {doctorName} consults at {clinicAddress} — easily reachable from the surrounding area.</p>
         <a href="/appointment" className="spoke-hero-cta" onClick={e => { e.preventDefault(); typeof window !== "undefined" && window.dispatchEvent(new CustomEvent("openAppointmentModal")) }}>
-          Book Appointment {arrowIcon}
+          Book Appointment <Icon name="arrow-right" size={16} />
         </a>
         <div className="qf-grid">
           {qfCards.map((c, i) => (
             <div key={i} className="qf-card">
-              <div className="qf-icon" style={{ background: c.grad }}>{c.icon}</div>
+              <div className="qf-icon" style={{ background: c.grad }}>
+                <Icon name={c.icon} size={20} color="#FFFFFF" />
+              </div>
               <div className="qf-text">
                 <span className="qf-label">{c.label}</span>
                 <span className="qf-val">{c.val}</span>
@@ -109,7 +101,6 @@ export default function LocationSpoke(props?: any) {
         </div>
       </section>
 
-      {/* S2 Services */}
       {services.length > 0 && (
         <div className="sec-grey">
           <div className="sec-pad">
@@ -121,10 +112,12 @@ export default function LocationSpoke(props?: any) {
             <div className="spoke-services">
               {services.map((s: any, i: number) => (
                 <a key={i} href={s.href} className="spoke-svc-card">
-                  <div className="spoke-svc-icon" style={{ background: s.grad }}>{s.icon}</div>
+                  <div className="spoke-svc-icon" style={{ background: s.grad }}>
+                    <Icon name="clock" size={22} color="#FFFFFF" />
+                  </div>
                   <h3>{s.title}</h3>
                   <p>{s.desc}</p>
-                  <span className="spoke-svc-link">Learn more {arrowIcon}</span>
+                  <span className="spoke-svc-link">Learn more <Icon name="arrow-right" size={14} /></span>
                 </a>
               ))}
             </div>
@@ -132,7 +125,6 @@ export default function LocationSpoke(props?: any) {
         </div>
       )}
 
-      {/* S3 Why Us */}
       <div className="sec-teal">
         <div className="sec-pad">
           <div className="sec-header" style={{ textAlign: 'center' }}>
@@ -142,7 +134,9 @@ export default function LocationSpoke(props?: any) {
           <div className="reasons-list">
             {reasons.map((r, i) => (
               <div key={i} className="reason-row">
-                <div className="reason-icon" style={{ background: r.grad }}>{r.icon}</div>
+                <div className="reason-icon" style={{ background: r.grad }}>
+                  <Icon name={r.icon} size={20} color="#FFFFFF" />
+                </div>
                 <span>{r.text}</span>
               </div>
             ))}
@@ -150,7 +144,6 @@ export default function LocationSpoke(props?: any) {
         </div>
       </div>
 
-      {/* S4 Doctor Mini Card */}
       <div className="sec-white">
         <div className="sec-pad">
           <div className="sec-header" style={{ textAlign: 'center' }}>
@@ -162,20 +155,19 @@ export default function LocationSpoke(props?: any) {
               {doctor.photo ? (
                 <img src={doctor.photo} alt={doctorName} width={80} height={80} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
               ) : (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '32px', height: '32px', color: 'rgba(255,255,255,0.3)' }}><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <Icon name="user" size={32} color="rgba(255,255,255,0.3)" />
               )}
             </div>
             <div className="doc-mini-info">
               <h3>{doctorName}</h3>
               <div className="doc-spec">{doctorDegrees}</div>
               <p>{doctorName} brings extensive expertise in {specialty}, consulting at {clinicAddress} — {clinicHours}.</p>
-              <a href="/doctor" className="doc-mini-link">View full profile {arrowIcon}</a>
+              <a href="/doctor" className="doc-mini-link">View full profile <Icon name="arrow-right" size={14} /></a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* S5 Nearby Areas */}
       {nearbyAreas.length > 0 && (
         <div className="sec-grey">
           <div className="sec-pad">
@@ -187,7 +179,7 @@ export default function LocationSpoke(props?: any) {
             <div className="nearby-pills">
               {nearbyAreas.map((a: any, i: number) => (
                 <a key={i} href={a.href} className="nearby-pill">
-                  {pinIcon} {a.label}
+                  <Icon name="location" size={14} /> {a.label}
                 </a>
               ))}
             </div>
@@ -195,7 +187,6 @@ export default function LocationSpoke(props?: any) {
         </div>
       )}
 
-      {/* S6 FAQ */}
       <div className="sec-white">
         <div className="sec-pad">
           <div className="sec-header" style={{ textAlign: 'center' }}>
@@ -208,9 +199,7 @@ export default function LocationSpoke(props?: any) {
                 <div className="faq-q">
                   <span>{f.q}</span>
                   <div className="faq-toggle">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                      <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-                    </svg>
+                    <Icon name="check" size={16} />
                   </div>
                 </div>
                 {openFaq === i && (
@@ -224,7 +213,6 @@ export default function LocationSpoke(props?: any) {
         </div>
       </div>
 
-      {/* S7 Internal Links */}
       <div className="sec-teal">
         <div className="sec-pad">
           <div className="sec-header" style={{ textAlign: 'center' }}>

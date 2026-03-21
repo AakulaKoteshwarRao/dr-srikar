@@ -1,19 +1,7 @@
 'use client'
-// ─────────────────────────────────────────────────────────────
-// components/condition/ConditionDetail.tsx
-// Locked design: 2026-03-15
-// Cross-checked against reference HTML — exact class names used
-// ─────────────────────────────────────────────────────────────
 import { useState } from 'react'
 import Image from 'next/image'
-
-// ── Step icons (reference order: chat, search, doc, check) ────
-const stepIcons = [
-  <svg key={0} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>,
-  <svg key={1} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>,
-  <svg key={2} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>,
-  <svg key={3} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>,
-]
+import { Icon } from '@/lib/icons'
 
 const pillStyles = [
   { background: 'var(--primary-light)', color: 'var(--primary)' },
@@ -35,7 +23,7 @@ const outcomeIconGrads = [
   'linear-gradient(135deg,var(--secondary-deep),var(--secondary-deep))',
   'linear-gradient(135deg,#D68910,#B7770A)',
 ]
-// sf-1..sf-4 classes set badge + icon colors via CSS
+const stepIconNames = ['message', 'search', 'file', 'check-circle']
 const sfClasses = ['sf-1','sf-2','sf-3','sf-4']
 
 export interface ConditionDetailProps {
@@ -119,11 +107,11 @@ export default function ConditionDetail({
       {/* Breadcrumb */}
       <nav className="breadcrumb">
         <a href="/">Home</a>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="12" height="12"><polyline points="9 18 15 12 9 6"/></svg>
+        <Icon name="chevron-right" size={12} />
         <a href="/services">Services</a>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="12" height="12"><polyline points="9 18 15 12 9 6"/></svg>
+        <Icon name="chevron-right" size={12} />
         <a href="/services#conditions">Conditions</a>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="12" height="12"><polyline points="9 18 15 12 9 6"/></svg>
+        <Icon name="chevron-right" size={12} />
         <span>{name}</span>
       </nav>
 
@@ -136,7 +124,7 @@ export default function ConditionDetail({
           <div className="hero-pills">
             {(pills.length > 0 ? pills : ['Treatable','Early Detection Matters','Multiple Options']).map((pill, i) => (
               <span key={i} className="hero-pill" style={pillStyles[i % pillStyles.length]}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
+                <Icon name="check" size={12} />
                 {' '}{pill}
               </span>
             ))}
@@ -153,18 +141,14 @@ export default function ConditionDetail({
           )}
           <a href={appointmentUrl} className="cond-hero-cta" onClick={e => { e.preventDefault(); typeof window !== "undefined" && window.dispatchEvent(new CustomEvent("openAppointmentModal")) }}>
             Book a Consultation
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
-              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-            </svg>
+            <Icon name="arrow-right" size={16} />
           </a>
         </div>
         <div className="cond-hero-img" style={{ background: 'linear-gradient(145deg,var(--secondary-deep),var(--secondary),var(--primary))', position: 'relative', overflow: 'hidden' }}>
           {heroImage ? (
             <Image src={heroImage} alt={`${name} at ${clinicName}`} fill style={{ objectFit: 'cover' }} priority />
           ) : (
-            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" width="48" height="48">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-            </svg>
+            <Icon name="eye" size={48} color="rgba(255,255,255,0.2)" />
           )}
         </div>
       </section>
@@ -188,7 +172,7 @@ export default function ConditionDetail({
         </div>
       )}
 
-      {/* S3 — Types (was S2) */}
+      {/* S3 — Types */}
       {types.length > 0 && (
         <div className="sec-grey">
           <div className="sec-pad">
@@ -196,7 +180,6 @@ export default function ConditionDetail({
               <div className="sec-label"><span>Types</span></div>
               <h2 className="sec-title">Types of {name.toLowerCase()}.</h2>
             </div>
-            {/* NOTE: class is "types-tabs" (with 's') — from reference */}
             <div className="types-tabs">
               {types.map((t, i) => (
                 <span key={i} className={`type-tab${activeType === i ? ' active' : ''}`} onClick={() => setActiveType(i)}>
@@ -204,14 +187,11 @@ export default function ConditionDetail({
                 </span>
               ))}
             </div>
-            {/* type-panel > type-panel-inner > type-icon + type-info — exact reference */}
             {types.map((t, i) => (
               <div key={i} className={`type-panel${activeType === i ? ' active' : ''}`}>
                 <div className="type-panel-inner">
                   <div className="type-icon" style={{ background: typeIconGrads[i % typeIconGrads.length] }}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="24" height="24">
-                      <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                    </svg>
+                    <Icon name="info" size={24} color="#FFFFFF" />
                   </div>
                   <div className="type-info">
                     <h3>{t.name}</h3>
@@ -237,9 +217,7 @@ export default function ConditionDetail({
               {causes.map((cause, i) => (
                 <div key={i} className="cause-pill">
                   <div className="cause-icon" style={{ background: typeIconGrads[i % typeIconGrads.length] }}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-                      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                    </svg>
+                    <Icon name="clock" size={18} color="#FFFFFF" />
                   </div>
                   {cause}
                 </div>
@@ -275,9 +253,7 @@ export default function ConditionDetail({
                       {group.items.map((item, ii) => (
                         <div key={ii} className="symptom-row">
                           <span className="sym-dot" style={{ background: stageBadgeColors[group.idx] }}>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" width="12" height="12">
-                              <polyline points="20 6 9 17 4 12"/>
-                            </svg>
+                            <Icon name="check" size={12} color="#FFFFFF" />
                           </span>
                           <span>{item}</span>
                         </div>
@@ -309,12 +285,9 @@ export default function ConditionDetail({
                   <div key={i} className="treat-item">
                     <div className={`treat-card${isActive ? ' active' : ''}`} onClick={() => setActiveTreat(isActive ? null : i)}>
                       <div className="ts-node" style={{ background: typeIconGrads[i % typeIconGrads.length] }}>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="22" height="22">
-                          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                        </svg>
+                        <Icon name="pulse" size={22} color="#FFFFFF" />
                       </div>
                       <div className="ts-label">{t.name}</div>
-                      {/* NOTE: class is "ts-invasive" not "ts-inv" */}
                       {t.invasiveness && (
                         <span className="ts-invasive" style={t.invasivenessStyle ?? { background: 'var(--primary-light)', color: 'var(--primary)' }}>
                           {t.invasiveness}
@@ -322,9 +295,7 @@ export default function ConditionDetail({
                       )}
                       <div className="ts-hint">
                         View details
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="14" height="14">
-                          <polyline points="6 9 12 15 18 9"/>
-                        </svg>
+                        <Icon name="chevron-down" size={14} />
                       </div>
                     </div>
                     {isActive && t.items && t.items.length > 0 && (
@@ -350,14 +321,15 @@ export default function ConditionDetail({
               <h2 className="sec-title">How we handle this condition.</h2>
               <p className="sec-sub" style={{ margin: '0 auto' }}>A structured, patient-first approach from first visit to full recovery.</p>
             </div>
-            {/* steps-flow: sf-card sf-N + sf-arrow-h + sf-arrow-v alternating — exact reference */}
             <div className="steps-flow">
               {howWeHandle.map((step, i) => (
                 <div key={i} style={{ display: 'contents' }}>
                   <div className={`sf-card ${sfClasses[i % sfClasses.length]}`}>
                     <div className="sf-top">
                       <span className="sf-badge">Step {String(i + 1).padStart(2, '0')}</span>
-                      <div className="sf-icon">{stepIcons[i % stepIcons.length]}</div>
+                      <div className="sf-icon">
+                        <Icon name={stepIconNames[i % stepIconNames.length]} size={22} color="#FFFFFF" />
+                      </div>
                     </div>
                     <h3>{step.title}</h3>
                     <p>{step.description}</p>
@@ -365,14 +337,10 @@ export default function ConditionDetail({
                   {i < howWeHandle.length - 1 && (
                     <>
                       <div className="sf-arrow-h">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                          <polyline points="9 6 15 12 9 18"/>
-                        </svg>
+                        <Icon name="chevron-right" size={22} />
                       </div>
                       <div className="sf-arrow-v">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                          <polyline points="6 9 12 15 18 9"/>
-                        </svg>
+                        <Icon name="chevron-down" size={22} />
                       </div>
                     </>
                   )}
@@ -399,7 +367,6 @@ export default function ConditionDetail({
                 </span>
               ))}
             </div>
-            {/* rec-panel > rec-panel-inner — exact reference structure */}
             {recoveryPhases.map((phase, i) => (
               <div key={i} className={`rec-panel${activeRecTab === i ? ' active' : ''}`}>
                 <div className="rec-panel-inner">
@@ -420,10 +387,7 @@ export default function ConditionDetail({
                   {(phase.warnings ?? []).length > 0 && (
                     <div className="rec-warning">
                       <h4>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="14" height="14">
-                          <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
-                          <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-                        </svg>
+                        <Icon name="alert" size={14} />
                         {' '}Watch for
                       </h4>
                       <ul>{phase.warnings!.map((w, j) => <li key={j}>{w}</li>)}</ul>
@@ -448,9 +412,7 @@ export default function ConditionDetail({
               {outcomes.map((o, i) => (
                 <div key={i} className="outcome-card">
                   <div className="outcome-icon" style={{ background: outcomeIconGrads[i % outcomeIconGrads.length] }}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="22" height="22">
-                      <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-                    </svg>
+                    <Icon name="check-circle" size={22} color="#FFFFFF" />
                   </div>
                   <h3>{o.title}</h3>
                   <p>{o.description}</p>
@@ -468,10 +430,7 @@ export default function ConditionDetail({
             <div className="centered">
               <div className="warning-box">
                 <div className="warning-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
-                    <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
-                    <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-                  </svg>
+                  <Icon name="alert" size={20} />
                 </div>
                 <div>
                   <h3>What happens if {name} is left untreated?</h3>
@@ -490,9 +449,7 @@ export default function ConditionDetail({
             <div className="centered">
               <div className="see-doctor-box">
                 <div className="see-doc-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                  </svg>
+                  <Icon name="pulse" size={20} />
                 </div>
                 <div>
                   <h3>When should you see a doctor?</h3>
@@ -523,9 +480,7 @@ export default function ConditionDetail({
                   <div className="faq-q">
                     <span itemProp="name">{f.question}</span>
                     <div className="faq-toggle">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" width="16" height="16">
-                        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-                      </svg>
+                      <Icon name="check" size={16} />
                     </div>
                   </div>
                   {openFaq === i && (
@@ -540,7 +495,7 @@ export default function ConditionDetail({
         </div>
       )}
 
-      {/* S12 — Related Procedures (optional) */}
+      {/* S12 — Related Procedures */}
       {relatedProcedures.length > 0 && (
         <div className="sec-grey">
           <div className="sec-pad">
@@ -553,9 +508,7 @@ export default function ConditionDetail({
               {relatedProcedures.map((proc, i) => (
                 <a key={i} href={`/procedures/${proc.slug}`} className="rel-row">
                   <span>{proc.name}</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="15" height="15">
-                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-                  </svg>
+                  <Icon name="arrow-right" size={15} />
                 </a>
               ))}
             </div>
@@ -573,16 +526,12 @@ export default function ConditionDetail({
           <div className="cta-band-actions">
             <a href={appointmentUrl} className="cta-primary" onClick={e => { e.preventDefault(); typeof window !== "undefined" && window.dispatchEvent(new CustomEvent("openAppointmentModal")) }}>
               Book Appointment{' '}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
-                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-              </svg>
+              <Icon name="arrow-right" size={16} />
             </a>
             <a href={whatsappNumber ? `https://wa.me/${whatsappNumber}` : 'https://wa.me/919999999999'}
                className="cta-secondary" target="_blank" rel="noopener noreferrer">
               WhatsApp Us{' '}
-              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-              </svg>
+              <Icon name="whatsapp" size={16} />
             </a>
           </div>
           <div className="cta-band-info">

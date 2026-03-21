@@ -1,5 +1,6 @@
 'use client'
 import type { ClinicInfo } from '@/lib/types'
+import { Icon } from '@/lib/icons'
 
 export default function GuidanceSection({ clinic }: { clinic: ClinicInfo }) {
   return (
@@ -9,7 +10,7 @@ export default function GuidanceSection({ clinic }: { clinic: ClinicInfo }) {
         <p>Talk to us. We will review your history, assess your condition, and recommend the most appropriate package for your situation. There is no obligation -- just honest guidance.</p>
         <div className="guidance-actions">
           <a href="/appointment" className="guidance-primary" onClick={e => { e.preventDefault(); typeof window !== "undefined" && window.dispatchEvent(new CustomEvent("openAppointmentModal")) }}>
-            Book a Consultation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            Book a Consultation <Icon name="arrow-right" size={16} />
           </a>
           <a href={`https://wa.me/${clinic.whatsapp.replace('+', '')}`} className="guidance-secondary">WhatsApp Us</a>
         </div>

@@ -1,4 +1,5 @@
 import type { ReviewItem } from '@/lib/types'
+import { Icon } from '@/lib/icons'
 
 const googleIcon = (
   <svg viewBox="0 0 24 24" width="20" height="20">
@@ -8,8 +9,6 @@ const googleIcon = (
     <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
   </svg>
 )
-
-const starPath = "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
 
 export default function ReviewsGrid({ reviews, googleUrl }: { reviews: ReviewItem[]; googleUrl: string }) {
   return (
@@ -34,7 +33,7 @@ export default function ReviewsGrid({ reviews, googleUrl }: { reviews: ReviewIte
                 <div className="review-google-icon">{googleIcon}</div>
               </div>
               <div className="review-stars">
-                {[0,1,2,3,4].map(j => <svg key={j} viewBox="0 0 24 24"><path d={starPath}/></svg>)}
+                {[0,1,2,3,4].map(j => <Icon key={j} name="star" size={16} color="#F59E0B" weight="fill" />)}
               </div>
               <p className="review-text">{r.text}</p>
             </div>
@@ -42,11 +41,10 @@ export default function ReviewsGrid({ reviews, googleUrl }: { reviews: ReviewIte
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', padding: '2rem 2rem 1rem', maxWidth: '1280px', margin: '0 auto' }}>
           <a href={googleUrl} target="_blank" rel="noopener" className="review-btn-primary">
-            See All Google Reviews <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            See All Google Reviews <Icon name="external-link" size={16} />
           </a>
           <a href={googleUrl} target="_blank" rel="noopener" className="review-btn-secondary">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-            Write a Review
+            <Icon name="external-link" size={16} /> Write a Review
           </a>
         </div>
       </div>

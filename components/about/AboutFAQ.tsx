@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import type { ClinicInfo } from '@/lib/types'
+import { Icon } from '@/lib/icons'
 
 const baseFaqs = [
   { q: 'Is the clinic accessible for elderly patients?', a: 'Yes, the clinic is designed for accessibility with ground-floor access, wheelchair-friendly spaces, and comfortable seating in the waiting area.' },
@@ -11,11 +12,7 @@ const baseFaqs = [
 
 export default function AboutFAQ({ clinic }: { clinic: ClinicInfo }) {
   const [open, setOpen] = useState<number | null>(null)
-
-  const faqs = [
-    { q: 'When was the clinic established?', a: `The clinic has been serving patients in ${clinic.city}, building a reputation for reliable, patient-first specialist care.` },
-    ...baseFaqs,
-  ]
+  const faqs = [{ q: 'When was the clinic established?', a: `The clinic has been serving patients in ${clinic.city}, building a reputation for reliable, patient-first specialist care.` }, ...baseFaqs]
   return (
     <section className="faq-section" style={{ background: 'var(--neutral-100)' }}>
       <div className="faq-inner">
@@ -26,16 +23,14 @@ export default function AboutFAQ({ clinic }: { clinic: ClinicInfo }) {
         </div>
         <div className="faq-list">
           {faqs.map((faq, i) => (
-            <div key={i} className="faq-item" onClick={() => setOpen(open === i ? null : i)} style={{ cursor: 'pointer' }}>
+            <div key={i} className={`faq-item${open === i ? ' open' : ''}`} onClick={() => setOpen(open === i ? null : i)} style={{ cursor: 'pointer' }}>
               <div className="faq-q">
                 <span>{faq.q}</span>
                 <div className="faq-toggle" style={{ transform: open === i ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s', borderColor: open === i ? 'var(--primary)' : undefined }}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke={open === i ? 'var(--primary)' : 'currentColor'} strokeWidth="2.5" strokeLinecap="round">
-                    <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-                  </svg>
+                  <Icon name="check" size={16} color={open === i ? 'var(--primary)' : 'currentColor'} />
                 </div>
               </div>
-              {open === i && <div className="faq-a" style={{ padding: "0 1.5rem 1.5rem" }}><p>{faq.a}</p></div>}
+              {open === i && <div className="faq-a" style={{ padding: '0 1.5rem 1.5rem' }}><p>{faq.a}</p></div>}
             </div>
           ))}
         </div>

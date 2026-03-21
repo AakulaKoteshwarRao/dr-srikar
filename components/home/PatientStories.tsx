@@ -1,6 +1,7 @@
 'use client'
 import { useRef } from 'react'
 import type { StoryItem } from '@/lib/types'
+import { Icon } from '@/lib/icons'
 
 const storyGrads = [
   'background: linear-gradient(145deg, var(--secondary), var(--primary))',
@@ -12,10 +13,7 @@ const storyGrads = [
 
 export default function PatientStories({ stories }: { stories: StoryItem[] }) {
   const ref = useRef<HTMLDivElement>(null)
-
-  const scroll = (dir: number) => {
-    ref.current?.scrollBy({ left: dir * 440, behavior: 'smooth' })
-  }
+  const scroll = (dir: number) => { ref.current?.scrollBy({ left: dir * 440, behavior: 'smooth' }) }
 
   return (
     <section className="stories-section-dark">
@@ -26,25 +24,20 @@ export default function PatientStories({ stories }: { stories: StoryItem[] }) {
             <h2 className="sec-title">Patient Stories</h2>
             <p className="sec-sub">Real patients sharing their treatment journey.</p>
             <a href="/success-stories" className="stories-link">
-              View all stories
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-              </svg>
+              View all stories <Icon name="arrow-right" size={16} />
             </a>
           </div>
         </div>
         <div className="stories-carousel-wrap">
           <button className="carousel-btn carousel-prev" aria-label="Previous" onClick={() => scroll(-1)}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <polyline points="15 18 9 12 15 6"/>
-            </svg>
+            <Icon name="arrow-left" size={20} color="#FFFFFF" />
           </button>
           <div className="stories-carousel" ref={ref}>
             {stories.map((story, i) => (
               <div key={i} className="story-slide">
                 <div className="story-video-thumb" style={{ ...(storyGrads[i] ? { background: storyGrads[i].replace('background: ', '') } : {}) }}>
                   <div className="play-circle">
-                    <svg viewBox="0 0 24 24" fill="#FFFFFF"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                    <Icon name="play" size={24} color="#FFFFFF" weight="fill" />
                   </div>
                   <span className="vid-duration">{story.duration}</span>
                 </div>
@@ -54,9 +47,7 @@ export default function PatientStories({ stories }: { stories: StoryItem[] }) {
             ))}
           </div>
           <button className="carousel-btn carousel-next" aria-label="Next" onClick={() => scroll(1)}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
+            <Icon name="arrow-right" size={20} color="#FFFFFF" />
           </button>
         </div>
       </div>
