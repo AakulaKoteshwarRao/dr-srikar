@@ -17,7 +17,7 @@ export default async function ProductsPage() {
       <Header clinic={cfg.clinic} />
       <main style={{ paddingBottom: '64px' }}>
         <ProductsHero />
-        <PackagesGrid packages={cfg.packages} />
+        <PackagesGrid packages={cfg.packages} showViewAll={false} />
         <PricingTransparency />
         <PackageTestimonials />
         <GuidanceSection clinic={cfg.clinic} />

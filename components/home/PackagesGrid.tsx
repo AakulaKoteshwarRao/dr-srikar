@@ -1,7 +1,7 @@
 import type { PackageItem } from '@/lib/types'
 import { Icon } from '@/lib/icons'
 
-export default function PackagesGrid({ packages }: { packages: PackageItem[] }) {
+export default function PackagesGrid({ packages, showViewAll = true }: { packages: PackageItem[]; showViewAll?: boolean }) {
   return (
     <section className="card-section section-cool-grey">
       <div className="sec-header">
@@ -27,9 +27,11 @@ export default function PackagesGrid({ packages }: { packages: PackageItem[] }) 
           </a>
         ))}
       </div>
-      <div className="sec-cta">
-        <a href="/products">View All Packages <Icon name="arrow-right" size={16} /></a>
-      </div>
+      {showViewAll && (
+        <div className="sec-cta">
+          <a href="/products">View All Packages <Icon name="arrow-right" size={16} /></a>
+        </div>
+      )}
     </section>
   )
 }
