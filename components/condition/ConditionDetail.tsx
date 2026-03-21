@@ -16,23 +16,23 @@ const stepIcons = [
 ]
 
 const pillStyles = [
-  { background: '#F0FDFA', color: '#3CB8AF' },
-  { background: '#EBF5FB', color: '#1B6FA8' },
+  { background: 'var(--primary-light)', color: 'var(--primary)' },
+  { background: 'var(--secondary-light)', color: 'var(--secondary)' },
   { background: '#FEF3C7', color: '#D68910' },
 ]
-const stageBadgeColors = ['#3CB8AF', '#D68910', '#EF4444']
+const stageBadgeColors = ['var(--primary)', '#D68910', '#EF4444']
 const stageLabels = ['Early Stage', 'Moderate', 'Advanced']
 const stageSubLabels = ['Mild discomfort', 'Increasing impact', 'Significant limitation']
-const recBadgeColors = ['#3CB8AF', '#1B6FA8', '#0D3B5E']
+const recBadgeColors = ['var(--primary)', 'var(--secondary)', 'var(--secondary-deep)']
 const typeIconGrads = [
-  'linear-gradient(135deg,#3CB8AF,#2A9D8F)',
-  'linear-gradient(135deg,#1B6FA8,#145A8A)',
-  'linear-gradient(135deg,#0D3B5E,#0A2E4A)',
+  'linear-gradient(135deg,var(--primary),var(--primary-dark))',
+  'linear-gradient(135deg,var(--secondary),var(--secondary-dark))',
+  'linear-gradient(135deg,var(--secondary-deep),var(--secondary-deep))',
 ]
 const outcomeIconGrads = [
-  'linear-gradient(135deg,#3CB8AF,#2A9D8F)',
-  'linear-gradient(135deg,#1B6FA8,#145A8A)',
-  'linear-gradient(135deg,#0D3B5E,#0A2E4A)',
+  'linear-gradient(135deg,var(--primary),var(--primary-dark))',
+  'linear-gradient(135deg,var(--secondary),var(--secondary-dark))',
+  'linear-gradient(135deg,var(--secondary-deep),var(--secondary-deep))',
   'linear-gradient(135deg,#D68910,#B7770A)',
 ]
 // sf-1..sf-4 classes set badge + icon colors via CSS
@@ -158,7 +158,7 @@ export default function ConditionDetail({
             </svg>
           </a>
         </div>
-        <div className="cond-hero-img" style={{ background: 'linear-gradient(145deg,#0D3B5E,#1B6FA8,#3CB8AF)', position: 'relative', overflow: 'hidden' }}>
+        <div className="cond-hero-img" style={{ background: 'linear-gradient(145deg,var(--secondary-deep),var(--secondary),var(--primary))', position: 'relative', overflow: 'hidden' }}>
           {heroImage ? (
             <Image src={heroImage} alt={`${name} at ${clinicName}`} fill style={{ objectFit: 'cover' }} priority />
           ) : (
@@ -316,7 +316,7 @@ export default function ConditionDetail({
                       <div className="ts-label">{t.name}</div>
                       {/* NOTE: class is "ts-invasive" not "ts-inv" */}
                       {t.invasiveness && (
-                        <span className="ts-invasive" style={t.invasivenessStyle ?? { background: '#F0FDFA', color: '#3CB8AF' }}>
+                        <span className="ts-invasive" style={t.invasivenessStyle ?? { background: 'var(--primary-light)', color: 'var(--primary)' }}>
                           {t.invasiveness}
                         </span>
                       )}

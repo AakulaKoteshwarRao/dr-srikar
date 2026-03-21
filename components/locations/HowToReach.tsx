@@ -17,7 +17,7 @@ export default function HowToReach() {
       body: 'Local buses, metro, and cabs are available nearby. Contact us for the most convenient route from your location.',
     },
     {
-      grad: 'linear-gradient(135deg,var(--secondary-deep),#0B1A3E)',
+      grad: 'linear-gradient(135deg,var(--secondary-deep),var(--secondary-deep))',
       icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>,
       title: 'By Car',
       body: 'Parking is available near the clinic. Contact us for landmark directions.',

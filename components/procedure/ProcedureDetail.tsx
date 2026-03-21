@@ -16,24 +16,24 @@ const stepIcons = [
 ]
 
 const pillStyles = [
-  { background: '#F0FDFA', color: '#3CB8AF' },
-  { background: '#EBF5FB', color: '#1B6FA8' },
+  { background: 'var(--primary-light)', color: 'var(--primary)' },
+  { background: 'var(--secondary-light)', color: 'var(--secondary)' },
   { background: '#FEF3C7', color: '#D68910' },
 ]
 const iconGrads = [
-  'linear-gradient(135deg,#3CB8AF,#2A9D8F)',
-  'linear-gradient(135deg,#1B6FA8,#145A8A)',
-  'linear-gradient(135deg,#0D3B5E,#0A2E4A)',
+  'linear-gradient(135deg,var(--primary),var(--primary-dark))',
+  'linear-gradient(135deg,var(--secondary),var(--secondary-dark))',
+  'linear-gradient(135deg,var(--secondary-deep),var(--secondary-deep))',
   'linear-gradient(135deg,#D68910,#B7770A)',
 ]
 const procNumGrads = [
-  'linear-gradient(135deg,#3CB8AF,#2A9D8F)',
-  'linear-gradient(135deg,#1B6FA8,#145A8A)',
-  'linear-gradient(135deg,#0D3B5E,#0A2E4A)',
+  'linear-gradient(135deg,var(--primary),var(--primary-dark))',
+  'linear-gradient(135deg,var(--secondary),var(--secondary-dark))',
+  'linear-gradient(135deg,var(--secondary-deep),var(--secondary-deep))',
   'linear-gradient(135deg,#D68910,#B7770A)',
-  'linear-gradient(135deg,#3CB8AF,#2A9D8F)',
+  'linear-gradient(135deg,var(--primary),var(--primary-dark))',
 ]
-const recBadgeColors = ['#3CB8AF', '#1B6FA8', '#0D3B5E', '#D68910']
+const recBadgeColors = ['var(--primary)', 'var(--secondary)', 'var(--secondary-deep)', '#D68910']
 const sfClasses = ['sf-1','sf-2','sf-3','sf-4']
 
 export interface ProcedureDetailProps {
@@ -148,7 +148,7 @@ export default function ProcedureDetail({
             </svg>
           </a>
         </div>
-        <div className="cond-hero-img" style={{ background: 'linear-gradient(145deg,#0D3B5E,#1B6FA8,#3CB8AF)', position: 'relative', overflow: 'hidden' }}>
+        <div className="cond-hero-img" style={{ background: 'linear-gradient(145deg,var(--secondary-deep),var(--secondary),var(--primary))', position: 'relative', overflow: 'hidden' }}>
           {heroImage ? (
             <Image src={heroImage} alt={`${name} at ${clinicName}`} fill style={{ objectFit: 'cover' }} priority />
           ) : (

@@ -1,7 +1,7 @@
 import defaultData from '../../data/default.json'
 
 const d = defaultData
-const colors = ['var(--primary)','var(--secondary)','var(--primary-dark)','var(--secondary-dark)','#D68910','#6C3483','#1E8449','#2E86C1']
+const colors = ['var(--primary)','var(--secondary)','var(--primary-dark)','var(--secondary-dark)','#D68910','var(--secondary-deep)','#1E8449','var(--secondary)']
 
 const services = [
   ...(d.services?.conditions || []).map((s: any, i: number) => ({ label: s.title, color: colors[i % colors.length], slug: s.slug })),

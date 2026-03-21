@@ -16,8 +16,8 @@ function buildItems(photos: Record<string, string>) {
     { cat: 'clinic',      tag: 'Clinic',         grad: 'linear-gradient(145deg,var(--secondary-deep),var(--secondary))',       title: 'Consultation Room',                  src: p('clinic_2') },
     { cat: 'clinic',      tag: 'Clinic',         grad: 'linear-gradient(145deg,var(--secondary),var(--secondary-dark))',       title: 'Clinic Interior',                    src: p('clinic_3') },
     { cat: 'equipment',   tag: 'Equipment',      grad: 'linear-gradient(145deg,var(--primary),var(--primary-dark))',           title: 'Diagnostic Equipment',               src: p('equipment_1') },
-    { cat: 'equipment',   tag: 'Equipment',      grad: 'linear-gradient(145deg,var(--secondary),#3CB8AF)',                     title: 'Examination Unit',                   src: p('equipment_2') },
-    { cat: 'equipment',   tag: 'Equipment',      grad: 'linear-gradient(145deg,var(--secondary-deep),#3CB8AF)',                title: 'Advanced Scanning Equipment',        src: p('equipment_3') },
+    { cat: 'equipment',   tag: 'Equipment',      grad: 'linear-gradient(145deg,var(--secondary),var(--primary))',                     title: 'Examination Unit',                   src: p('equipment_2') },
+    { cat: 'equipment',   tag: 'Equipment',      grad: 'linear-gradient(145deg,var(--secondary-deep),var(--primary))',                title: 'Advanced Scanning Equipment',        src: p('equipment_3') },
     { cat: 'doctor',      tag: 'Doctor',         grad: 'linear-gradient(145deg,var(--secondary),var(--primary))',              title: 'Doctor -- Consultation',             src: p('doctor_1') },
     { cat: 'doctor',      tag: 'Doctor',         grad: 'linear-gradient(145deg,var(--secondary),var(--secondary-dark))',       title: 'Doctor -- Procedure Prep',           src: p('doctor_2') },
     { cat: 'awards',      tag: 'Awards',         grad: 'linear-gradient(145deg,var(--primary-dark),var(--secondary-deep))',    title: 'Healthcare Excellence Recognition',  src: p('awards_1') },
@@ -25,7 +25,7 @@ function buildItems(photos: Record<string, string>) {
     { cat: 'conferences', tag: 'Conferences',    grad: 'linear-gradient(145deg,var(--secondary-deep),var(--secondary-dark))', title: 'National Medical Conference',         src: p('conference_1') },
     { cat: 'conferences', tag: 'Conferences',    grad: 'linear-gradient(145deg,var(--secondary-deep),var(--secondary-dark))', title: 'Annual Conference -- Presentation',   src: p('conference_2') },
     { cat: 'results',     tag: 'Before & After', grad: 'linear-gradient(145deg,var(--primary),var(--primary-dark))',           title: 'Treatment Outcome -- Case Study',    src: p('result_1') },
-    { cat: 'results',     tag: 'Before & After', grad: 'linear-gradient(145deg,var(--secondary-deep),#3CB8AF)',                title: 'Patient Recovery -- Post Treatment', src: p('result_2') },
+    { cat: 'results',     tag: 'Before & After', grad: 'linear-gradient(145deg,var(--secondary-deep),var(--primary))',                title: 'Patient Recovery -- Post Treatment', src: p('result_2') },
   ].filter(item => item.src !== '' || true) // show all, gradient fallback for empty
 }
 

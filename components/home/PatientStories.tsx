@@ -5,8 +5,8 @@ import type { StoryItem } from '@/lib/types'
 const storyGrads = [
   'background: linear-gradient(145deg, var(--secondary), var(--primary))',
   'background: linear-gradient(145deg, var(--secondary-deep), var(--secondary), var(--primary))',
-  'background: linear-gradient(145deg, var(--primary), var(--primary-dark), #F97316)',
-  'background: linear-gradient(145deg, var(--primary-dark), var(--secondary-deep), #1E3A8A)',
+  'background: linear-gradient(145deg, var(--primary), var(--primary-dark), var(--primary))',
+  'background: linear-gradient(145deg, var(--primary-dark), var(--secondary-deep), var(--secondary))',
   'background: linear-gradient(145deg, var(--secondary-deep), var(--secondary-dark), var(--primary-dark))',
 ]
 

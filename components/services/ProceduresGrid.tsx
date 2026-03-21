@@ -8,7 +8,7 @@ const medIcon = (
 
 export default function ProceduresGrid({ procedures }: { procedures: ServiceItem[] }) {
   return (
-    <section id="procedures" className="card-section" style={{ background: "#F3F4F6" }}>
+    <section id="procedures" className="card-section" style={{ background: "var(--neutral-100)" }}>
       <div className="sec-header">
         <div className="sec-label"><span>Procedures We Do</span></div>
         <h2 className="sec-title">Surgical &amp; non-surgical treatments.</h2>

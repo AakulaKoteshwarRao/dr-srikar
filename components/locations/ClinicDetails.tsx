@@ -16,7 +16,7 @@ export default function ClinicDetails({ clinic }: { clinic: ClinicInfo }) {
       body: clinic.hours,
     },
     {
-      grad: 'linear-gradient(135deg,#0F2259,#0B1A3E)',
+      grad: 'linear-gradient(135deg,var(--secondary-deep),var(--secondary-deep))',
       icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8l4 2.5v6l-4 2.5"/></svg>,
       title: 'Parking',
       body: 'Bike and car parking available on Street No. 1 outside the building.',

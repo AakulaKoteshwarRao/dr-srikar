@@ -47,7 +47,7 @@ export default function Header({ clinic }: { clinic: ClinicInfo }) {
           ) : (
             <div style={{
               width: 44, height: 44, borderRadius: 10,
-              background: 'linear-gradient(135deg, var(--secondary, #1E3A8A), var(--primary, #F97316))',
+              background: 'linear-gradient(135deg, var(--secondary, var(--secondary)), var(--primary, var(--primary)))',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               flexShrink: 0
             }}>

@@ -13,7 +13,7 @@ export default function TeamFAQ({ clinic }: { clinic: ClinicInfo }) {
     { q: 'Is online consultation available with all doctors?', a: 'Online consultation is available with the lead doctor. For consulting doctors, please contact the clinic to check teleconsultation availability.' },
   ]
   return (
-    <section className="faq-section" style={{ background: '#F3F4F6' }}>
+    <section className="faq-section" style={{ background: 'var(--neutral-100)' }}>
       <div className="faq-inner">
         <div className="sec-header faq-header">
           <div className="sec-label"><span>FAQ</span></div>
@@ -25,8 +25,8 @@ export default function TeamFAQ({ clinic }: { clinic: ClinicInfo }) {
             <div key={i} className="faq-item" onClick={() => setOpen(open === i ? null : i)} style={{ cursor: 'pointer' }}>
               <div className="faq-q">
                 <span>{faq.q}</span>
-                <div className="faq-toggle" style={{ transform: open === i ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s', borderColor: open === i ? '#F97316' : undefined }}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke={open === i ? '#F97316' : 'currentColor'} strokeWidth="2.5" strokeLinecap="round">
+                <div className="faq-toggle" style={{ transform: open === i ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s', borderColor: open === i ? 'var(--primary)' : undefined }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke={open === i ? 'var(--primary)' : 'currentColor'} strokeWidth="2.5" strokeLinecap="round">
                     <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
                   </svg>
                 </div>

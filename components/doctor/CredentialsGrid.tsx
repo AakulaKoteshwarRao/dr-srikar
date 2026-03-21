@@ -5,7 +5,7 @@ import type { DoctorInfo, ClinicInfo } from '@/lib/types'
 const credSections = (doctor: DoctorInfo, clinic: ClinicInfo) => [
   { num: '01', grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', title: 'Qualifications', sub: 'Degrees & Institutions', items: doctor.education.map(e => ({ title: e.degree, sub: e.institution })) },
   { num: '02', grad: 'linear-gradient(135deg,var(--secondary),var(--secondary-dark))', title: 'Fellowships', sub: 'Specialised Training', items: doctor.fellowships.map(f => ({ title: f.title, sub: f.institution })) },
-  { num: '03', grad: 'linear-gradient(135deg,#0F2259,#0B1A3E)', title: 'Work Experience', sub: 'Hospitals & Institutions', items: doctor.experience.map(e => ({ title: e.role, sub: e.hospital })) },
+  { num: '03', grad: 'linear-gradient(135deg,var(--secondary-deep),var(--secondary-deep))', title: 'Work Experience', sub: 'Hospitals & Institutions', items: doctor.experience.map(e => ({ title: e.role, sub: e.hospital })) },
   { num: '04', grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', title: 'Certifications', sub: 'Professional Certifications', items: doctor.certifications.map(c => ({ title: c, sub: '' })) },
   { num: '05', grad: 'linear-gradient(135deg,var(--primary-dark),var(--secondary-deep))', title: 'Training & Workshops', sub: 'Continued Education', items: doctor.workshops.map(w => ({ title: w.title, sub: w.location })) },
   { num: '06', grad: 'linear-gradient(135deg,var(--secondary-deep),var(--secondary-dark))', title: 'Publications', sub: 'Research & Presentations', items: doctor.publications.map(p => ({ title: p.title, sub: p.journal })) },

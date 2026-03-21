@@ -27,7 +27,7 @@ export default function PackagesGrid({ packages }: { packages: any[] }) {
             <div className="pkg-body" style={{ padding: '1.5rem' }}>
               <h3 className="pkg-name">{pkg.name}</h3>
               <p className="pkg-desc">{pkg.description}</p>
-              <div className="pkg-price" style={{ whiteSpace: 'nowrap', fontSize: '0.9rem' }}>{pkg.price}</div>
+              <div className="pkg-price" style={{ whiteSpace: 'nowrap', fontSize: 'var(--text-base)' }}>{pkg.price}</div>
               <ul className="pkg-includes">
                 {pkg.includes.map((item: any, j: number) => (
                   <li key={j}>{item}</li>

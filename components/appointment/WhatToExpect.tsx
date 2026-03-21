@@ -1,7 +1,7 @@
 const steps = [
   { num: '1', grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', title: 'Confirmation Call', body: 'Our team will reach out to you promptly to confirm a convenient date and time for your visit.' },
   { num: '2', grad: 'linear-gradient(135deg,var(--secondary),var(--secondary-dark))', title: 'Prepare Your Records', body: 'Bring any previous medical reports, test results, prescriptions, and a list of current medications to your appointment.' },
-  { num: '3', grad: 'linear-gradient(135deg,#0F2259,#0B1A3E)', title: 'Thorough Consultation', body: 'The doctor will review your history, examine you thoroughly, and explain all available treatment options clearly.' },
+  { num: '3', grad: 'linear-gradient(135deg,var(--secondary-deep),var(--secondary-deep))', title: 'Thorough Consultation', body: 'The doctor will review your history, examine you thoroughly, and explain all available treatment options clearly.' },
   { num: '4', grad: 'linear-gradient(135deg,var(--primary),var(--primary-dark))', title: 'Clear Next Steps', body: 'You\'ll leave with a clear diagnosis, a written treatment plan, and a timeline for your care.' },
 ]
 

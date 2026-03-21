@@ -10,7 +10,7 @@ const trustItems = [
     label: 'No obligation to proceed',
   },
   {
-    grad: 'linear-gradient(135deg,#0F2259,#0B1A3E)',
+    grad: 'linear-gradient(135deg,var(--secondary-deep),var(--secondary-deep))',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>,
     label: 'Your details are private',
   },

@@ -10,7 +10,7 @@ export default function LocationStrip({ clinic }: { clinic: ClinicInfo }) {
       </div>
       <div className="location-grid">
         <div className="location-map">
-          <span style={{ color: '#9CA3AF', fontSize: '0.9rem' }}>Google Map Embed</span>
+          <span style={{ color: 'var(--neutral-400)', fontSize: 'var(--text-base)' }}>Google Map Embed</span>
         </div>
         <div className="location-details">
           <div className="loc-item">

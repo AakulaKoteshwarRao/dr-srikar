@@ -15,14 +15,14 @@ const stepIcons = [
 ]
 
 const pillStyles = [
-  { background: '#F0FDFA', color: '#3CB8AF' },
-  { background: '#EBF5FB', color: '#1B6FA8' },
+  { background: 'var(--primary-light)', color: 'var(--primary)' },
+  { background: 'var(--secondary-light)', color: 'var(--secondary)' },
   { background: '#FEF3C7', color: '#D68910' },
 ]
 const iconGrads = [
-  'linear-gradient(135deg,#3CB8AF,#2A9D8F)',
-  'linear-gradient(135deg,#1B6FA8,#145A8A)',
-  'linear-gradient(135deg,#0D3B5E,#0A2E4A)',
+  'linear-gradient(135deg,var(--primary),var(--primary-dark))',
+  'linear-gradient(135deg,var(--secondary),var(--secondary-dark))',
+  'linear-gradient(135deg,var(--secondary-deep),var(--secondary-deep))',
   'linear-gradient(135deg,#D68910,#B7770A)',
 ]
 const sfClasses = ['sf-1','sf-2','sf-3','sf-4']
@@ -137,7 +137,7 @@ export default function PackageDetail({
             </svg>
           </a>
         </div>
-        <div className="cond-hero-img" style={{ background: 'linear-gradient(145deg,#0D3B5E,#1B6FA8,#3CB8AF)', position: 'relative', overflow: 'hidden' }}>
+        <div className="cond-hero-img" style={{ background: 'linear-gradient(145deg,var(--secondary-deep),var(--secondary),var(--primary))', position: 'relative', overflow: 'hidden' }}>
           {heroImage ? (
             <Image src={heroImage} alt={`${name} at ${clinicName}`} fill style={{ objectFit: 'cover' }} priority />
           ) : (
@@ -315,7 +315,7 @@ export default function PackageDetail({
                   <div className="test-stars">{'★'.repeat(t.rating ?? 5)}</div>
                   <p className="test-text">&ldquo;{t.text}&rdquo;</p>
                   <div className="test-author">
-                    <div className="test-avatar" style={{ background: i === 0 ? 'linear-gradient(135deg,#3CB8AF,#1B6FA8)' : 'linear-gradient(135deg,#1B6FA8,#0D3B5E)' }}>
+                    <div className="test-avatar" style={{ background: i === 0 ? 'linear-gradient(135deg,var(--primary),var(--secondary))' : 'linear-gradient(135deg,var(--secondary),var(--secondary-deep))' }}>
                       <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" width="20" height="20">
                         <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
                       </svg>

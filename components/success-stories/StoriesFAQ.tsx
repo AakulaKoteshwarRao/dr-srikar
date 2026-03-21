@@ -16,7 +16,7 @@ const faqs = [
 export default function StoriesFAQ() {
   const [open, setOpen] = useState<number | null>(null)
   return (
-    <section className="faq-section" style={{ background: '#F3F4F6' }}>
+    <section className="faq-section" style={{ background: 'var(--neutral-100)' }}>
       <div className="faq-inner">
         <div className="sec-header faq-header">
           <div className="sec-label"><span>FAQ</span></div>

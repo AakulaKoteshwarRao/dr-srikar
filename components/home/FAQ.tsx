@@ -25,8 +25,8 @@ export default function FAQ({ items }: { items: FaqItem[] }) {
               >
                 <div className="faq-q">
                   <span>{item.question}</span>
-                  <div className="faq-toggle" style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s', borderColor: isOpen ? '#F97316' : undefined }}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke={isOpen ? '#F97316' : 'currentColor'} strokeWidth="2.5" strokeLinecap="round">
+                  <div className="faq-toggle" style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s', borderColor: isOpen ? 'var(--primary)' : undefined }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke={isOpen ? 'var(--primary)' : 'currentColor'} strokeWidth="2.5" strokeLinecap="round">
                       <line x1="12" y1="5" x2="12" y2="19"/>
                       <line x1="5" y1="12" x2="19" y2="12"/>
                     </svg>

@@ -8,7 +8,7 @@ const DEFAULT_INSURERS = [
   { bg: '#003399', initials: 'BA', name: 'Bajaj Allianz' },
   { bg: '#E60012', initials: 'MB', name: 'Max Bupa' },
   { bg: '#1A5276', initials: 'UI', name: 'United India' },
-  { bg: '#1E3A8A', initials: 'SG', name: 'SBI General' },
+  { bg: 'var(--secondary)', initials: 'SG', name: 'SBI General' },
 ]
 
 export default function Insurance({ clinic }: { clinic: ClinicInfo }) {
