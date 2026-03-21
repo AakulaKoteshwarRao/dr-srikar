@@ -569,49 +569,65 @@
       "name": "Kondapur",
       "slug": "kondapur",
       "distance": "0 km",
-      "duration": "2 min"
+      "duration": "2 min",
+      "label": "Kondapur",
+      "href": "/specialist-near-kondapur"
     },
     {
       "name": "Gachibowli",
       "slug": "gachibowli",
       "distance": "3 km",
-      "duration": "8 min"
+      "duration": "8 min",
+      "label": "Gachibowli",
+      "href": "/specialist-near-gachibowli"
     },
     {
       "name": "Miyapur",
       "slug": "miyapur",
       "distance": "5 km",
-      "duration": "12 min"
+      "duration": "12 min",
+      "label": "Miyapur",
+      "href": "/specialist-near-miyapur"
     },
     {
       "name": "Madhapur",
       "slug": "madhapur",
       "distance": "4 km",
-      "duration": "10 min"
+      "duration": "10 min",
+      "label": "Madhapur",
+      "href": "/specialist-near-madhapur"
     },
     {
       "name": "Kukatpally",
       "slug": "kukatpally",
       "distance": "7 km",
-      "duration": "18 min"
+      "duration": "18 min",
+      "label": "Kukatpally",
+      "href": "/specialist-near-kukatpally"
     },
     {
       "name": "KPHB Colony",
       "slug": "kphb-colony",
       "distance": "8 km",
-      "duration": "20 min"
+      "duration": "20 min",
+      "label": "KPHB Colony",
+      "href": "/specialist-near-kphb-colony"
     },
     {
       "name": "Manikonda",
       "slug": "manikonda",
       "distance": "6 km",
-      "duration": "15 min"
+      "duration": "15 min",
+      "label": "Manikonda",
+      "href": "/specialist-near-manikonda"
     },
     {
       "name": "Nanakramguda",
       "slug": "nanakramguda",
       "distance": "4 km",
-      "duration": "10 min"
+      "duration": "10 min",
+      "label": "Nanakramguda",
+      "href": "/specialist-near-nanakramguda"
     }
   ],
   "faq": [
