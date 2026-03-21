@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import type { DoctorInfo, ClinicInfo } from '@/lib/types'
 import { Icon } from '@/lib/icons'
-import { STAT_COLOURS } from '@/lib/pills'
+import { STAT_COLOURS, PILL_STYLES } from '@/lib/pills'
 
 export default function MeetDoctor({ doctor, clinic }: { doctor: DoctorInfo; clinic: ClinicInfo }) {
   return (
@@ -29,7 +29,7 @@ export default function MeetDoctor({ doctor, clinic }: { doctor: DoctorInfo; cli
             <p className="doc-degree">{doctor.degrees}</p>
             <div className="doc-specialty-tags">
               {doctor.specialties.map((s, i) => (
-                <span key={i} className="doc-spec-tag">{s}</span>
+                <span key={i} className="doc-spec-tag" style={{ background: PILL_STYLES[i % PILL_STYLES.length].background, borderColor: PILL_STYLES[i % PILL_STYLES.length].color, color: PILL_STYLES[i % PILL_STYLES.length].color }}>{s}</span>
               ))}
             </div>
             <div className="doc-stats-row">

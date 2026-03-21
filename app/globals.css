@@ -814,9 +814,9 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FFFFFF; color:
   max-width: 1280px; margin: 0 auto; padding: 1rem 0;
   display: flex; align-items: center; justify-content: space-between;
 }
-.footer-bottom p { font-size: var(--text-sm); color: #7A8694; }
+.footer-bottom p { font-size: var(--text-sm); color: rgba(255,255,255,0.6); }
 .footer-legal { display: flex; gap: 1.5rem; }
-.footer-legal a { font-size: var(--text-sm); color: #7A8694; text-decoration: none; transition: color 200ms; }
+.footer-legal a { font-size: var(--text-sm); color: rgba(255,255,255,0.6); text-decoration: none; transition: color 200ms; }
 .footer-legal a:hover { color: var(--primary); }
 
 @media (max-width: 1024px) {
