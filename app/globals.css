@@ -21,11 +21,11 @@
   --text-3xl:  2.5rem;
 
   /* -- NEUTRAL SCALE -- */
-  --neutral-50:  var(--neutral-50);
-  --neutral-100: var(--neutral-100);
-  --neutral-200: var(--neutral-200);
-  --neutral-300: var(--neutral-300);
-  --neutral-400: var(--neutral-400);
+  --neutral-50:  #F9FAFB;
+  --neutral-100: #F3F4F6;
+  --neutral-200: #E5E7EB;
+  --neutral-300: #D1D5DB;
+  --neutral-400: #9CA3AF;
 
   /* -- UI COLOURS -- */
   --white: #FFFFFF;
