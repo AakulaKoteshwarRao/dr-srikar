@@ -24,8 +24,9 @@ async function getRawConfig() {
 
 export default async function PackageDetailPage({ params }: PageParams) {
   const [config, rawConfig] = await Promise.all([loadConfig(), getRawConfig()])
-  const rawPackages: any[] = rawConfig?.s10?.packages ?? (config.packages as any[]) ?? []
-  const pkg = rawPackages.find((pk: any) => (pk.slug ?? pk.href?.split('/').pop()) === params.slug)
+  const fallback = rawConfig ?? (await import('@/data/raw.json')).default
+  const rawPackages: any[] = fallback?.s10?.packages ?? []
+  const pkg = rawPackages.find((pk: any) => pk.slug === params.slug)
   if (!pkg) notFound()
   const photoUrl = (config.photos as any)?.[`package_${params.slug}`] ?? null
   const mapped = mapPackage(pkg, rawConfig, photoUrl)
