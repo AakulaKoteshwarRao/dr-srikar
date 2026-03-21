@@ -2,12 +2,9 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { Icon } from '@/lib/icons'
+import { PILL_STYLES as pillStyles, STAT_COLOURS } from '@/lib/pills'
 
-const pillStyles = [
-  { background: 'var(--primary-light)', color: 'var(--primary)' },
-  { background: 'var(--secondary-light)', color: 'var(--secondary)' },
-  { background: '#FEF3C7', color: '#D68910' },
-]
+
 const iconGrads = [
   'linear-gradient(135deg,var(--primary),var(--primary-dark))',
   'linear-gradient(135deg,var(--secondary),var(--secondary-dark))',

@@ -1,6 +1,7 @@
 'use client'
 import type { HeroSection, ClinicInfo } from '@/lib/types'
 import { Icon } from '@/lib/icons'
+import { STAT_COLOURS } from '@/lib/pills'
 
 export default function Hero({ hero, clinic }: { hero: HeroSection; clinic: ClinicInfo }) {
   return (
@@ -20,7 +21,7 @@ export default function Hero({ hero, clinic }: { hero: HeroSection; clinic: Clin
         <div className="hero-stats">
           {hero.stats.map((stat, i) => (
             <div className="stat" key={i}>
-              <span className="stat-number">{stat.number}</span>
+              <span className="stat-number" style={{ color: STAT_COLOURS[i % STAT_COLOURS.length] }}>{stat.number}</span>
               <span className="stat-label">{stat.label}</span>
             </div>
           ))}

@@ -2,12 +2,9 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { Icon } from '@/lib/icons'
+import { PILL_STYLES as pillStyles, STAT_COLOURS } from '@/lib/pills'
 
-const pillStyles = [
-  { background: 'var(--primary-light)', color: 'var(--primary)' },
-  { background: 'var(--secondary-light)', color: 'var(--secondary)' },
-  { background: '#FEF3C7', color: '#D68910' },
-]
+
 const stageBadgeColors = ['var(--primary)', '#D68910', '#EF4444']
 const stageLabels = ['Early Stage', 'Moderate', 'Advanced']
 const stageSubLabels = ['Mild discomfort', 'Increasing impact', 'Significant limitation']
@@ -133,7 +130,7 @@ export default function ConditionDetail({
             <div className="hero-stats">
               {heroStats.map((s, i) => (
                 <div key={i}>
-                  <div className="hero-stat-num">{s.value}</div>
+                  <div className="hero-stat-num" style={{ color: STAT_COLOURS[i % STAT_COLOURS.length] }}>{s.value}</div>
                   <div className="hero-stat-label">{s.label}</div>
                 </div>
               ))}
