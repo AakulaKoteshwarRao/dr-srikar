@@ -33,7 +33,7 @@ export default async function ConditionDetailPage({ params }: PageParams) {
     <>
       <Header clinic={config.clinic} />
       <StickyBar clinic={config.clinic} />
-      <ConditionDetail {...mapped} />
+      <main style={{ paddingBottom: "64px" }}><ConditionDetail {...mapped} /></main>
       <Footer clinic={config.clinic} config={config} />
     </>
   )

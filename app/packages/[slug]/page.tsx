@@ -36,7 +36,7 @@ export default async function PackageDetailPage({ params }: PageParams) {
     <>
       <Header clinic={config.clinic} />
       <StickyBar clinic={config.clinic} />
-      <PackageDetail {...mapped} />
+      <main style={{ paddingBottom: "64px" }}><PackageDetail {...mapped} /></main>
       <Footer clinic={config.clinic} config={config} />
     </>
   )
