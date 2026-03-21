@@ -1,4 +1,5 @@
-import type { AreaItem, ClinicInfo } from '@/lib/types'
+import type { AreaItem, ClinicInfo } from "@/lib/types"
+import { Icon } from "@/lib/icons"
 
 export default function LocalAreas({ areas, clinic }: { areas: AreaItem[]; clinic: ClinicInfo }) {
   return (
@@ -10,13 +11,21 @@ export default function LocalAreas({ areas, clinic }: { areas: AreaItem[]; clini
       </div>
       <div className="areas-grid-8">
         {areas.map((area, i) => (
-          <a key={i} href={area.href} className="area-tag">{area.label}</a>
+          <a key={i} href={area.href} className="area-tag">
+            <span className="area-name">{area.label}</span>
+            {(area.distance || area.duration) && (
+              <span className="area-meta">
+                {area.distance && <span><Icon name="location" size={11} />{area.distance}</span>}
+                {area.duration && <span><Icon name="clock" size={11} />{area.duration}</span>}
+              </span>
+            )}
+          </a>
         ))}
       </div>
       <p className="areas-sub">
-        Located in {clinic.address}. Easily accessible by car and public transport.{' '}
+        Located in {clinic.address}. Easily accessible by car and public transport.{" "}
         <a href={clinic.mapUrl} target="_blank" rel="noreferrer"
-          style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>
+          style={{ color: "var(--primary)", fontWeight: 600, textDecoration: "none" }}>
           Get directions &rarr;
         </a>
       </p>
