@@ -7,9 +7,9 @@ const grads = [
   'linear-gradient(145deg, var(--primary), var(--primary-dark))',
 ]
 
-function FeaturedCard({ post, grad }: { post: BlogPost | null; grad: string }) {
-  const title   = post?.title   || 'What to Expect at Your First Consultation'
-  const excerpt = post?.excerpt  || 'A practical guide covering what to bring and how to prepare for your first visit.'
+function FeaturedCard({ post, grad, defaultTitle, defaultExcerpt }: { post: BlogPost | null; grad: string; defaultTitle?: string; defaultExcerpt?: string }) {
+  const title   = post?.title   || defaultTitle || 'What to Expect at Your First Consultation'
+  const excerpt = post?.excerpt  || defaultExcerpt || 'A practical guide covering what to bring and how to prepare for your first visit.'
   const href    = post?.slug ? `/blog/${post.slug}` : '/blog'
   const date    = post?.published_at ? new Date(post.published_at).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '15 Feb 2026'
   const cat     = post?.category || 'General'
@@ -37,8 +37,8 @@ export default function FeaturedPost({ post1, post2 }: { post1: BlogPost | null;
   return (
     <section className="featured-section">
       <div className="featured-grid">
-        <FeaturedCard post={post1} grad={grads[0]} />
-        {post2 !== undefined && <FeaturedCard post={post2} grad={grads[1]} />}
+        <FeaturedCard post={post1} grad={grads[0]} defaultTitle="What to Expect at Your First Consultation" defaultExcerpt="A practical guide covering what to bring, what to expect during your consultation, and how to prepare." />
+        {post2 !== undefined && <FeaturedCard post={post2} grad={grads[1]} defaultTitle="Understanding Your Diagnosis: A Patient Guide" defaultExcerpt="How to understand your neurological diagnosis, ask the right questions, and make informed decisions about your treatment." />}
       </div>
     </section>
   )
