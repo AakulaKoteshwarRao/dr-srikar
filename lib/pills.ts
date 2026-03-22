@@ -1,12 +1,12 @@
 // Shared pill and stat colour palettes
 
 export const PILL_STYLES = [
-  { background: '#0D7A5F', color: '#ffffff' },
-  { background: '#1A4EA0', color: '#ffffff' },
-  { background: '#D68910', color: '#ffffff' },
-  { background: '#6D28D9', color: '#ffffff' },
-  { background: '#1E8449', color: '#ffffff' },
-  { background: '#B91C1C', color: '#ffffff' },
+  { background: 'rgba(13,122,95,0.10)',  color: '#0D7A5F' },
+  { background: 'rgba(26,78,160,0.10)',  color: '#1A4EA0' },
+  { background: 'rgba(214,137,16,0.12)', color: '#D68910' },
+  { background: 'rgba(109,40,217,0.10)', color: '#6D28D9' },
+  { background: 'rgba(30,132,73,0.10)',  color: '#1E8449' },
+  { background: 'rgba(185,28,28,0.10)',  color: '#B91C1C' },
 ]
 
 export const STAT_COLOURS = [
