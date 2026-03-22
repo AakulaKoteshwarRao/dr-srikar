@@ -16,7 +16,7 @@ export default function LocalAreas({ areas, clinic }: { areas: AreaItem[]; clini
           <a key={i} href={area.href} className="area-tag" style={{ background: PILL_STYLES[i % PILL_STYLES.length].background, borderColor: PILL_STYLES[i % PILL_STYLES.length].color }}>
             <span className="area-name" style={{ color: PILL_STYLES[i % PILL_STYLES.length].color }}>{area.label}</span>
             {(area.distance || area.duration) && (
-              <span className="area-meta">
+              <span className="area-meta" style={{ color: "#ffffff" }}>
                 {area.distance && <span><Icon name="location" size={11} />{area.distance}</span>}
                 {area.duration && <span><Icon name="clock" size={11} />{area.duration}</span>}
               </span>
