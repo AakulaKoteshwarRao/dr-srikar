@@ -30,8 +30,9 @@ export default async function BlogPage() {
     },
   })
 
-  const featured = blogs[0] || null
-  const rest     = blogs.slice(1)
+  const featured1 = blogs[0] || null
+  const featured2 = blogs[1] || null
+  const rest     = blogs.slice(2)
 
   return (
     <>
@@ -39,7 +40,7 @@ export default async function BlogPage() {
       <Header clinic={cfg.clinic} />
       <main style={{ paddingBottom: '64px' }}>
         <BlogHero />
-        <FeaturedPost post={featured} />
+        <FeaturedPost post1={featured1} post2={featured2} />
         <BlogGrid posts={rest} conditions={cfg.conditions} />
         <CTABand cta={cfg.ctaBand} />
         <Footer clinic={cfg.clinic} config={cfg} />
