@@ -158,12 +158,12 @@ export default function ConditionDetail({
               <div className="sec-label"><span>Quick Facts</span></div>
               <h2 className="sec-title">At a glance.</h2>
             </div>
-            <div className="qf-card">
-              <div className="qf-head">Clinical Overview</div>
-              {icd10Code && <div className="qf-row"><span className="qf-label">ICD-10 Code</span><span className="qf-val">{icd10Code}</span></div>}
-              {prevalence && <div className="qf-row"><span className="qf-label">Prevalence</span><span className="qf-val">{prevalence}</span></div>}
-              {progressionType && <div className="qf-row"><span className="qf-label">Progression Type</span><span className="qf-val">{progressionType}</span></div>}
-              {diagnosisMethod && <div className="qf-row"><span className="qf-label">Diagnosis Method</span><span className="qf-val">{diagnosisMethod}</span></div>}
+            <div className="cond-qf-card">
+              <div className="cond-qf-head">Clinical Overview</div>
+              {icd10Code && <div className="cond-qf-row"><span className="cond-qf-label">ICD-10 Code</span><span className="cond-qf-val">{icd10Code}</span></div>}
+              {prevalence && <div className="cond-qf-row"><span className="cond-qf-label">Prevalence</span><span className="cond-qf-val">{prevalence}</span></div>}
+              {progressionType && <div className="cond-qf-row"><span className="cond-qf-label">Progression Type</span><span className="cond-qf-val">{progressionType}</span></div>}
+              {diagnosisMethod && <div className="cond-qf-row"><span className="cond-qf-label">Diagnosis Method</span><span className="cond-qf-val">{diagnosisMethod}</span></div>}
             </div>
           </div>
         </div>
