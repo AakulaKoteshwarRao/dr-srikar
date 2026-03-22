@@ -11,7 +11,7 @@ export default function FeaturedPost({ post }: { post: BlogPost | null }) {
 
   return (
     <section className="featured-section">
-      <a href={href} className="featured-card" style={{ display: 'grid' }}>
+      <div className="featured-card">
         <div className="featured-thumb" style={{ background: 'linear-gradient(145deg, var(--secondary), var(--primary))' }}>
           {post?.featured_image ? (
             <img src={post.featured_image} alt={title} width={800} height={450} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
@@ -21,14 +21,14 @@ export default function FeaturedPost({ post }: { post: BlogPost | null }) {
         </div>
         <div className="featured-body">
           <span className="featured-tag">{cat}</span>
-          <h2 className="featured-title">{title}</h2>
+          <a href={href} className="featured-title-link"><h2 className="featured-title">{title}</h2></a>
           <p className="featured-excerpt">{excerpt}</p>
           <div className="featured-footer">
             <span className="featured-date">{date}</span>
-            <span className="featured-read">Read Article <Icon name="arrow-right" size={16} /></span>
+            <a href={href} className="featured-read">Read Article <Icon name="arrow-right" size={16} /></a>
           </div>
         </div>
-      </a>
+      </div>
     </section>
   )
 }
