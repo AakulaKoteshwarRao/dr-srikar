@@ -44,7 +44,7 @@
 
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FFFFFF; color: #1A202C; }
+body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: #FFFFFF; color: #1A202C; }
 
 /* -- Section background utilities -- */
 .section-teal-tint { background: var(--primary-light); }

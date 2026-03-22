@@ -1,4 +1,13 @@
 import type { Metadata } from 'next'
+import { Plus_Jakarta_Sans } from 'next/font/google'
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-jakarta',
+})
 import './globals.css'
 import SchemaMarkup from '@/components/SchemaMarkup'
 import { generateCoreSchemas } from '@/lib/schema/index.js'
@@ -53,12 +62,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const coreSchemas = generateCoreSchemas(buildSchemaConfig(cfg))
 
   return (
-    <html lang="en">
+    <html lang="en" className={plusJakarta.className}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,600;1,700&display=swap" as="style" />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet" />
         <SchemaMarkup graphs={[coreSchemas]} />
       </head>
       <body style={{ ...cssVars, paddingBottom: "64px" }}>
