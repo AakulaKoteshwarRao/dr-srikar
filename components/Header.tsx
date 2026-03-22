@@ -26,11 +26,11 @@ const ALL_LINKS: Record<string, { href: string; label: string }> = {
 const MENU_BY_ENTITY: Record<string, string[]> = {
   'Physician':           ['home', 'about', 'doctor', 'conditions', 'procedures', 'reviews', 'contact'],
   'Solo Clinic':         ['home', 'about', 'doctor', 'services', 'products', 'blog', 'reviews', 'contact'],
-  'Multi-Doctor Clinic': ['home', 'about', 'team', 'services', 'products', 'locations', 'gallery', 'stories', 'blog', 'reviews', 'contact'],
+  'Multi-Doctor Clinic': ['home', 'about', 'doctor', 'team', 'services', 'products', 'locations', 'gallery', 'stories', 'blog', 'reviews', 'contact'],
   'Group Practice':      ['home', 'locations', 'services', 'about', 'blog', 'reviews', 'contact'],
 }
 
-const DEFAULT_MENU = ['home', 'about', 'team', 'services', 'products', 'locations', 'gallery', 'stories', 'blog', 'reviews', 'contact']
+const DEFAULT_MENU = ['home', 'about', 'doctor', 'team', 'services', 'products', 'locations', 'gallery', 'stories', 'blog', 'reviews', 'contact']
 
 export default function Header({ clinic }: { clinic: ClinicInfo }) {
   const pathname = usePathname()
