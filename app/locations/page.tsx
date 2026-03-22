@@ -10,7 +10,7 @@ import ClinicDetails from '@/components/locations/ClinicDetails'
 import MapEmbed from '@/components/locations/MapEmbed'
 import HowToReach from '@/components/locations/HowToReach'
 import ServicesAtLocation from '@/components/locations/ServicesAtLocation'
-import AreasGrid from '@/components/locations/AreasGrid'
+import LocalAreas from '@/components/home/LocalAreas'
 import DoctorAuthority from '@/components/locations/DoctorAuthority'
 import LocationReviews from '@/components/locations/LocationReviews'
 import LocationFAQ from '@/components/locations/LocationFAQ'
@@ -46,11 +46,11 @@ export default async function LocationsPage() {
         <MapEmbed clinic={cfg.clinic} />
         <HowToReach />
         <ServicesAtLocation />
-        <AreasGrid areas={cfg.areas} clinic={cfg.clinic} />
+        <LocalAreas areas={cfg.localAreas} clinic={cfg.clinic} />
         <DoctorAuthority doctor={cfg.doctor} />
         <LocationReviews />
         <LocationFAQ />
-        <InternalLinks areas={cfg.areas} doctorName={cfg.doctor.name} />
+        <InternalLinks areas={cfg.localAreas} doctorName={cfg.doctor.name} />
         <CTABand cta={cfg.ctaBand} />
         <Footer clinic={cfg.clinic} config={cfg} />
       </main>
