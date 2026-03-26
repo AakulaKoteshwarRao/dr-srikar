@@ -1,4 +1,5 @@
 export interface ClinicConfig {
+  entity?: { medicalSpecialty: string; bodyLocation: string; registrationState: string; foundingDate: string }
   photos: Record<string, string>
   services: ServicesConfig
   productPackages: ProductPackage[]
@@ -48,7 +49,12 @@ export interface ClinicInfo {
   mapsUrl: string
   mapUrl: string
   hours: string
+  hoursSchema?: { day: string; open: string; close: string }[]
   languages: string
+  pincode?: string
+  state?: string
+  foundingDate?: string
+  geo?: { lat: string; lng: string }
   social?: {
     google?: string
     facebook?: string

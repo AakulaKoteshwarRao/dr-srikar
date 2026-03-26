@@ -105,6 +105,18 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   const mapsUrl  = s(s02.hasMap, '')
   const website  = s(s01.url, '')
 
+  // Extract lat/lng from maps URL
+  let geoLat = '', geoLng = ''
+  const geoMatch = mapsUrl.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/)
+  if (geoMatch) { geoLat = geoMatch[1]; geoLng = geoMatch[2] }
+
+  // Build hoursSchema array for schema markup
+  const hoursObj = (s02.hours && typeof s02.hours === 'object') ? s02.hours as Record<string, { open: string; close: string }> : {}
+  const DAYS_ORDER = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+  const hoursSchema = DAYS_ORDER
+    .filter(d => hoursObj[d]?.open && hoursObj[d]?.close)
+    .map(d => ({ day: d, open: hoursObj[d].open, close: hoursObj[d].close }))
+
   const clinic: ClinicInfo = {
     name:        s(s02.brandName ?? s02.name, 'Clinic'),
     tagline:     s(s02.alternateName, ''),
@@ -114,18 +126,23 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
     email:       s(s02.email, ''),
     address:     [s(s02.buildingName,''), s(s02.street,''), s(s02.city,'')].filter(Boolean).join(', '),
     city:        s(s02.city, ''),
-    area:        s(s02.street, ''),
+    area:        s(s02.area ?? s02.street, ''),
     street:      s(s02.street, ''),
     hospital:    s(s02.buildingName, ''),
     hours: typeof s02.hours === 'string' ? s02.hours : (s02.hours && typeof s02.hours === 'object' ? 'Mon–Sat: 9:00 AM – 8:00 PM' : ''),
+    hoursSchema,
     languages:   s(s02.languages, ''),
     website,
     mapsUrl,
     mapUrl:      mapsUrl,
     mapEmbedUrl: s(s02.mapEmbedUrl, ''),
     medicalSpecialty: s(s02.medicalSpecialty, ''),
+    pincode:     s(s02.pincode, ''),
+    state:       s(s02.state, ''),
+    foundingDate: s(s02.foundingDate, ''),
+    geo: { lat: geoLat, lng: geoLng },
     social: {
-      google:    s(s02.socialGoogle, ''),
+      google:    s(s02.socialGoogle ?? mapsUrl, ''),
       facebook:  s(s02.socialFacebook, ''),
       instagram: s(s02.socialInstagram, ''),
       youtube:   s(s02.socialYoutube, ''),
@@ -508,10 +525,19 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   }
 
   // ── Assemble ──────────────────────────────────────────────────────────────
+  // ── Entity (for schema markup) ───────────────────────────────────────────
+  const entity = {
+    medicalSpecialty: s(s02.medicalSpecialty, ''),
+    bodyLocation:     s(s02.bodyLocation, ''),
+    registrationState: s(s02.state, ''),
+    foundingDate:     s(s02.foundingDate, ''),
+  }
+
   return {
     brand,
     clinic,
     doctor,
+    entity,
     hero,
     trustStrip,
     whyChoose,
