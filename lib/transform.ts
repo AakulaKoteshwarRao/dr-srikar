@@ -427,13 +427,13 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   const reviewSummary = {
     score:     googleRating,
     count:     reviewCount ? `Based on ${reviewCount} Google Reviews` : '',
-    googleUrl: s(s02.socialGoogle, ''),
+    googleUrl: s(s02.googleReviewLink ?? s02.socialGoogle, ''),
   }
 
   const testimonials = {
     rating:      googleRating,
     reviewCount,
-    googleUrl:   s(s02.socialGoogle, ''),
+    googleUrl:   s(s02.googleReviewLink ?? s02.socialGoogle, ''),
     reviews,
   }
 
