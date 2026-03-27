@@ -8,6 +8,7 @@ import Footer from '@/components/Footer'
 import BlogHero from '@/components/blog/BlogHero'
 import FeaturedPost from '@/components/blog/FeaturedPost'
 import BlogGrid from '@/components/blog/BlogGrid'
+export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
 import { getBlogs } from '@/lib/blogs'
 

@@ -7,6 +7,7 @@ import PricingTransparency from '@/components/products/PricingTransparency'
 import PackageTestimonials from '@/components/products/PackageTestimonials'
 import GuidanceSection from '@/components/products/GuidanceSection'
 import ProductsFAQ from '@/components/products/ProductsFAQ'
+export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
 import Footer from '@/components/Footer'
 

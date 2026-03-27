@@ -4,6 +4,7 @@ import CTABand from '@/components/home/CTABand'
 import StoriesHero from '@/components/success-stories/StoriesHero'
 import VideoGrid from '@/components/success-stories/VideoGrid'
 import StoriesFAQ from '@/components/success-stories/StoriesFAQ'
+export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
 import Footer from '@/components/Footer'
 

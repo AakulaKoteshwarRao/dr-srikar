@@ -2,6 +2,7 @@ import Header from '@/components/Header'
 import StickyBar from '@/components/StickyBar'
 import Footer from '@/components/Footer'
 import LegalPage from '@/components/legal/LegalPage'
+export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
 
 export default async function PrivacyPage() {

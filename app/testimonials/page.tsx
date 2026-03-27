@@ -5,6 +5,7 @@ import PageDisabled from '@/components/PageDisabled'
 import TestimonialsHero from '@/components/testimonials/TestimonialsHero'
 import ReviewsGrid from '@/components/testimonials/ReviewsGrid'
 import TestimonialsFAQ from '@/components/testimonials/TestimonialsFAQ'
+export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
 import Footer from '@/components/Footer'
 

@@ -8,6 +8,7 @@ import AppointmentHero from '@/components/appointment/AppointmentHero'
 import AppointmentForm from '@/components/appointment/AppointmentForm'
 import ClinicStrip from '@/components/appointment/ClinicStrip'
 import WhatToExpect from '@/components/appointment/WhatToExpect'
+export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
 import Footer from '@/components/Footer'
 

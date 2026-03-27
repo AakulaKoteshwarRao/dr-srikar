@@ -15,6 +15,7 @@ import DoctorAuthority from '@/components/locations/DoctorAuthority'
 import LocationReviews from '@/components/locations/LocationReviews'
 import LocationFAQ from '@/components/locations/LocationFAQ'
 import InternalLinks from '@/components/locations/InternalLinks'
+export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
 import Footer from '@/components/Footer'
 

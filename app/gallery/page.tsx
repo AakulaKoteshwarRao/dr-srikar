@@ -4,6 +4,7 @@ import CTABand from '@/components/home/CTABand'
 import Footer from '@/components/Footer'
 import GalleryHero from '@/components/gallery/GalleryHero'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
+export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
 
 export default async function GalleryPage() {

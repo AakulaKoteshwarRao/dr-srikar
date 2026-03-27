@@ -7,6 +7,7 @@ import CTABand from '@/components/home/CTABand'
 import DoctorHero from '@/components/doctor/DoctorHero'
 import CredentialsGrid from '@/components/doctor/CredentialsGrid'
 import DoctorFAQ from '@/components/doctor/DoctorFAQ'
+export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
 import Footer from '@/components/Footer'
 

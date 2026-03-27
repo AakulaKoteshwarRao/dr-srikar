@@ -5,6 +5,7 @@ import { generatePageSchemas } from '@/lib/schema/index.js'
 import { buildSchemaConfig } from '@/lib/schema/master.config.js'
 import StickyBar from '@/components/StickyBar'
 import Footer from '@/components/Footer'
+export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
 import { getBlogBySlug } from '@/lib/blogs'
 

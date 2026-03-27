@@ -4,6 +4,7 @@ import CTABand from '@/components/home/CTABand'
 import TeamHero from '@/components/team/TeamHero'
 import TeamCarousel from '@/components/team/TeamCarousel'
 import TeamFAQ from '@/components/team/TeamFAQ'
+export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
 import Footer from '@/components/Footer'
 
