@@ -115,7 +115,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   const DAYS_ORDER = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
   const hoursSchema = DAYS_ORDER
     .filter(d => hoursObj[d]?.open && hoursObj[d]?.close)
-    .map(d => ({ day: d, open: hoursObj[d].open, close: hoursObj[d].close }))
+    .map(d => ({ days: [d], opens: hoursObj[d].open, closes: hoursObj[d].close }))
 
   const clinic: ClinicInfo = {
     name:        s(s02.brandName ?? s02.name, 'Clinic'),
@@ -154,7 +154,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   // ── Doctor ────────────────────────────────────────────────────────────────
   // s03 = Doctor section in ConfigEditor
   const doctorName    = s(s03.name, 'Doctor')
-  const doctorDegrees = a(s03.degrees).join(', ')
+  const doctorDegrees = a(s03.degrees).map((d: any) => typeof d === 'object' ? (d.degree || d.title || '') : d).filter(Boolean).join(', ')
 
   const statsList = a(s03.stats)
   const findStat = (keywords: string[]) => {
@@ -176,7 +176,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
     gender:      s(s03.gender, 'Male'),
     specialties: a(s03.specialties),
     qualifications: a(s03.degrees).length
-      ? a(s03.degrees)
+      ? a(s03.degrees).map((d: any) => typeof d === 'object' ? (d.degree || d.title || '') : d).filter(Boolean)
       : doctorDegrees.split(/[,·\-]+/).map((d: string) => d.trim()).filter(Boolean),
     languages:   a(s03.languages),
     nmcNumber:          s(s03.regNumber, ''),
@@ -198,7 +198,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
     ],
     education:    a(s03.education),
     fellowships:  a(s03.fellowships),
-    experience:   a(s03.experience),
+    experience:   a(s03.experience).map((e: any) => typeof e === 'object' ? { role: s(e.role,''), hospital: s(e.hospital,'') } : { role: s(e,''), hospital: '' }),
     certifications: a(s03.certifications),
     workshops:    a(s03.workshops),
     publications: a(s03.publications),
@@ -220,7 +220,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
     headingEm:   clinic.city,
     subtext:     (s04.heroSubtext as string) || `${doctorName} provides expert diagnosis and treatment using the latest technology and a patient-first approach.`,
     tags:        a(s03.degrees).length ? [
-      a(s03.degrees)[0],
+      (typeof a(s03.degrees)[0] === 'object' ? (a(s03.degrees)[0].degree || '') : a(s03.degrees)[0]),
       yearsExp ? `${yearsExp} Years Experience` : '',
       patientCount ? `${patientCount} Patients Treated` : '',
     ].filter(Boolean) : [],

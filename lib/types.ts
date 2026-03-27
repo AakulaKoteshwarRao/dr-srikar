@@ -49,7 +49,7 @@ export interface ClinicInfo {
   mapsUrl: string
   mapUrl: string
   hours: string
-  hoursSchema?: { day: string; open: string; close: string }[]
+  hoursSchema?: { days: string[]; opens: string; closes: string }[]
   languages: string
   pincode?: string
   state?: string
