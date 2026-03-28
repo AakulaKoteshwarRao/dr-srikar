@@ -33,15 +33,19 @@ export interface ClinicConfig {
 export interface ClinicInfo {
   name: string
   tagline: string
+  alternateName?: string
   phone: string
   whatsapp: string
   logo?: string
+  image?: string
   heroImage?: string
   aboutImage?: string
   mapEmbedUrl?: string
   medicalSpecialty?: string
+  specialty?: string
   email: string
   address: string
+  addressObj?: { street: string; city: string; state: string; pincode: string; country: string }
   city: string
   area: string
   street: string
@@ -51,46 +55,56 @@ export interface ClinicInfo {
   hours: string
   hoursSchema?: { days: string[]; opens: string; closes: string }[]
   languages: string
+  languagesArr?: { name: string }[]
   pincode?: string
   state?: string
   foundingDate?: string
-  geo?: { lat: string; lng: string }
+  geo?: { lat: string; lng: string; latitude?: number; longitude?: number }
   social?: {
     google?: string
     facebook?: string
     instagram?: string
     youtube?: string
+    linkedin?: string
+    practo?: string
   }
-  insurers?: { bg: string; initials: string; name: string }[]
+  insurers?: { name: string; bg?: string; initials?: string }[]
+  facilities?: { title: string; description?: string }[]
   website?: string
-  specialty?: string
   description?: string
-  image?: string
   type?: string
   locality?: string
-  geo?: { lat: string; lng: string }
   priceRange?: string
   areaServed?: string[]
   aggregateRating?: { ratingValue: string; reviewCount: string }
+  rating?: { value: number; count: number; best: number; worst: number }
+  bookingUrl?: string
+  serviceType?: string
+  paymentAccepted?: string
+  currenciesAccepted?: string
 }
 
 export interface DoctorInfo {
   qualifications: string[]
-  languages: string[]
+  languages: any[]
+  languagesObj?: { name: string; code?: string }[]
   education: { degree: string; institution: string }[]
   fellowships: { title: string; institution: string }[]
   experience: { role: string; hospital: string }[]
   certifications: string[]
   workshops: { title: string; location: string }[]
   publications: { title: string; journal: string }[]
-  awards: { title: string; year: string }[]
+  awards: any[]
   memberships: string[]
   nmcNumber: string
+  registrationNumber?: string
   faqs: FaqItem[]
   name: string
   degrees: string
+  degreesObj?: { name: string; level: string; institution: string }[]
   photo: string
   specialties: string[]
+  knowsAbout?: string[]
   stats: DoctorStat[]
   details: DoctorDetail[]
   ctaLabel: string
@@ -99,8 +113,13 @@ export interface DoctorInfo {
   description?: string
   image?: string
   profileUrl?: string
+  profilePath?: string
   priceRange?: string
-  registrationNumber?: string
+  honorificPrefix?: string
+  jobTitle?: string
+  email?: string
+  imageWidth?: number
+  imageHeight?: number
 }
 
 export interface DoctorStat {
