@@ -399,19 +399,52 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
 
   // ── Pricing ───────────────────────────────────────────────────────────────
   // s15.sections[]
-  const PRC_FIXED = [
-    { barClass: 'acc-teal',    iconType: 'dollar',      title: 'Upfront Pricing'  },
-    { barClass: 'acc-blue',    iconType: 'credit-card', title: 'EMI Available'    },
-    { barClass: 'acc-vibrant', iconType: 'shield',      title: 'Insurance Support'},
-  ] as const
-  const pricingRaw = a(s15.sections)
-  const pricing = PRC_FIXED.map((fixed, i) => ({
-    ...fixed,
-    description: s(pricingRaw[i]?.title ?? pricingRaw[i]?.description, ''),
-    points:      typeof pricingRaw[i]?.items === 'string'
-      ? pricingRaw[i].items.split('\n').map((l: string) => l.trim()).filter(Boolean)
-      : a(pricingRaw[i]?.points ?? pricingRaw[i]?.items),
-  }))
+  const consultationFee = s(s02.consultationFee, '')
+  const allCosts = [
+    ...a(s08.procedures).map((p: any) => parseFloat(s(p.cost, '0'))),
+    ...a(s10.packages).map((p: any) => parseFloat(s(p.price, '0'))),
+  ].filter((n: number) => n > 0)
+  const minCost = allCosts.length ? Math.min(...allCosts) : null
+  const maxCost = allCosts.length ? Math.max(...allCosts) : null
+  const insurerNames = a(s02.insurers).map((ins: any) => s(ins.name, '')).filter(Boolean)
+  const pricing = [
+    {
+      barClass: 'acc-teal' as const,
+      iconType: 'stethoscope',
+      title: 'Consultation Fee',
+      description: consultationFee ? `Rs.${consultationFee} per consultation` : 'Contact us for consultation fee details.',
+      points: [
+        consultationFee ? `Rs.${consultationFee} per visit` : 'Fee communicated at time of booking',
+        'No hidden charges',
+        'Detailed treatment plan provided after consultation',
+      ],
+    },
+    {
+      barClass: 'acc-blue' as const,
+      iconType: 'scissors',
+      title: 'Procedure & Package Charges',
+      description: minCost && maxCost
+        ? `Rs.${minCost.toLocaleString('en-IN')} - Rs.${maxCost.toLocaleString('en-IN')} approximate range`
+        : 'Cost varies based on procedure and complexity.',
+      points: [
+        minCost && maxCost ? `Approximate range: Rs.${minCost.toLocaleString('en-IN')} - Rs.${maxCost.toLocaleString('en-IN')}` : 'Costs vary by procedure and individual condition',
+        'Exact estimate provided after first consultation',
+        'Transparent cost breakdown before any procedure begins',
+        'No surprise charges',
+      ],
+    },
+    {
+      barClass: 'acc-vibrant' as const,
+      iconType: 'shield',
+      title: 'Insurance',
+      description: insurerNames.length > 0 ? `${insurerNames.join(', ')} accepted` : 'Check with us regarding your insurance details.',
+      points: [
+        ...(insurerNames.length > 0 ? [`Accepted: ${insurerNames.join(', ')}`] : []),
+        'Check with us regarding your insurance details',
+        'Our team will help verify your coverage',
+      ],
+    },
+  ])
 
   // ── Reviews ───────────────────────────────────────────────────────────────
   // s13.reviews[]
