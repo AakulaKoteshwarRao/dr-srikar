@@ -22,7 +22,23 @@ export default async function BlogPostPage({ params }: { params?: { slug?: strin
 
   const pageSchemas = generatePageSchemas(sc, {
     pageType: 'blog',
-    pageData: { slug },
+    pageData: {
+      slug,
+      title:         post?.title || title,
+      headline:      post?.title || title,
+      description:   post?.excerpt || description,
+      excerpt:       post?.excerpt || '',
+      body:          post?.content || '',
+      keywords:      post?.keywords || '',
+      image:         post?.featured_image || sc.clinic.image,
+      imageWidth:    1200,
+      imageHeight:   630,
+      datePublished: post?.published_at || '',
+      dateModified:  post?.published_at || '',
+      wordCount:     post?.content ? post.content.replace(/<[^>]+>/g, '').split(/\s+/).length : 0,
+      schemaType:    'BlogPosting',
+      category:      post?.category || 'Healthcare',
+    },
     meta: {
       path:        _path,
       name:        `${title} | ${sc.clinic.name}`,
