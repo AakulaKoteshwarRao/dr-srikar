@@ -249,7 +249,26 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   // ── Why Choose ────────────────────────────────────────────────────────────
   // s06.items[]
   const WHY_COLORS = ['teal', 'blue', 'deep', 'green'] as const
-  const WHY_ICONS  = ['pulse', 'clock', 'user', 'check']
+
+  // Map specialty keywords to relevant icon sets
+  const specialtyLower = specialty.toLowerCase()
+  const getSpecialtyIcons = (sp: string): string[] => {
+    if (sp.includes('eye') || sp.includes('ophthal') || sp.includes('vision')) return ['eye', 'microscope', 'shield', 'check']
+    if (sp.includes('ortho') || sp.includes('bone') || sp.includes('joint') || sp.includes('spine')) return ['activity', 'zap', 'shield', 'check']
+    if (sp.includes('cardio') || sp.includes('heart')) return ['heart', 'activity', 'pulse', 'check']
+    if (sp.includes('derm') || sp.includes('skin')) return ['sparkles', 'shield', 'user', 'check']
+    if (sp.includes('dental') || sp.includes('dentist') || sp.includes('teeth')) return ['smile', 'shield', 'sparkles', 'check']
+    if (sp.includes('neuro') || sp.includes('brain')) return ['zap', 'activity', 'shield', 'check']
+    if (sp.includes('gastro') || sp.includes('digest') || sp.includes('liver')) return ['activity', 'shield', 'search', 'check']
+    if (sp.includes('gyne') || sp.includes('obstet') || sp.includes('women')) return ['heart', 'shield', 'user', 'check']
+    if (sp.includes('pediatr') || sp.includes('child')) return ['heart', 'smile', 'shield', 'check']
+    if (sp.includes('urol') || sp.includes('kidney')) return ['activity', 'shield', 'search', 'check']
+    if (sp.includes('oncol') || sp.includes('cancer')) return ['shield', 'activity', 'heart', 'check']
+    if (sp.includes('plastic') || sp.includes('cosmetic') || sp.includes('aesthet')) return ['sparkles', 'user', 'shield', 'check']
+    return ['pulse', 'clock', 'user', 'check'] // default
+  }
+  const WHY_ICONS = getSpecialtyIcons(specialtyLower)
+
   const whyChoose = a(s06.items).map((w: any, i: number) => ({
     iconColor:   WHY_COLORS[i % 4] as 'teal' | 'blue' | 'deep' | 'green',
     iconType:    WHY_ICONS[i % 4],
