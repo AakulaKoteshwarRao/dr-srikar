@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import type { ClinicInfo } from '@/lib/types'
@@ -43,7 +44,7 @@ export default function Header({ clinic }: { clinic: ClinicInfo }) {
       <div className="header-inner">
         <Link href="/" className="logo" aria-label="Go to homepage">
           {clinic.logo ? (
-            <img src={clinic.logo} alt={clinic.name} width={200} height={56} style={{ height: 56, width: 'auto', maxWidth: 200, objectFit: 'contain', display: 'block' }} loading="eager" />
+            <Image src={clinic.logo} alt={clinic.name} width={200} height={56} style={{ height: 56, width: 'auto', maxWidth: 200, objectFit: 'contain', display: 'block' }} priority />
           ) : (
             <div style={{ width: 44, height: 44, borderRadius: 10, background: 'linear-gradient(135deg, var(--secondary), var(--primary))', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <Icon name="home" size={24} color="#FFFFFF" />
