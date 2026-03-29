@@ -1,6 +1,16 @@
 import type { ReviewItem, ReviewSummary } from '@/lib/types'
 import { Icon } from '@/lib/icons'
 
+const GoogleStars = ({ size = 20 }: { size?: number }) => (
+  <div style={{ display: 'flex', gap: '2px' }}>
+    {[0,1,2,3,4].map(i => (
+      <svg key={i} width={size} height={size} viewBox="0 0 24 24" fill="#F59E0B">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+    ))}
+  </div>
+)
+
 export default function Reviews({ reviews, summary }: { reviews: ReviewItem[]; summary: ReviewSummary }) {
   return (
     <section className="reviews-section">
@@ -10,10 +20,7 @@ export default function Reviews({ reviews, summary }: { reviews: ReviewItem[]; s
           <h2 className="sec-title">What our patients say.</h2>
           <div className="reviews-rating">
             <span className="reviews-score">{summary.score}</span>
-            <div>
-              <span className="reviews-stars">*****</span>
-              <span className="reviews-count">{summary.count}</span>
-            </div>
+            <GoogleStars size={28} />
           </div>
         </div>
         <div className="reviews-grid">
@@ -25,7 +32,7 @@ export default function Reviews({ reviews, summary }: { reviews: ReviewItem[]; s
                   <span className="review-name">{review.name}</span>
                   <span className="review-date">{review.date}</span>
                 </div>
-                <span className="review-stars">*****</span>
+                <GoogleStars size={16} />
               </div>
               <p>&ldquo;{review.text}&rdquo;</p>
             </div>
