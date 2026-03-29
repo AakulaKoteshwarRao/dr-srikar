@@ -36,7 +36,7 @@ export default function CardGrid({
                   <Icon name={item.iconType || 'info'} size={26} color="#FFFFFF" />
                 </div>
               )}
-              <span className="card-visual-label" style={{ position: 'relative', zIndex: 1 }}>{item.label}</span>
+              {!item.image && <span className="card-visual-label" style={{ position: 'relative', zIndex: 1 }}>{item.label}</span>}
             </div>
             <div className="img-card-body" style={{ padding: '1.25rem' }}>
               <h3>{item.title}</h3>

@@ -310,9 +310,11 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   // ── Conditions ────────────────────────────────────────────────────────────
   // s07.conditions[]
   const conditionList = a(s07.conditions)
+  const photos = raw?.photos ?? {}
   const conditions = conditionList.map((c: any, i: number) => {
     const label = s(c.name ?? c.title, `condition-${i}`)
     const slug = s(c.slug, slugify(label))
+    const photoKey = `condition_${slug}`
     return {
       slug,
       href:        `/conditions/${slug}`,
@@ -321,7 +323,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
       label,
       title:       label,
       description: s(c.descriptionShort ?? c.description, ''),
-      image:       '',
+      image:       s(photos[photoKey] ?? c.heroImage, ''),
     }
   })
 
@@ -343,6 +345,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   const procedures = procedureList.map((p: any, i: number) => {
     const label = s(p.name ?? p.title, `procedure-${i}`)
     const slug = s(p.slug, slugify(label))
+    const photoKey = `procedure_${slug}`
     return {
       slug,
       href:        `/procedures/${slug}`,
@@ -351,7 +354,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
       label,
       title:       label,
       description: s(p.descriptionShort ?? p.description, ''),
-      image:       '',
+      image:       s(photos[photoKey] ?? p.heroImage, ''),
     }
   })
 
@@ -373,6 +376,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   const packages = packageList.map((p: any, i: number) => {
     const label = s(p.name ?? p.title, `package-${i}`)
     const slug = s(p.slug, slugify(label))
+    const photoKey = `package_${slug}`
     return {
       slug,
       href:        `/packages/${slug}`,
@@ -382,6 +386,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
       description: s(p.description, ''),
       price:       s(p.price, ''),
       tags:        a(p.tags ?? p.features),
+      image:       s(photos[photoKey] ?? p.heroImage, ''),
     }
   })
 
