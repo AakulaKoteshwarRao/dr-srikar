@@ -76,6 +76,7 @@
   }
   .team-card-photo svg { width: 48px; height: 48px; color: rgba(255,255,255,0.3); }
   .team-card-photo span { color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 0.4rem; }
+  .team-card-body { padding: 1.5rem; }
   .team-card-name { font-size: 1.15rem; font-weight: 800; color: #111111; margin-bottom: 0.2rem; }
   .team-card-desg { font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-bottom: 0.75rem; }
   .team-card-quals {
