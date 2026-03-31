@@ -302,6 +302,24 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   }
   const WHY_ICONS = getSpecialtyIcons(specialtyLower)
 
+  // Specialty-based icons for conditions, procedures, packages
+  const getCPPIcons = (sp: string): string[] => {
+    if (sp.includes('ortho') || sp.includes('joint') || sp.includes('bone') || sp.includes('robot')) return ['activity', 'zap', 'shield', 'briefcase', 'pulse', 'first-aid']
+    if (sp.includes('cardio') || sp.includes('heart')) return ['pulse', 'activity', 'heart', 'shield', 'zap', 'stethoscope']
+    if (sp.includes('neuro') || sp.includes('brain') || sp.includes('spine')) return ['brain', 'activity', 'shield', 'zap', 'pulse', 'eye']
+    if (sp.includes('derm') || sp.includes('skin')) return ['shield', 'droplet', 'leaf', 'eye', 'activity', 'zap']
+    if (sp.includes('ophthal') || sp.includes('eye')) return ['eye', 'shield', 'zap', 'activity', 'pulse', 'stethoscope']
+    if (sp.includes('dental') || sp.includes('dent')) return ['shield', 'zap', 'activity', 'briefcase', 'pulse', 'first-aid']
+    if (sp.includes('gyn') || sp.includes('obst')) return ['heart', 'shield', 'activity', 'pulse', 'leaf', 'stethoscope']
+    if (sp.includes('ent') || sp.includes('ear') || sp.includes('nose')) return ['activity', 'shield', 'pulse', 'zap', 'stethoscope', 'first-aid']
+    if (sp.includes('gastro') || sp.includes('digest')) return ['activity', 'shield', 'pulse', 'droplet', 'stethoscope', 'zap']
+    if (sp.includes('urol') || sp.includes('kidney')) return ['activity', 'shield', 'droplet', 'zap', 'pulse', 'stethoscope']
+    if (sp.includes('oncol') || sp.includes('cancer')) return ['shield', 'activity', 'pulse', 'zap', 'stethoscope', 'first-aid']
+    if (sp.includes('pediatr') || sp.includes('child')) return ['heart', 'shield', 'activity', 'pulse', 'first-aid', 'stethoscope']
+    return ['activity', 'shield', 'pulse', 'zap', 'stethoscope', 'briefcase']
+  }
+  const CPP_ICONS = getCPPIcons(specialtyLower)
+
   const whyChoose = a(s06.items).map((w: any, i: number) => ({
     iconColor:   WHY_COLORS[i % 4] as 'teal' | 'blue' | 'deep' | 'green',
     iconType:    s(w.iconType, WHY_ICONS[i % 4]),
@@ -321,7 +339,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
       slug,
       href:        `/conditions/${slug}`,
       gradClass:   g(i),
-      iconType:    ['activity', 'shield', 'pulse', 'droplet'][i % 4],
+      iconType:    CPP_ICONS[i % CPP_ICONS.length],
       label,
       title:       label,
       description: s(c.descriptionShort ?? c.description, ''),
@@ -342,7 +360,6 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
 
   // ── Procedures ────────────────────────────────────────────────────────────
   // s08.procedures[]
-  const PROC_ICONS = ['briefcase', 'zap', 'search', 'shield', 'tool', 'activity']
   const procedureList = a(s08.procedures)
   const procedures = procedureList.map((p: any, i: number) => {
     const label = s(p.name ?? p.title, `procedure-${i}`)
@@ -352,7 +369,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
       slug,
       href:        `/procedures/${slug}`,
       gradClass:   g(i),
-      iconType:    PROC_ICONS[i % PROC_ICONS.length],
+      iconType:    CPP_ICONS[i % CPP_ICONS.length],
       label,
       title:       label,
       description: s(p.descriptionShort ?? p.description, ''),
@@ -373,7 +390,6 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
 
   // ── Packages ──────────────────────────────────────────────────────────────
   // s10.packages[]
-  const PKG_ICONS = ['box', 'tool', 'briefcase', 'zap', 'activity']
   const packageList = a(s10.packages)
   const packages = packageList.map((p: any, i: number) => {
     const label = s(p.name ?? p.title, `package-${i}`)
@@ -383,7 +399,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
       slug,
       href:        `/packages/${slug}`,
       gradClass:   g(i),
-      iconType:    PKG_ICONS[i % PKG_ICONS.length],
+      iconType:    CPP_ICONS[i % CPP_ICONS.length],
       title:       label,
       description: s(p.description, ''),
       price:       s(p.price, ''),
