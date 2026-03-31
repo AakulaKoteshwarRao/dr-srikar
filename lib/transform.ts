@@ -302,7 +302,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
 
   const whyChoose = a(s06.items).map((w: any, i: number) => ({
     iconColor:   WHY_COLORS[i % 4] as 'teal' | 'blue' | 'deep' | 'green',
-    iconType:    WHY_ICONS[i % 4],
+    iconType:    s(w.iconType, WHY_ICONS[i % 4]),
     title:       s(w.title, ''),
     description: s(w.text ?? w.description, ''),
   }))
@@ -406,8 +406,8 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   // s11.steps[]
   const HWW_ICONS = ['message', 'search', 'file', 'check-circle']
   const howWeWork = a(s11.steps).map((step: any, i: number) => ({
-    badge:       `Step ${i + 1 < 10 ? '0' + (i + 1) : i + 1}`,
-    iconType:    HWW_ICONS[i % HWW_ICONS.length],
+    badge:       s(step.badge, `Step ${i + 1 < 10 ? '0' + (i + 1) : i + 1}`),
+    iconType:    s(step.iconType, HWW_ICONS[i % HWW_ICONS.length]),
     title:       s(step.title, ''),
     description: s(step.text ?? step.description, ''),
   }))
@@ -422,8 +422,10 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
   const clinicalCards = a(s12.cards)
   const clinicalInfo = CLI_FIXED.map((fixed, i) => ({
     ...fixed,
+    iconType:    s(clinicalCards[i]?.iconType, fixed.iconType),
+    colorClass:  s(clinicalCards[i]?.colorClass, fixed.colorClass),
     description: s(clinicalCards[i]?.text ?? clinicalCards[i]?.description, ''),
-    note:        s(clinicalCards[i]?.note, ''),
+    note:        s(clinicalCards[i]?.note ?? clinicalCards[i]?.value, ''),
   }))
 
   // ── Patient Stories ───────────────────────────────────────────────────────
