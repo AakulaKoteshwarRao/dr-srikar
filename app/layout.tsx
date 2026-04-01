@@ -34,9 +34,27 @@ const isHex = (v: any) => typeof v === 'string' && /^#[0-9A-Fa-f]{6}$/.test(v)
 
 export async function generateMetadata(): Promise<Metadata> {
   const cfg = await loadConfig()
+  const name    = cfg.clinic?.name    || 'Clinic'
+  const tagline = cfg.clinic?.tagline || 'Healthcare services'
+  const image   = cfg.clinic?.heroImage || cfg.clinic?.logo || ''
+  const url     = cfg.site?.url || ''
   return {
-    title:       cfg.clinic?.name    || 'Clinic',
-    description: cfg.clinic?.tagline || 'Healthcare services',
+    title:       name,
+    description: tagline,
+    openGraph: {
+      title:       name,
+      description: tagline,
+      url,
+      siteName:    name,
+      type:        'website',
+      images: image ? [{ url: image, width: 1200, height: 630, alt: name }] : [],
+    },
+    twitter: {
+      card:        'summary_large_image',
+      title:       name,
+      description: tagline,
+      images:      image ? [image] : [],
+    },
   }
 }
 
