@@ -135,7 +135,12 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
     website,
     mapsUrl,
     mapUrl:      mapsUrl,
-    mapEmbedUrl: s(s02.mapEmbedUrl, ''),
+    mapEmbedUrl: (() => {
+      const raw = s(s02.mapEmbedUrl, '')
+      if (!raw) return ''
+      const match = raw.match(/src="([^"]+)"/)
+      return match ? match[1] : raw
+    })(),
     medicalSpecialty: s(s02.medicalSpecialty, ''),
     pincode:     s(s02.pincode, ''),
     state:       s(s02.state, ''),

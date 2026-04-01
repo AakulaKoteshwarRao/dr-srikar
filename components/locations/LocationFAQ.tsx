@@ -1,17 +1,21 @@
-'use client'
+"use client"
 import { useState } from 'react'
+import { getConfig } from '@/lib/config'
 import { Icon } from '@/lib/icons'
 
-const faqs = [
-  { q: 'Is the clinic wheelchair accessible?', a: 'Yes. Our clinic has full wheelchair accessibility including ramps and accessible restrooms. Please call ahead if you need special assistance.' },
-  { q: 'Is there parking available?', a: 'Parking is available outside the clinic building. Contact us for specific landmark directions.' },
-  { q: 'What is the nearest metro station?', a: 'The nearest metro station and public transport options are close by. Contact us for specific directions from your location.' },
-  { q: 'Do you handle emergency cases?', a: 'Yes. Emergency cases are seen immediately during clinic hours. Contact us for after-hours emergency arrangements.' },
-  { q: 'Can I visit without an appointment?', a: 'Walk-ins are accepted but appointments are preferred to minimise waiting. You can book via phone, WhatsApp, or the online appointment form.' },
-]
-
 export default function LocationFAQ() {
+  const cfg = getConfig()
+  const clinic = cfg.clinic || {}
   const [open, setOpen] = useState<number | null>(null)
+
+  const faqs = [
+    { q: 'Is the clinic wheelchair accessible?', a: `${clinic.name || 'Our clinic'} has full wheelchair accessibility. Please call ahead if you need special assistance.` },
+    { q: 'Is there parking available?', a: clinic.parking || 'Parking is available near the clinic. Contact us for specific directions.' },
+    { q: 'What are the working hours?', a: clinic.hours ? `We are open ${clinic.hours}. For emergencies outside these hours, please call us directly.` : 'Please contact us for current working hours.' },
+    { q: 'Do you handle emergency cases?', a: 'Yes. Emergency cases are seen immediately during clinic hours. Contact us for after-hours emergency arrangements.' },
+    { q: 'Can I visit without an appointment?', a: 'Walk-ins are accepted but appointments are preferred to minimise waiting. You can book via phone, WhatsApp, or the online appointment form.' },
+  ]
+
   return (
     <section className="faq-section" style={{ background: 'var(--neutral-100)' }}>
       <div className="faq-inner">

@@ -1,12 +1,5 @@
-import defaultData from '../../data/default.json'
+import { getConfig } from '@/lib/config'
 import type { AreaItem } from '@/lib/types'
-
-const d = defaultData
-
-const serviceLinks = [
-  ...(d.services?.conditions || []).slice(0, 3).map((s: any) => ({ label: s.title, href: `/conditions/${s.slug}` })),
-  ...(d.services?.procedures || []).slice(0, 2).map((p: any) => ({ label: p.title, href: `/procedures/${p.slug}` })),
-]
 
 const pageLinks = [
   { label: 'About the Clinic', href: '/about' },
@@ -16,6 +9,13 @@ const pageLinks = [
 ]
 
 export default function InternalLinks({ areas, doctorName }: { areas: AreaItem[]; doctorName: string }) {
+  const cfg = getConfig()
+  const conditions = (cfg.conditions || []).slice(0, 3)
+  const procedures = (cfg.procedures || []).slice(0, 2)
+  const serviceLinks = [
+    ...conditions.map((s: any) => ({ label: s.title || s.label, href: `/conditions/${s.slug}` })),
+    ...procedures.map((p: any) => ({ label: p.title || p.label, href: `/procedures/${p.slug}` })),
+  ]
   return (
     <section className="internal-links">
       <h3>Quick Links</h3>
