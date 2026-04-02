@@ -279,15 +279,16 @@ export function buildDoctorMetadata(cfg: ClinicConfig): Metadata {
 /** Condition slug page metadata */
 export function buildConditionMetadata(
   cfg: ClinicConfig,
-  condition: { title: string; slug: string; summary?: string; description?: string },
+  condition: { title?: string; name?: string; slug: string; summary?: string; description?: string },
   photoUrl?: string | null
 ): Metadata {
   const clinic = cfg.clinic as any
   const city   = clinic?.city || ''
-  const desc   = condition.summary || condition.description || `Expert treatment for ${condition.title} in ${city}.`
+  const label  = condition.title || condition.name || condition.slug
+  const desc   = condition.summary || condition.description || `Expert treatment for ${label} in ${city}.`
 
   return buildPageMetadata(cfg, {
-    title:       `${condition.title} Treatment`,
+    title:       `${label} Treatment`,
     description: desc,
     path:        `/conditions/${condition.slug}`,
     image:       photoUrl,
