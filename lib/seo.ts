@@ -85,7 +85,8 @@ export function buildTitle(
  * Appends city if not already mentioned, for local SEO signal.
  */
 export function buildDescription(text: string, city?: string): string {
-  let desc = text?.trim() || ''
+  // Strip any HTML tags or citation markup that may come from content generators
+  let desc = (text?.trim() || '').replace(/<[^>]+>/g, '').replace(/&lt;[^&]+&gt;/g, '').replace(/&quot;/g, '"').replace(/&amp;/g, '&').trim()
 
   // Append city if not already in description
   if (city && !desc.toLowerCase().includes(city.toLowerCase())) {
