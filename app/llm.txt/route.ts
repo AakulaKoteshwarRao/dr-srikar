@@ -51,7 +51,7 @@ export async function GET() {
 ## About
 ${doctorName ? `${doctorName} is a ${specialty} based in ${area}, ${city}, Maharashtra, India.` : ''}
 ${degrees ? `Qualifications: ${degrees}.` : ''}
-${experience ? `Experience: ${experience}+ years in ${specialty}.` : ''}
+${experience ? `Experience: ${String(experience).replace(/\+$/, "")}+ years in ${specialty}.` : ''}
 ${regNumber ? `Medical Registration: ${regNumber}.` : ''}
 ${jobTitle ? `Designation: ${jobTitle}.` : ''}
 ${specialties ? `Specialises in: ${specialties}.` : ''}
