@@ -6,6 +6,7 @@ import StickyBar from '@/components/StickyBar'
 import Footer from '@/components/Footer'
 export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
+import BlogAuthor from '@/components/blog/BlogAuthor'
 import type { Metadata } from 'next'
 import { buildBlogMetadata } from '@/lib/seo'
 import { getBlogBySlug } from '@/lib/blogs'
@@ -118,27 +119,18 @@ export default async function BlogPostPage({ params }: { params?: { slug?: strin
             )
           }
 
-          {/* Author section */}
-          <div className="author-section">
-            <div className="author-avatar">
-              {cfg.doctor?.photo
-                ? <img src={cfg.doctor.photo} alt={cfg.doctor.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
-                : <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              }
-            </div>
-            <div className="author-info">
-              <h3>{cfg.doctor?.name || sc.clinic.name}</h3>
-              <div className="author-role">{cfg.doctor?.degrees || ''}</div>
-              <p>
-                {(cfg.doctor?.stats?.[0] as any)?.number || '15'}+ years of experience
-                {cfg.doctor?.specialties?.length ? ` specialising in ${cfg.doctor.specialties.slice(0, 2).join(', ')}` : ''}.
-              </p>
-              <a href="/doctor" className="author-link">
-                View Full Profile{' '}
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
-            </div>
-          </div>
+          {/* Author section — BlogAuthor component with Author schema */}
+          <BlogAuthor
+            name={cfg.doctor?.name || sc.clinic.name}
+            photo={cfg.doctor?.photo}
+            degrees={cfg.doctor?.degrees}
+            yearsExp={(cfg.doctor?.stats?.[0] as any)?.number || '15'}
+            specialties={cfg.doctor?.specialties || []}
+            profileUrl="/doctor"
+            clinicName={sc.clinic.name}
+            clinicUrl={sc.site?.url || (cfg.clinic as any)?.website || ''}
+            publishedAt={post?.published_at || ''}
+          />
 
         </article>
 
