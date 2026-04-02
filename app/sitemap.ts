@@ -3,8 +3,8 @@ import { loadConfig } from '@/lib/config'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const cfg     = await loadConfig()
-  const site    = cfg.site    as any
-  const base    = (site?.url || '').replace(/\/$/, '')
+  const clinic  = cfg.clinic  as any
+  const base    = (clinic?.website || (cfg.site as any)?.url || '').replace(/\/$/, '')
 
   const now = new Date()
 
