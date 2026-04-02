@@ -213,7 +213,7 @@ export function buildPageMetadata(cfg: ClinicConfig, input: PageSEOInput): Metad
   const image       = input.image || clinic?.heroImage || clinic?.logo || ''
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: {
       canonical,
