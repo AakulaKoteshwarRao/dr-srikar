@@ -238,7 +238,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
     certifications: a(s03.certifications),
     workshops:    a(s03.workshops),
     publications: a(s03.publications),
-    awards:       a(s03.awards),
+    awards:       a(s03.awards).map((a: any) => typeof a === 'object' ? a : { title: a, year: '' }),
     memberships:  a(s03.memberships),
     faqs:         a(s14.faqs).map((f: any) => ({
       question: s(f.q ?? f.question, ''),
