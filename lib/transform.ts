@@ -232,7 +232,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
       { icon: 'clock',    text: clinic.hours },
       { icon: 'language', text: clinic.languages },
     ],
-    education:    a(s03.education),
+    education:    a(s03.degrees).map((d: any) => typeof d === 'object' ? { degree: d.degree || d.title || '', institution: d.institution || '' } : { degree: d, institution: '' }),
     fellowships:  a(s03.fellowships),
     experience:   a(s03.experience).map((e: any) => typeof e === 'object' ? { role: s(e.role,''), hospital: s(e.hospital,'') } : { role: s(e,''), hospital: '' }),
     certifications: a(s03.certifications),
