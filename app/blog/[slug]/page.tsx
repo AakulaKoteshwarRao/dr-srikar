@@ -4,6 +4,7 @@ import { generatePageSchemas } from '@/lib/schema/index.js'
 import { buildSchemaConfig } from '@/lib/schema/master.config.js'
 import StickyBar from '@/components/StickyBar'
 import Footer from '@/components/Footer'
+import CTABand from '@/components/home/CTABand'
 export const dynamic = 'force-dynamic'
 import { loadConfig } from '@/lib/config'
 import BlogAuthor from '@/components/blog/BlogAuthor'
@@ -135,28 +136,7 @@ export default async function BlogPostPage({ params }: { params?: { slug?: strin
         </article>
 
         {/* CTA Band */}
-        <section className="cta-band">
-          <div className="cta-band-inner">
-            <div className="cta-band-content">
-              <h2>Need to speak with a specialist?</h2>
-              <p>Book a consultation and get a clear diagnosis and treatment plan.</p>
-            </div>
-            <div className="cta-band-actions">
-              <a href="/appointment" className="cta-primary" onClick={e => { e.preventDefault(); typeof window !== "undefined" && window.dispatchEvent(new CustomEvent("openAppointmentModal")) }}>
-                Book Appointment{' '}
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
-              {cfg.clinic?.whatsapp && (
-                <a href={`https://wa.me/${cfg.clinic.whatsapp}`} className="cta-secondary">
-                  WhatsApp Us
-                </a>
-              )}
-            </div>
-            <div className="cta-band-info">
-              {cfg.clinic?.hospital && <span>📍 {cfg.clinic.hospital}, {cfg.clinic.city}</span>}
-            </div>
-          </div>
-        </section>
+        <CTABand cta={cfg.ctaBand} />
 
         <Footer clinic={cfg.clinic} config={cfg} />
       </main>
