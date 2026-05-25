@@ -54,16 +54,14 @@ async function sbFetch(path: string): Promise<any[] | null> {
 // Fetch all published blogs for this client, ordered newest first
 export async function getBlogs(): Promise<BlogPost[]> {
   const rows = await sbFetch(
-    `blogs?select=id,title,slug,excerpt,category,tags,status,featured_image,published_at,meta_title,meta_description&clients!inner(slug)=eq.${SLUG}&status=eq.published&order=published_at.desc`
-  )
+`blogs?select=id,title,slug,excerpt,category,tags,status,featured_image,published_at,meta_title,meta_description,clients!inner(slug)&clients.slug=eq.${SLUG}&status=eq.published&order=published_at.desc`  )
   return (rows || []) as BlogPost[]
 }
 
 // Fetch a single blog by slug for this client
 export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
   const rows = await sbFetch(
-    `blogs?select=*&clients!inner(slug)=eq.${SLUG}&slug=eq.${slug}&status=eq.published&limit=1`
-  )
+`blogs?select=*,clients!inner(slug)&clients.slug=eq.${SLUG}&slug=eq.${slug}&status=eq.published&limit=1`  )
   if (!rows || rows.length === 0) return null
   return rows[0] as BlogPost
 }
