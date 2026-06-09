@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://drsmart-website-template.vercel.app/sitemap.xml
