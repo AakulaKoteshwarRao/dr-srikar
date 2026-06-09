@@ -3,9 +3,8 @@ import { loadConfig } from '@/lib/config'
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const cfg  = await loadConfig()
-  const site = cfg.site as any
-  const base = (site?.url || '').replace(/\/$/, '')
-
+const clinic = cfg.clinic as any
+  const base = (clinic?.website || '').replace(/\/$/, '')
   return {
     rules: [
       {
