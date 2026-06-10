@@ -79,7 +79,7 @@ export default function BlogAuthor({
           <h3>{name}</h3>
           {degrees && <div className="author-role">{degrees}</div>}
           <p>
-            {yearsExp}+ years of experience
+        {String(yearsExp).replace(/\+/g, '')}+ years of experience
             {specialties.length > 0 ? ` specialising in ${specialties.slice(0, 2).join(', ')}` : ''}.
             {clinicName ? ` Practising at ${clinicName}.` : ''}
           </p>
