@@ -18,10 +18,11 @@ export async function generateMetadata({ params }: { params?: { slug?: string } 
   const slug = params?.slug || ''
   const post = await getBlogBySlug(slug)
   return buildBlogMetadata(cfg, {
-    title:      post?.meta_title || post?.title || slug.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase()),
+    title:       post?.meta_title || post?.title || slug.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase()),
     slug,
-    excerpt:    post?.meta_description || post?.excerpt,
-    coverImage: post?.featured_image,
+    excerpt:     post?.meta_description || post?.excerpt,
+    coverImage:  post?.featured_image,
+    publishedAt: post?.published_at,
   })
 }
 

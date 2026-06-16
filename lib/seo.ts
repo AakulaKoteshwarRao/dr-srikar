@@ -319,18 +319,33 @@ export function buildProcedureMetadata(
 /** Blog post metadata */
 export function buildBlogMetadata(
   cfg: ClinicConfig,
-  post: { title: string; slug: string; excerpt?: string; coverImage?: string }
+  post: { title: string; slug: string; excerpt?: string; coverImage?: string; publishedAt?: string }
 ): Metadata {
-  const clinic = cfg.clinic as any
-  const city   = clinic?.city || ''
-  const desc   = post.excerpt || `Read about ${post.title} — expert insights from ${city}.`
+  const clinic     = cfg.clinic as any
+  const city       = clinic?.city || ''
+  const doctorName = getDoctorName(cfg)
+  const desc       = post.excerpt || `Read about ${post.title} — expert insights from ${city}.`
 
-  return buildPageMetadata(cfg, {
+  const base = buildPageMetadata(cfg, {
     title:       post.title,
     description: desc,
     path:        `/blog/${post.slug}`,
     image:       post.coverImage,
   })
+
+  return {
+    ...base,
+    openGraph: {
+      ...base.openGraph,
+      type:          'article',
+      publishedTime: post.publishedAt,
+      modifiedTime:  post.publishedAt,
+      authors:       doctorName ? [doctorName] : undefined,
+      images:        post.coverImage
+        ? [{ url: post.coverImage, width: 1536, height: 1024, alt: post.title }]
+        : (base.openGraph as any)?.images,
+    },
+  }
 }
 
 /** Location spoke page metadata */
