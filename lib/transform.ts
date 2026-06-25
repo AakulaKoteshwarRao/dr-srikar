@@ -515,7 +515,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
     },
     {
       barClass: 'acc-blue' as const,
-      iconType: 'scissors',
+      iconType: 'briefcase',
       title: 'Procedure & Package Charges',
       description: minCost && maxCost
         ? `Rs.${minCost.toLocaleString('en-IN')} - Rs.${maxCost.toLocaleString('en-IN')} approximate range`
