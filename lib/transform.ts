@@ -467,7 +467,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
 
   // ── Patient Stories ───────────────────────────────────────────────────────
   // s16 (patient stories)
-  const storyList = a(s16.stories ?? s16.items ?? [])
+  const storyList = a(s16.patientStories ?? s16.stories ?? s16.items ?? [])
   const patientStories = storyList.map((story: any, i: number) => ({
     gradClass: g(i),
     duration:  s(story.duration, ''),
