@@ -82,6 +82,10 @@ export interface ClinicInfo {
   serviceType?: string
   paymentAccepted?: string
   currenciesAccepted?: string
+  country?: string
+  secondaryPhone?: string
+  secondaryWhatsapp?: string
+  secondaryLocationUrl?: string
   parking?: string
   wheelchair?: string
   toilets?: string
