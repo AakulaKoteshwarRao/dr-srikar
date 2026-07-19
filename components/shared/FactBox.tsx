@@ -12,12 +12,30 @@ export interface FactItem { icon: IconName; value: string; label: string }
 
 export default function FactBox({
   facts = [],
-  attribution,
+  role,
+  doctorName,
+  clinicName,
 }: {
   facts?: FactItem[]
-  attribution?: string
+  /** Verb phrase for the attribution line, e.g. "Treated by" / "Performed by". */
+  role?: string
+  doctorName?: string
+  clinicName?: string
 }) {
   const shown = facts.filter(f => f.value)
+
+  // Build the attribution line, deduping when the clinic is named after the
+  // doctor (so we don't render "Treated by Dr X at Dr X").
+  const d = doctorName?.trim()
+  const c = clinicName?.trim()
+  let attribution = ''
+  if (role && d) {
+    attribution = `${role} ${d}`
+    if (c && c.toLowerCase() !== d.toLowerCase()) attribution += ` at ${c}`
+  } else if (c) {
+    attribution = `At ${c}`
+  }
+
   if (!shown.length && !attribution) return null
 
   return (

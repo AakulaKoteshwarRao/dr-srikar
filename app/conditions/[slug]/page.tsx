@@ -118,7 +118,7 @@ export default async function ConditionDetailPage({ params }: PageParams) {
         {...mapped}
         allConditions={allConditions}
         allProcedures={allProcedures}
-        doctorName={doctorName ? `Dr. ${doctorName}` : ''}
+        doctorName={doctorName ? (/^dr\.?\s/i.test(doctorName) ? doctorName : `Dr. ${doctorName}`) : ''}
         experienceYears={findStat(/year|exp/i)}
         proceduresDone={findStat(/procedure/i)}
         consultationFee={(config.clinic as any)?.consultationFee || ''}

@@ -135,12 +135,14 @@ export default function ConditionDetail({
           <div className="sec-label"><span>Condition</span></div>
           <h1>{name}</h1>
           <FactBox
+            role="Treated by"
+            doctorName={doctorName}
+            clinicName={clinicName}
             facts={[
               { icon: 'award',        value: experienceYears, label: 'experience' },
               { icon: 'check-circle', value: proceduresDone,  label: 'procedures' },
               { icon: 'dollar',       value: consultationFee ? `${currency === 'INR' ? '₹' : ''}${consultationFee}`.trim() : '', label: 'consultation' },
             ]}
-            attribution={[doctorName && `Treated by ${doctorName}`, clinicName && `at ${clinicName}`].filter(Boolean).join(' ')}
           />
           <p className="cond-hero-desc">{description}</p>
           <div className="hero-pills">
