@@ -22,7 +22,14 @@ export default function DoctorHero({ doctor, clinic }: { doctor: DoctorInfo; cli
           </div>
           <div className="doc-info">
             <div className="sec-label"><span style={{ color: 'var(--primary)' }}>Meet the Doctor</span></div>
-            <h1 className="doc-name">{doctor.name}</h1>
+            <h1 className="doc-name">
+              {doctor.name}
+              {(clinic.medicalSpecialty || clinic.city) && (
+                <span className="doc-name-tagline">
+                  {[clinic.medicalSpecialty, clinic.city].filter(Boolean).join(' in ')}
+                </span>
+              )}
+            </h1>
             <p className="doc-degree">{doctor.qualifications.join(' · ')}</p>
             <div className="doc-specialty-tags">
               {doctor.specialties.map((s, i) => <span key={i} className="doc-spec-tag">{s}</span>)}
