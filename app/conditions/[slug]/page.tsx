@@ -106,6 +106,9 @@ export default async function ConditionDetailPage({ params }: PageParams) {
     },
   })
 
+  const stats = ((config.doctor as any)?.stats || []) as { number: string; label: string }[]
+  const findStat = (re: RegExp) => stats.find(s => re.test(s.label || ''))?.number || ''
+
   return (
     <>
       <SchemaMarkup graphs={[pageSchemas]} />
@@ -116,6 +119,10 @@ export default async function ConditionDetailPage({ params }: PageParams) {
         allConditions={allConditions}
         allProcedures={allProcedures}
         doctorName={doctorName ? `Dr. ${doctorName}` : ''}
+        experienceYears={findStat(/year|exp/i)}
+        proceduresDone={findStat(/procedure/i)}
+        consultationFee={(config.clinic as any)?.consultationFee || ''}
+        currency={(config.clinic as any)?.currenciesAccepted || 'INR'}
       />
       <Footer clinic={config.clinic} config={config} />
     </>

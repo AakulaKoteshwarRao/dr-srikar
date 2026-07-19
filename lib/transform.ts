@@ -164,6 +164,7 @@ export function transformConfig(raw: Record<string, any>): ClinicConfig {
     foundingDate: s(s02.foundingDate, ''),
     country:              s(s02.addressCountry, 'India'),
     currenciesAccepted:   s(s02.currenciesAccepted, 'INR'),
+    consultationFee:      s(s02.consultationFee, ''),
     secondaryPhone:        s(s02.secondaryTelephone, ''),
     secondaryWhatsapp:     s(s02.secondaryWhatsapp, ''),
     secondaryLocationUrl:  s(s02.secondaryLocationUrl, ''),
