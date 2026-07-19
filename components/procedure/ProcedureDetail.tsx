@@ -91,6 +91,7 @@ export default function ProcedureDetail({
   clinicHours = '',
   whatsappNumber = '',
   appointmentUrl = '/appointment',
+  doctorName = '',
   experienceYears = '',
   proceduresDone = '',
   consultationFee = '',
