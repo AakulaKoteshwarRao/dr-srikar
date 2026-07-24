@@ -40,6 +40,7 @@ export interface ClinicInfo {
   image?: string
   heroImage?: string
   aboutImage?: string
+  servicesImage?: string
   mapEmbedUrl?: string
   medicalSpecialty?: string
   specialty?: string
